@@ -21,8 +21,8 @@
         fish.enable = true;
         git = {
             enable = true;
-            userEmail = "joe@example.org";
-            userName = "joe";
+            userEmail = "lukasangelo18@gmail.com";
+            userName = "Lukas-Angelo Meier";
         };
         vscode = {
           enable = true;
