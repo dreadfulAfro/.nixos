@@ -80,7 +80,7 @@
   users.users.angelo = {
     isNormalUser = true;
     description = "Angelo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [
     #  thunderbird
     #  joplin-desktop

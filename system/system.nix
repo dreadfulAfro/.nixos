@@ -40,4 +40,9 @@
 
     # Enable the Flakes feature and the accompanying new nix command-line tool
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    # Virtualisierungskram für VMs
+    virtualisation.libvirtd.enable = true;
+    programs.virt-manager.enable = true;
+
 }

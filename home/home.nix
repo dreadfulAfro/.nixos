@@ -9,6 +9,7 @@
         packages = with pkgs; [
             btop
             dconf2nix
+            tor-browser
         ];
     };
 
@@ -24,19 +25,19 @@
             userEmail = "lukasangelo18@gmail.com";
             userName = "Lukas-Angelo Meier";
         };
-#        vscode = {
-#          enable = true;
-#          #package = pkgs.vscodium;
-#          profiles.default.extensions = with pkgs.vscode-extensions; [
-#            vscodevim.vim
-#            yzhang.markdown-all-in-one
-#            ms-vscode.cpptools-extension-pack
-#            ms-python.python
-#            #kevinrose.vsc-python-indent
-#            ms-python.debugpy
-#            bbenoist.nix
-#          ];
-#        };
+        vscode = {
+          enable = true;
+          #package = pkgs.vscodium;
+          profiles.default.extensions = with pkgs.vscode-extensions; [
+            vscodevim.vim
+            yzhang.markdown-all-in-one
+            ms-vscode.cpptools-extension-pack
+            ms-python.python
+            #kevinrose.vsc-python-indent
+            ms-python.debugpy
+            bbenoist.nix
+          ];
+        };
         joplin-desktop = {
           enable = true;
           extraConfig = {
@@ -49,6 +50,8 @@
     };
 
     services = {
+        # For Virtualization and rdp
+        remmina.enable = true;
         syncthing = {
             enable = true;                 # turn on syncthing
             #user = "angelo";               # run as your user
