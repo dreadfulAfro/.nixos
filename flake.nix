@@ -1,4 +1,15 @@
 {
+  description = "Multi-system NixOS setup with users angelo and work";
+
+  nixConfig = {
+    #extra-substituters = [
+    #  "https://nix-community.cachix.org"
+    #];
+    #extra-trusted-public-keys = [
+    #  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    #];
+  };
+
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -13,28 +24,41 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
-        ./system
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
+  let
+    mkSystem = { hostname, username, system ? "x86_64-linux" }:
+      let
+        specialArgs = { inherit username hostname; };
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ./hosts/${hostname}/default.nix
+            ./users/${username}/nixos.nix
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useUserPackages = true; # packages will be installed to /etc/profiles
-          home-manager.useGlobalPkgs = true; # system level pkgs will be used
-
-          home-manager.users.angelo = import ./home;
-        }
-      ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = inputs // specialArgs;
+              home-manager.users.${username} = import ./users/${username}/home.nix;
+            }
+          ];
+        };
+  in {
+    nixosConfigurations = {
+      nixos-laptop = mkSystem {
+        hostname = "nixos-laptop";
+        username = "angelo";
+        };
+      nixos-server = mkSystem {
+        hostname = "nixos-server";
+        username = "work";
+        };
+      nixos-ctf = mkSystem {
+        hostname = "nixos-ctf";
+        username = "work";
+        };
     };
   };
 }
