@@ -1,9 +1,7 @@
-{...}:
-{
-    imports = [
-        ./home.nix
-        ./packages
-        ./programs
-    ];
-
+{pkgs, ...}: {
+  imports = [
+    ./home.nix
+    ./packages
+    ./programs
+  ];
 }

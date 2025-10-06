@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, ... }:
 {
-
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -12,7 +14,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     atomix # puzzle game
     #cheese # webcam tool
     epiphany # web browser
@@ -22,20 +24,20 @@
     #gnome-photos
     #gnome-terminal
     #gnome-clock
-    gnome-weather 
+    gnome-weather
     gnome-characters
-    totem     # video player
-    yelp     # help viewer
-    geary     # email client
-    gnome-calendar     # calendar
-    gnome-contacts     # contacts
-    gnome-maps      # maps
-    gnome-music     # music
+    totem # video player
+    yelp # help viewer
+    geary # email client
+    gnome-calendar # calendar
+    gnome-contacts # contacts
+    gnome-maps # maps
+    gnome-music # music
     gnome-tour
     hitori # sudoku game
     iagno # go game
     tali # poker game
-  ]);
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -80,10 +82,10 @@
   users.users.angelo = {
     isNormalUser = true;
     description = "Angelo";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [
-    #  thunderbird
-    #  joplin-desktop
+      #  thunderbird
+      #  joplin-desktop
     ];
   };
 
