@@ -26,6 +26,7 @@
       enable = true;
       extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
     };
+    fish.enable = true;
   };
 
   services = {
