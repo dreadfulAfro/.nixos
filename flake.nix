@@ -24,12 +24,23 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
-  let
-    mkSystem = { hostname, username, system ? "x86_64-linux" }:
-      let
-        specialArgs = { inherit username hostname; };
-      in
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    let
+      mkSystem =
+        {
+          hostname,
+          username,
+          system ? "x86_64-linux",
+        }:
+        let
+          specialArgs = { inherit username hostname; };
+        in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
           modules = [
@@ -45,20 +56,21 @@
             }
           ];
         };
-  in {
-    nixosConfigurations = {
-      nixos-laptop = mkSystem {
-        hostname = "nixos-laptop";
-        username = "angelo";
+    in
+    {
+      nixosConfigurations = {
+        nixos-laptop = mkSystem {
+          hostname = "nixos-laptop";
+          username = "angelo";
         };
-      nixos-server = mkSystem {
-        hostname = "nixos-server";
-        username = "work";
+        nixos-server = mkSystem {
+          hostname = "nixos-server";
+          username = "work";
         };
-      nixos-ctf = mkSystem {
-        hostname = "nixos-ctf";
-        username = "work";
+        nixos-ctf = mkSystem {
+          hostname = "nixos-ctf";
+          username = "passwordc";
         };
+      };
     };
-  };
 }

@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.vscode = {
     enable = true;
-    #package = pkgs.vscodium;
+    #mutableExtensionsDir = true;
     profiles.default.extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       vscodevim.vim

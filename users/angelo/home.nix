@@ -1,7 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ../../home/core.nix
-    ../../home/programs
+    ../../home/programs/vscode.nix
+    ../../home/programs/joplin.nix
+    ../../home/programs/syncthing.nix
   ];
 
   programs.git = {
@@ -15,14 +18,14 @@
     dconf2nix
     gnome-network-displays
     miraclecast
+    nixfmt-rfc-style
   ];
 
   programs = {
     gnome-shell = {
       enable = true;
-      extensions = [{package = pkgs.gnomeExtensions.gsconnect;}];
+      extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
     };
-    fish.enable = true;
   };
 
   services = {

@@ -5,7 +5,10 @@
     ./hardware-configuration.nix
     ./network.nix
     ./system.nix
-    ../../modules/system.nix
+    ../../system/core.nix
+    ../../system/programs/gnome.nix
+    ../../system/programs/fish.nix
+    ../../system/programs/firefox.nix
   ];
 
   networking.hostName = "nixos-laptop";
@@ -13,35 +16,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  environment.gnome.excludePackages = with pkgs; [
-    atomix # puzzle game
-    #cheese # webcam tool
-    epiphany # web browser
-    evince # document viewer
-    gedit # text editor
-    #gnome-characters
-    #gnome-photos
-    #gnome-terminal
-    #gnome-clock
-    gnome-weather
-    gnome-characters
-    totem # video player
-    yelp # help viewer
-    geary # email client
-    gnome-calendar # calendar
-    gnome-contacts # contacts
-    gnome-maps # maps
-    gnome-music # music
-    gnome-tour
-    hitori # sudoku game
-    iagno # go game
-    tali # poker game
-  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -82,24 +56,4 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-    # Install firefox.
-  #programs.firefox.enable = true;
-  programs.firefox = {
-    enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      #forceWayland = true;
-      extraPolicies = {
-        ExtensionSettings = {};
-      };
-    };
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    btop
-  ];
 }
