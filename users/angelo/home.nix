@@ -19,6 +19,7 @@
     gnome-network-displays
     miraclecast
     nixfmt-rfc-style
+    teams-for-linux
   ];
 
   programs = {
