@@ -20,6 +20,7 @@
     miraclecast
     nixfmt-rfc-style
     teams-for-linux
+    obsidian
   ];
 
   programs = {
