@@ -14,6 +14,7 @@
   };
 
   home.packages = with pkgs; [
+    microsoft-edge
     tor-browser
     dconf2nix
     gnome-network-displays

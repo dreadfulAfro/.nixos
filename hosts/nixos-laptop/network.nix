@@ -5,6 +5,18 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  programs.ssh = {
+    extraConfig = "
+      Host nixos-server
+        Hostname 192.168.178.57
+        Port 4623
+        User admin
+      IdentitiesOnly yes
+      IdentityFile ~/.ssh/id_ed25519
+    ";
+  };
+
+
   #networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
   networking.firewall = rec {
     allowedTCPPortRanges = [
