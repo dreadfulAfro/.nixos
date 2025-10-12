@@ -7,9 +7,9 @@
 
   # It may be necessary to wait a bit for devices to be initialized.
   # See https://github.com/NixOS/nixpkgs/issues/98741
-  boot.initrd.preLVMCommands = lib.mkBefore 400 "sleep 1";
+  #boot.initrd.preLVMCommands = lib.mkBefore 400 "sleep 1";
   # enable cryptsetup
-  boot.initrd.luks.forceLuksSupportInInitrd = true;
+  #boot.initrd.luks.forceLuksSupportInInitrd = true;
   # Your post-boot network configuration is taken
   # into account. It should contain:
   networking.useDHCP = false;
@@ -31,7 +31,7 @@
         # to unprivileged users.
         hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
         # I'll just authorize all keys authorized post-boot.
-        authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
+        authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvvzzmAtcKOcvRsdB28CAL9PVgeFwf44qiecDEUKY1C nixos-server"];
         # Set the shell profile to meet SSH connections with a decryption
         # prompt that writes to /tmp/continue if successful.
       };
