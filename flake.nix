@@ -45,7 +45,7 @@
           inherit system specialArgs;
           modules = [
             ./hosts/${hostname}/default.nix
-            ./users/${username}/nixos.nix
+            #./users/${username}/nixos.nix
 
             home-manager.nixosModules.home-manager
             {
