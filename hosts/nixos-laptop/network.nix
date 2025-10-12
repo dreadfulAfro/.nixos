@@ -7,6 +7,10 @@
 
   programs.ssh = {
     extraConfig = "
+      Host nixos-server-decr
+        Hostname 192.168.178.57
+        Port 4623
+        User root
       Host nixos-server
         Hostname 192.168.178.57
         Port 4623

@@ -19,10 +19,16 @@
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
       AllowUsers = [ "admin" ];
-      
     };
     };
+    # ban hosts that cause multiple authentication errors
     fail2ban.enable = true;
+    # slow down ssh connection attempts by indeffinitley delaying connections
+    endlessh = {
+      enable = true;
+      port = 22;
+      openFirewall = true;
+  };
   };
   # Enable autologin for the user
   services.getty.autologinUser = "admin";
