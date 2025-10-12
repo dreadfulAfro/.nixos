@@ -24,4 +24,6 @@
     };
     fail2ban.enable = true;
   };
+  # Enable autologin for the user
+  services.getty.autologinUser = "admin";
 }

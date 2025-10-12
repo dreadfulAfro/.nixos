@@ -36,6 +36,15 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "de";
+    variant = "nodeadkeys";
+  };
+
+  # Configure console keymap
+  console.keyMap = "de-latin1-nodeadkeys";
+
   # do garbage collection weekly to keep disk usage low
   nix.gc = {
     automatic = lib.mkDefault true;

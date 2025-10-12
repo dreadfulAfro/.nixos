@@ -35,12 +35,6 @@
     openFirewall = true;
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "nodeadkeys";
-  };
-
   # GNOME Remote Desktop (from working config)
   services.gnome.gnome-remote-desktop.enable = true;
 
@@ -61,9 +55,6 @@
   # Firewall configuration for RDP and SSH
   networking.firewall.allowedTCPPorts = [ 3389 22 ];
 
-
-  # Configure console keymap
-  console.keyMap = "de-latin1-nodeadkeys";
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
