@@ -65,7 +65,7 @@
         };
         nixos-server = mkSystem {
           hostname = "nixos-server";
-          username = "work";
+          username = "admin";
         };
         nixos-ctf = mkSystem {
           hostname = "nixos-ctf";
