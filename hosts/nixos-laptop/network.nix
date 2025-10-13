@@ -13,7 +13,7 @@
         User root
       Host nixos-server
         Hostname 192.168.178.79
-        Port 4623
+        Port 4622
         User admin
       IdentitiesOnly yes
       IdentityFile ~/.ssh/id_ed25519

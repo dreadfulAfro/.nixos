@@ -14,8 +14,8 @@
   #networking.useDHCP = false;
   #networking.interfaces."enp1s0".useDHCP = true;
 
-  boot.initrd.luks.devices."luks-8e8ecfec-3711-4f6d-bd9f-fdf66f7396d8".device = "/dev/disk/by-uuid/8e8ecfec-3711-4f6d-bd9f-fdf66f7396d8";
-  
+ boot.initrd.luks.devices."luks-13c09ff4-cff9-4151-9a4e-976185f280f1".device = "/dev/disk/by-uuid/13c09ff4-cff9-4151-9a4e-976185f280f1";
+
   # setup pre decryption ssh server
   boot.kernelParams = [ "ip=dhcp" ];
   boot.initrd = {
@@ -25,14 +25,14 @@
       #flushBeforeStage2 = true;
       ssh = {
         enable = true;
-        port = 4623;
+        port = 4622;
         # Stored in plain text on boot partition, so don't reuse your host
         # keys. Also, make sure to use a boot loader with support for initrd
         # secrets (e.g. systemd-boot), or this will be exposed in the nix store
         # to unprivileged users.
         hostKeys = [ "/etc/secrets/initrd/ssh_host_ed25519_key" ];
         # I'll just authorize all keys authorized post-boot.
-        authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvvzzmAtcKOcvRsdB28CAL9PVgeFwf44qiecDEUKY1C nixos-server"];
+        authorizedKeys = config.users.users.admin.openssh.authorizedKeys.keys;
         # Set the shell to greet us with password prompt
         shell = "/bin/cryptsetup-askpass";
       };
