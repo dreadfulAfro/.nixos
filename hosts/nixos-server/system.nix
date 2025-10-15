@@ -21,7 +21,9 @@
   systemd.services."luks-open-data1tb" = {
     description = "Unlock /srv LUKS volume 1TBIntenso";
     #wantedBy = [ "local-fs.target" ];  # systemd will try to run this unit when starting local filesystem
-    before = [ "local-fs.target" ];  # makes sure it is started before the local filesystem
+    #before = [ "local-fs.target" ];  # makes sure it is started before the local filesystem
+    before = [ "srv-data1tb.mount" ];
+    wantedBy = [ "srv-data1tb.mount" ];
     serviceConfig = {
       Type = "oneshot";  # unit is executed once
       RemainAfterExit = true;   # is marked as still active after execution, so execStop is still called later
@@ -33,6 +35,7 @@
   fileSystems."/srv/data1tb" = {
     device = "/dev/mapper/data1tb";
     fsType = "ext4";
+    neededForBoot = false;
   };
   # Ensure /srv exists
   systemd.tmpfiles.rules = [
@@ -41,7 +44,7 @@
 
 
   # setup pre decryption ssh server
-  boot.kernelParams = [ "ip=dhcp" ];
+  #boot.kernelParams = [ "ip=dhcp" ];
   boot.initrd = {
     availableKernelModules = [ "r8169" ];
     network = {
