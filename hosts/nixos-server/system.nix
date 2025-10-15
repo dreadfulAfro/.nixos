@@ -23,7 +23,7 @@
     #wantedBy = [ "local-fs.target" ];  # systemd will try to run this unit when starting local filesystem
     #before = [ "local-fs.target" ];  # makes sure it is started before the local filesystem
     before = [ "srv-data1tb.mount" ];
-    wantedBy = [ "srv-data1tb.mount" ];
+    #wantedBy = [ "srv-data1tb.mount" ];
     serviceConfig = {
       Type = "oneshot";  # unit is executed once
       RemainAfterExit = true;   # is marked as still active after execution, so execStop is still called later
@@ -50,9 +50,10 @@
       }];
     };
     defaultGateway = {
-      address = "192.168.1.2";
+      address = "192.168.178.1";
       interface = "enp1s0";
     };
+    nameservers = [ "1.1.1.1" "8.8.8.8"];
   };
 
   # setup pre decryption ssh server
