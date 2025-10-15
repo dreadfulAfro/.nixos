@@ -12,6 +12,6 @@
         PAPERLESS_OCR_LANGUAGE = "deu+eng";
 
       };
-    }
-  }
+    };
+  };
 }
