@@ -36,12 +36,14 @@
     device = "/dev/mapper/data1tb";
     fsType = "ext4";
     neededForBoot = false;
+    options = [ "nofail" ];
   };
   # Ensure /srv exists
   systemd.tmpfiles.rules = [
     "d /srv 0755 root root -"
   ];
 
+  # enable static ip address
   networking = {
     interfaces = {
       enp1s0.ipv4.addresses = [{
