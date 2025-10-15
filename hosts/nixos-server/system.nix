@@ -1,8 +1,13 @@
-{lib, config, pkgs, ...}: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
 
   # It may be necessary to wait a bit for devices to be initialized.
   # See https://github.com/NixOS/nixpkgs/issues/98741
@@ -14,18 +19,19 @@
   #networking.useDHCP = false;
   #networking.interfaces."enp1s0".useDHCP = true;
 
- boot.initrd.luks.devices."luks-13c09ff4-cff9-4151-9a4e-976185f280f1".device = "/dev/disk/by-uuid/13c09ff4-cff9-4151-9a4e-976185f280f1";
+  boot.initrd.luks.devices."luks-13c09ff4-cff9-4151-9a4e-976185f280f1".device =
+    "/dev/disk/by-uuid/13c09ff4-cff9-4151-9a4e-976185f280f1";
 
   # Initialize external drives
   # 1TB Intenso
   systemd.services."luks-open-data1tb" = {
     description = "Unlock /srv LUKS volume 1TBIntenso";
-    after = [ "local-fs.target" ];  # makes sure it is started after the local filesystem
+    after = [ "local-fs.target" ]; # makes sure it is started after the local filesystem
     before = [ "multi-user.target" ]; # but before services are started
-    wantedBy = [ "multi-user.target" ]; 
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      Type = "oneshot";  # unit is executed once
-      RemainAfterExit = true;   # is marked as still active after execution, so execStop is still called later
+      Type = "oneshot"; # unit is executed once
+      RemainAfterExit = true; # is marked as still active after execution, so execStop is still called later
       ExecStart = "${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-id/ata-ST1000LM024_HN-M101MBB_S2RXJ9ADB27331-part1 data1tb --key-file /etc/secrets/cryptsetup/ata-ST1000LM024_HN-M101MBB_S2RXJ9ADB27331-part1.key";
       ExecStop = "${pkgs.cryptsetup}/bin/cryptsetup close data1tb";
     };
@@ -35,7 +41,7 @@
     device = "/dev/mapper/data1tb";
     fsType = "ext4";
     neededForBoot = false;
-    options = [ 
+    options = [
       "nofail"
       "x-systemd.requires=luks-open-data1tb.service"
       "x-systemd.after=luks-open-data1tb.service"
@@ -49,16 +55,21 @@
   # enable static ip address
   networking = {
     interfaces = {
-      enp1s0.ipv4.addresses = [{
-        address = "192.168.178.57";
-        prefixLength = 24;
-      }];
+      enp1s0.ipv4.addresses = [
+        {
+          address = "192.168.178.57";
+          prefixLength = 24;
+        }
+      ];
     };
     defaultGateway = {
       address = "192.168.178.1";
       interface = "enp1s0";
     };
-    nameservers = [ "1.1.1.1" "8.8.8.8"];
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
   };
 
   # setup pre decryption ssh server
@@ -67,6 +78,17 @@
     availableKernelModules = [ "r8169" ];
     network = {
       enable = true;
+      interfaces = {
+        enp1s0 = {
+          ipv4.addresses = [
+            {
+              address = "192.168.178.57";
+              prefixLength = 24;
+            }
+          ];
+          defaultGateway = "192.168.178.1";
+        };
+      };
       flushBeforeStage2 = true;
       ssh = {
         enable = true;
@@ -83,6 +105,5 @@
       };
     };
   };
-
 
 }
