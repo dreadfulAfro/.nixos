@@ -20,7 +20,7 @@
   # 1TB Intenso
   systemd.services."luks-open-data1tb" = {
     description = "Unlock /srv LUKS volume 1TBIntenso";
-    wantedBy = [ "local-fs.target" ];  # systemd will try to run this unit when starting local filesystem
+    #wantedBy = [ "local-fs.target" ];  # systemd will try to run this unit when starting local filesystem
     before = [ "local-fs.target" ];  # makes sure it is started before the local filesystem
     serviceConfig = {
       Type = "oneshot";  # unit is executed once
