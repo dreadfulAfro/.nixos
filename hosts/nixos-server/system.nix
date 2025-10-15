@@ -28,7 +28,7 @@
     description = "Unlock /srv LUKS volume 1TBIntenso";
     after = [ "local-fs.target" ]; # makes sure it is started after the local filesystem
     before = [ "multi-user.target" ]; # but before services are started
-    wantedBy = [ "multi-user.target" ];
+    #wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot"; # unit is executed once
       RemainAfterExit = true; # is marked as still active after execution, so execStop is still called later
