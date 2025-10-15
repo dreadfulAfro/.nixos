@@ -4,7 +4,7 @@
     autoStart = true;
 
     config =
-      { pkgs }:
+      { pkgs, ... }:
       {
         services.paperless = {
           enable = true;
