@@ -73,22 +73,11 @@
   };
 
   # setup pre decryption ssh server
-  #boot.kernelParams = [ "ip=dhcp" ];
+  boot.kernelParams = [ "ip=192.168.178.57::192.168.178.1:24::enp1s0:off" ];
   boot.initrd = {
     availableKernelModules = [ "r8169" ];
     network = {
       enable = true;
-      interfaces = {
-        enp1s0 = {
-          ipv4.addresses = [
-            {
-              address = "192.168.178.57";
-              prefixLength = 24;
-            }
-          ];
-          defaultGateway = "192.168.178.1";
-        };
-      };
       flushBeforeStage2 = true;
       ssh = {
         enable = true;
