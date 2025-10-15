@@ -20,10 +20,9 @@
   # 1TB Intenso
   systemd.services."luks-open-data1tb" = {
     description = "Unlock /srv LUKS volume 1TBIntenso";
-    #wantedBy = [ "local-fs.target" ];  # systemd will try to run this unit when starting local filesystem
-    #before = [ "local-fs.target" ];  # makes sure it is started before the local filesystem
-    before = [ "srv-data1tb.mount" ];
-    #wantedBy = [ "srv-data1tb.mount" ];
+    after = [ "local-fs.target" ];  # makes sure it is started after the local filesystem
+    before = [ "multi-user.target" ]; # but before services are started
+    wantedBy = [ "multi-user.target" ]; 
     serviceConfig = {
       Type = "oneshot";  # unit is executed once
       RemainAfterExit = true;   # is marked as still active after execution, so execStop is still called later
@@ -36,7 +35,11 @@
     device = "/dev/mapper/data1tb";
     fsType = "ext4";
     neededForBoot = false;
-    options = [ "nofail" ];
+    options = [ 
+      "nofail"
+      "x-systemd.requires=luks-open-data1tb.service"
+      "x-systemd.after=luks-open-data1tb.service"
+    ];
   };
   # Ensure /srv exists
   systemd.tmpfiles.rules = [
