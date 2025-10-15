@@ -20,7 +20,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # create symlink from ~/.nixos to /etc/nixos so i can use nixos-rebuild switch without arguments
-  environment.etc."nixos".source = "/home/${username}/.nixos";
+  environment.etc."nixos".source = /home/${username}/.nixos;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
