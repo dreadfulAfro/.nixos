@@ -60,6 +60,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;

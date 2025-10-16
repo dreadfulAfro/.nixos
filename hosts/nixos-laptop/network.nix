@@ -20,7 +20,7 @@
     ";
   };
 
-
+  services.tailscale.enable = true;
   #networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
   networking.firewall = rec {
     allowedTCPPortRanges = [
