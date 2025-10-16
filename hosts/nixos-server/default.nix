@@ -6,6 +6,8 @@
     ./system.nix
     ../../system/core.nix
     ../../system/container/paperless-ngx.nix
+    ../../system/container/network.nix
+    ../../system/container/paperless-ngx.nix
   ];
 
   system.stateVersion = "25.05";
