@@ -1,4 +1,4 @@
-{ }:
+{hostname, ... }:
 {
   # NAT mapping for containers
   networking.nat = {
