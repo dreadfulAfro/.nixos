@@ -36,12 +36,7 @@
                 }
                 respond @external 403
                 tls internal
-                reverse_proxy 192.168.100.11:28981 {
-                  header_up Host {host}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                }
+                reverse_proxy 192.168.100.11:28981
               '';
             };
           };
