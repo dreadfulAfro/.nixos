@@ -29,7 +29,7 @@
           # email = "admin@example.org";
 
           virtualHosts = {
-            "paperless.local, nixos-server.tail194e5d.ts.net" = {
+            "paperless.local, paperless.tail194e5d.ts.net" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.11:28981
