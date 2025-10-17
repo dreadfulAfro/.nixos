@@ -1,4 +1,4 @@
-{}:
+{hostname, ...}:
 {
   containers.caddy = {
     autoStart = true;
