@@ -28,7 +28,7 @@
         services.paperless = {
           enable = true;
           address = "192.168.100.11";
-          domain = "paperless.local";
+          #domain = "paperless.local";
           port = 28981;
           dataDir = "/paperless/data";
           mediaDir = "/paperless/media";
