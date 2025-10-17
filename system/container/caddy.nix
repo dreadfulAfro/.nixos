@@ -13,6 +13,7 @@
       "caddy-data" = {
         hostPath = "/srv/data1tb/caddy";      # stores certs and config
         mountPoint = "/var/lib/caddy";
+        isReadOnly = false;
       };
     };
 
