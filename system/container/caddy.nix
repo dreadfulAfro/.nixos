@@ -29,7 +29,7 @@
           # email = "admin@example.org";
 
           virtualHosts = {
-            "paperless.localhost" = {
+            "paperless.local" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.11:28981
               '';

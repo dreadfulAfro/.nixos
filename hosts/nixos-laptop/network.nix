@@ -33,6 +33,6 @@
     allowedUDPPortRanges = allowedTCPPortRanges; # for gsconnect
   };
 
-  networking.extraHosts = "192.168.178.57 paperless.localhost";
+  networking.extraHosts = "192.168.178.57 paperless.local";
 
 }
