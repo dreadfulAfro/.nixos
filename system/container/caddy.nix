@@ -7,7 +7,10 @@
     localAddress = "192.168.100.2";
     hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
-    hostPorts = [ 80 443 ];
+    forwardPorts = [
+        { hostPort = 80; }
+        { hostPort = 443; } 
+      ];
 
 
     bindMounts = {
