@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -31,4 +32,7 @@
     ]; # for gsconnect
     allowedUDPPortRanges = allowedTCPPortRanges; # for gsconnect
   };
+
+  networking.extraHosts = "192.168.178.57 paperless.localhost";
+
 }
