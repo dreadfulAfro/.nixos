@@ -16,14 +16,14 @@
 
   services = {
     openssh = {
-    enable = true;
-    ports = [ 4623 ];
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-      AllowUsers = [ "admin" ];
-    };
+      enable = true;
+      ports = [ 4623 ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+        AllowUsers = [ "admin" ];
+      };
     };
     # ban hosts that cause multiple authentication errors
     fail2ban.enable = true;
@@ -32,7 +32,13 @@
       enable = true;
       port = 22;
       openFirewall = true;
-  };
+    };
+    tailscale = {
+      enable = true;
+      authKeyFile = "/etc/secrets/tailscale/authKey.key";
+      openFirewall = true;
+    };
+
   };
   # Enable autologin for the user
   services.getty.autologinUser = "admin";
