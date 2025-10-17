@@ -41,7 +41,11 @@
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
                   header_up X-Forwarded-Proto {scheme}
-                  }
+                }
+                nixos-server.tail194e5d.ts.net {
+                  tls internal
+                  reverse_proxy 192.168.100.11:28981
+                }
               '';
             };
           };
