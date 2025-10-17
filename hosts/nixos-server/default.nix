@@ -7,7 +7,7 @@
     ../../system/core.nix
     ../../system/container/paperless-ngx.nix
     ../../system/container/network.nix
-    ../../system/container/nginx.nix
+    ../../system/container/caddy.nix
     ../../system/container/paperless-ngx.nix
   ];
 
