@@ -16,6 +16,10 @@
         Hostname 192.168.178.57
         Port 4623
         User admin
+      Host nixos-server-tail
+        Hostname 100.77.114.79
+        Port 4623
+        User admin
       IdentitiesOnly yes
       IdentityFile ~/.ssh/id_ed25519
     ";
