@@ -31,7 +31,12 @@
           virtualHosts = {
             "paperless.local" = {
               extraConfig = ''
-                reverse_proxy 192.168.100.11:28981
+                    @external {
+                      not remote_ip 192.168.178.0/24
+                    }
+                    respond @external 403
+                    tls internal
+                    reverse_proxy 192.168.100.11:28981
               '';
             };
           };
