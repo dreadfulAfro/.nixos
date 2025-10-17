@@ -28,14 +28,19 @@
         services.paperless = {
           enable = true;
           address = "192.168.100.11";
+          domain = "paperless.local";
           port = 28981;
           dataDir = "/paperless/data";
           mediaDir = "/paperless/media";
           passwordFile = "/etc/secrets/admin.key";
           settings = {
             PAPERLESS_OCR_LANGUAGE = "deu+eng";
+            PAPERLESS_URL = "https://paperless.local";
+            #PAPERLESS_HOST = "paperless.local";
+            #PAPERLESS_ALLOWED_HOSTS = "paperless.local";
+            #PAPERLESS_USE_X_FORWARDED = "true";
+            DEBUG = "True";
           };
-          PAPERLESS_URL = "https://paperless.local";
         };
 
         networking.firewall = {
