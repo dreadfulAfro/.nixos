@@ -34,7 +34,7 @@
           passwordFile = "/etc/secrets/admin.key";
           settings = {
             PAPERLESS_OCR_LANGUAGE = "deu+eng";
-            PAPERLESS_URL = "https://paperless.local"; # to prevent csrf-verification issues
+            PAPERLESS_URL = "https://nixos-server.tail194e5d.ts.net/paperless"; # to prevent csrf-verification issues
             PAPERLESS_USE_X_FORWARDED = "true"; # trust Caddy headers
           };
         };
