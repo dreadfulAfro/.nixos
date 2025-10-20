@@ -32,7 +32,7 @@
             "paperless.local, nixos-server.tail194e5d.ts.net" = {
               extraConfig = ''
                 tls internal
-                handle_path /paperless/* {
+                handle /paperless/* {
                 reverse_proxy 192.168.100.11:28981 {
                   header_up X-Forwarded-Proto {scheme}
                   header_up Host {host}
