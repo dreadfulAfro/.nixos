@@ -8,7 +8,7 @@
   # Tailscale
   services.tailscale = {
     enable = true;
-    useRoutingFeatures = "router"; # or both
+    useRoutingFeatures = "server"; # or both
     authKeyFile = "/etc/secrets/tailscale/authKey.key";
     openFirewall = true;
     extraUpFlags = [
