@@ -5,8 +5,8 @@
     ./hardware-configuration.nix
     ./system.nix
     ../../system/core.nix
-    ../../system/container/paperless-ngx.nix
     ../../system/container/network.nix
+    ../../system/container/tailscale.nix
     ../../system/container/caddy.nix
     ../../system/container/paperless-ngx.nix
   ];
@@ -31,11 +31,6 @@
     endlessh = {
       enable = true;
       port = 22;
-      openFirewall = true;
-    };
-    tailscale = {
-      enable = true;
-      authKeyFile = "/etc/secrets/tailscale/authKey.key";
       openFirewall = true;
     };
 

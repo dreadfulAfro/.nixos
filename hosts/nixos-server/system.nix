@@ -52,9 +52,6 @@
     "d /srv 0755 root root -"
   ];
 
-  # Tailscale
-  services.tailscale.enable = true;
-
   # enable static ip address
   networking = {
     interfaces = {
