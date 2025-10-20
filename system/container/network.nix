@@ -8,4 +8,7 @@
     # Lazy IPv6 connectivity for the container
     enableIPv6 = true;
   };
+  # open ports for caddy so port forwarding works
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
 }

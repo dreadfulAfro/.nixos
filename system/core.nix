@@ -56,7 +56,21 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # discover ipp network printer
+  #services.avahi = {
+  #enable = true;
+  #nssmdns4 = true;
+  #openFirewall = true;
+  #};
+
+services.printing = {
+  enable = true;
+  drivers = with pkgs; [
+    cups-filters
+    cups-browsed
+    brlaser
+  ];
+};
 
   # Enable networking
   networking.networkmanager.enable = true;

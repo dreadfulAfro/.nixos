@@ -19,7 +19,6 @@
         mountPoint = "/etc/secrets";
         isReadOnly = false;
       };
-
     };
 
     config =
