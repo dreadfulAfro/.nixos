@@ -8,6 +8,7 @@
   # Tailscale
   services.tailscale = {
     enable = true;
+    #enableDNS = false; # to prevent magicdns slowing down normal connections
     useRoutingFeatures = "both"; # or server
     authKeyFile = "/etc/secrets/tailscale/authKey.key";
     openFirewall = true;

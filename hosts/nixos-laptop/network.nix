@@ -38,7 +38,7 @@
   };
 
   networking.extraHosts = "192.168.178.57 paperless.local";
-  networking.nameservers = [ "100.100.100.100" "8.8.8.8" "1.1.1.1" ];
-  networking.search = [ "example.ts.net" ];
+  networking.nameservers = [ "9.9.9.9" "149.112.112.112" "1.1.1.1" "1.0.0.1" ]; #Quad9 and Cloudflare 
+  networking.search = [ "tail194e5d.ts.net" ];
 
 }
