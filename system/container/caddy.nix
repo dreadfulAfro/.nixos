@@ -40,11 +40,7 @@
             };
             "paperless.local" = {
               extraConfig = ''
-                tls internal
-                reverse_proxy 192.168.100.11:28981 {
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up Host {host}
-                }
+                redir https://paperless.local{uri}
               '';
             };
           };
