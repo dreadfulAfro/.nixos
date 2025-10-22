@@ -30,7 +30,7 @@
             Port = 42002;
           };
 #          dataDir = "/var/lib/kavita";
-#          tokenKeyFile = "/etc/secrets/token.key";
+          tokenKeyFile = "/etc/secrets/token.key";
         };
 
         networking.firewall = {
