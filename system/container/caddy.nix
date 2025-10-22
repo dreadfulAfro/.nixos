@@ -32,10 +32,20 @@
             "paperless.local nixos-server.tail194e5d.ts.net"= {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.11:28981 {
+                reverse_proxy 192.168.100.11:42001 {
                     header_up X-Forwarded-Proto {scheme}
                     header_up Host {host}
                 }
+              '';
+            };
+            "kavita.local" = {
+              extraConfig = ''
+                reverse_proxy 192.168.100.21:42002
+              '';
+            };
+            "jellyfin.local" = {
+              extraConfig = ''
+                reverse_proxy 192.168.100.31:8920
               '';
             };
           };

@@ -27,7 +27,7 @@
         services.paperless = {
           enable = true;
           address = "192.168.100.11";
-          port = 28981;
+          port = 42001;
           dataDir = "/paperless/data";
           mediaDir = "/paperless/media";
           passwordFile = "/etc/secrets/admin.key";
@@ -47,7 +47,7 @@
 
         networking.firewall = {
           enable = true;
-          allowedTCPPorts = [ 28981 ];
+          allowedTCPPorts = [ 42001 ];
         };
 
         system.stateVersion = "25.05";

@@ -9,6 +9,8 @@
     ../../system/container/tailscale.nix
     ../../system/container/caddy.nix
     ../../system/container/paperless-ngx.nix
+    ../../system/container/kavita.nix
+    ../../system/container/jellyfin.nix
   ];
 
   system.stateVersion = "25.05";
