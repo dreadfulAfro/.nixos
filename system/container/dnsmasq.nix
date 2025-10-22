@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  containers.dns = {
+  containers.dnsmasq = {
     autoStart = true;
     privateNetwork = false;
     hostAddress = "192.168.100.100";

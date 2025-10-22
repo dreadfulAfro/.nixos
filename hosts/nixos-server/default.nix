@@ -7,6 +7,7 @@
     ../../system/core.nix
     ../../system/container/network.nix
     ../../system/container/tailscale.nix
+    ../../system/container/dnsmasq.nix
     ../../system/container/caddy.nix
     ../../system/container/paperless-ngx.nix
     ../../system/container/kavita.nix
