@@ -31,24 +31,43 @@
           virtualHosts = {
             "paperless.local nixos-server.tail194e5d.ts.net/paperless"= {
               extraConfig = ''
-                handle_path /paperless/* {}
-                tls internal
-                reverse_proxy 192.168.100.11:42001 {
-                    header_up X-Forwarded-Proto {scheme}
-                    header_up Host {host}
+                handle_path /paperless/* {
+                  tls internal
+                  reverse_proxy 192.168.100.11:42001 {
+                      header_up X-Forwarded-Proto {scheme}
+                      header_up Host {host}
+                  }
                 }
               '';
             };
             "kavita.local nixos-server.tail194e5d.ts.net/kavita" = {
               extraConfig = ''
+                handle_path /kavita/* {
+                  tls internal
+                  reverse_proxy 192.168.100.21:42002 {
+                      header_up X-Forwarded-Proto {scheme}
+                      header_up Host {host}
+                  }
+                }
                 tls internal
                 reverse_proxy 192.168.100.21:42002 {
-                    header_up X-Forwarded-Proto {scheme}
-                    header_up Host {host}
+                      header_up X-Forwarded-Proto {scheme}
+                      header_up Host {host}
+                  }
+              '';
+            };
+            "nixos-server.tail194e5d.ts.net/jellyfin" = {
+              extraConfig = ''
+                handle_path /jellyfin/* {
+                  tls internal
+                  reverse_proxy 192.168.100.31:8096 {
+                      header_up X-Forwarded-Proto {scheme}
+                      header_up Host {host}
+                  }
                 }
               '';
             };
-            "jellyfin.local nixos-server.tail194e5d.ts.net/jellyfin" = {
+             "jellyfin.local" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.31:8096 {
