@@ -14,6 +14,10 @@
         mountPoint = "/var/lib/kavita";
         isReadOnly = false;
       };
+      "key" = {
+        hostPath = "/etc/secrets/kavita";
+        mountPoint = "/etc/secrets";
+      };
     };
 
     config =
@@ -26,6 +30,7 @@
             Port = 42002;
           };
           dataDir = "/var/lib/kavita";
+          tokenKeyFile = "/etc/secrets/token.key";
         };
 
         networking.firewall = {
