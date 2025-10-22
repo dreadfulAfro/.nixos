@@ -29,7 +29,7 @@
           # email = "admin@example.org";
 
           virtualHosts = {
-            "paperless.local"= {
+            "paperless.local" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.11:42001
               '';
@@ -39,11 +39,11 @@
                 reverse_proxy 192.168.100.21:42002
               '';
             };
-             "jellyfin.local" = {
+            "jellyfin.local" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.31:8096
               '';
-             };
+            };
             "nixos-server.tail194e5d.ts.net" = {
               extraConfig = ''
                 tls internal
@@ -57,7 +57,6 @@
                   reverse_proxy 192.168.100.31:8096
                 }
               '';
-            };
             };
           };
         };
