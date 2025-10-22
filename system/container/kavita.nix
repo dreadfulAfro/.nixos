@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  containers.paperless = {
+  containers.kavita = {
     autoStart = true;
     privateNetwork = true;
     hostAddress = "192.168.100.20";
@@ -9,7 +9,7 @@
     localAddress6 = "fc00::21";
 
     bindMounts = {
-      "paperless" = {
+      "kavita" = {
         hostPath = "/srv/data1tb/kavita";
         mountPoint = "/var/lib/kavita";
         isReadOnly = false;
