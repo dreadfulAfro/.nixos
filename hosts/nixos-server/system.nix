@@ -68,7 +68,6 @@
     };
     nameservers = [ "100.100.100.100" "8.8.8.8" "1.1.1.1" ];
     search = [ "tail194e5d.ts.net" ];
-    firewall.allowedTCPPorts = [ 80 443 ]; # open ports for caddy
   };
 
   # setup pre decryption ssh server
