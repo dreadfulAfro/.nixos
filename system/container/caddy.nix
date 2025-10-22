@@ -29,8 +29,9 @@
           # email = "admin@example.org";
 
           virtualHosts = {
-            "paperless.local nixos-server.tail194e5d.ts.net"= {
+            "paperless.local nixos-server.tail194e5d.ts.net/paperless"= {
               extraConfig = ''
+                handle_path /paperless/* {}
                 tls internal
                 reverse_proxy 192.168.100.11:42001 {
                     header_up X-Forwarded-Proto {scheme}
@@ -38,7 +39,7 @@
                 }
               '';
             };
-            "kavita.local" = {
+            "kavita.local nixos-server.tail194e5d.ts.net/kavita" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.21:42002 {
@@ -47,7 +48,7 @@
                 }
               '';
             };
-            "jellyfin.local" = {
+            "jellyfin.local nixos-server.tail194e5d.ts.net/jellyfin" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.31:8096 {

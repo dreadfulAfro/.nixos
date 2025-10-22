@@ -38,6 +38,7 @@
             #PAPERLESS_STATIC_URL = "/paperless/static/";
             PAPERLESS_URL = "https://paperless.local";
             PAPERLESS_ALLOWED_HOSTS = "paperless.local,nixos-server.tail194e5d.ts.net";
+            PAPERLESS_CSRF_TRUSTED_ORIGINS = "paperless.local,nixos-server.tail194e5d.ts.net";
             PAPERLESS_USE_X_FORWARDED = "true"; # trust Caddy headers
             PAPERLESS_USE_X_FORWARD_HOST = "true";
             PAPERLESS_USE_X_FORWARD_PORT = "true";
