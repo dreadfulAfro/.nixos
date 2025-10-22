@@ -29,7 +29,7 @@
             IpAddresses = "192.168.100.21";
             Port = 42002;
           };
-#          dataDir = "/var/lib/kavita";
+          dataDir = "/var/lib/kavita";
           tokenKeyFile = "/etc/secrets/token.key";
         };
 
