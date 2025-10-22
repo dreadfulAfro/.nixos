@@ -66,8 +66,8 @@
       address = "192.168.178.1";
       interface = "enp1s0";
     };
-    nameservers = [ "100.100.100.100" "8.8.8.8" "1.1.1.1" ];
-    search = [ "tail194e5d.ts.net" ];
+    nameservers = [ "9.9.9.9" "1.1.1.1"];
+    #search = [ "tail194e5d.ts.net" ];
   };
 
   # setup pre decryption ssh server
