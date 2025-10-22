@@ -45,7 +45,7 @@
             };
             "jellyfin.local" = {
               extraConfig = ''
-                reverse_proxy 192.168.100.31:8920
+                reverse_proxy 192.168.100.31:8096
               '';
             };
           };

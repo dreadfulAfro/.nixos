@@ -5,8 +5,8 @@
     privateNetwork = true;
     hostAddress = "192.168.100.30";
     localAddress = "192.168.100.31";
-    hostAddress6 = "fc00::20";
-    localAddress6 = "fc00::21";
+    hostAddress6 = "fc00::30";
+    localAddress6 = "fc00::31";
 
     bindMounts = {
       "jellyfin" = {
