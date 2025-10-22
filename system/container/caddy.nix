@@ -40,12 +40,20 @@
             };
             "kavita.local" = {
               extraConfig = ''
-                reverse_proxy 192.168.100.21:42002
+                tls internal
+                reverse_proxy 192.168.100.21:42002 {
+                    header_up X-Forwarded-Proto {scheme}
+                    header_up Host {host}
+                }
               '';
             };
             "jellyfin.local" = {
               extraConfig = ''
-                reverse_proxy 192.168.100.31:8096
+                tls internal
+                reverse_proxy 192.168.100.31:8096 {
+                    header_up X-Forwarded-Proto {scheme}
+                    header_up Host {host}
+                }
               '';
             };
           };
