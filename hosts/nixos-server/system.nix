@@ -78,18 +78,6 @@
         53
       ];
       allowedUDPPorts = [ 53 ];
-      trustedInterfaces = [
-        "tailscale0"
-        "enp1s0"
-      ];
-      extraCommands = ''
-        iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-        iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-        iptables -A INPUT -p udp --dport 53 -j DROP
-        iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -j DROP
-      '';
     };
     #search = [ "tail194e5d.ts.net" ];
   };

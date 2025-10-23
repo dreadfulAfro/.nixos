@@ -1,7 +1,8 @@
 { hostname, ... }:
 {
   # NAT mapping for containers
-  networking.nat = {
+  networking = {
+    nat = {
     enable = true;
     internalInterfaces = [ "ve-+" ]; # NAT all internal interfaces starting with ve- which containers do with private network activated
     externalInterface = "enp1s0";
@@ -19,5 +20,14 @@
         proto = "tcp";
       }
     ];
+    };
+    firewall = {
+      extraCommands = ''
+        iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+        iptables -A INPUT -p udp --dport 53 -j DROP
+        iptables -A INPUT -p tcp --dport 53 -j DROP
+      '';
+    };
   };
 }
