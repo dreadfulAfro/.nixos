@@ -23,6 +23,8 @@
     };
     firewall = {
       extraCommands = ''
+        iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
         iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
         iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
         iptables -A INPUT -p udp --dport 53 -j DROP
