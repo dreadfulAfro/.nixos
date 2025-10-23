@@ -40,6 +40,12 @@
           };
         };
 
+        # Port forwarding from host to container
+        networking.nat = {
+          "53/udp" = "192.168.100.101:53";  # forward host UDP 53 to container
+        #  "53/tcp" = "192.168.100.101:53";  # forward TCP 53 as well (optional)
+        };
+
         # Open port 53 for DNS
         networking.firewall.allowedTCPPorts = [ 53 ];
         networking.firewall.allowedUDPPorts = [ 53 ];
