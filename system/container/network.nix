@@ -10,5 +10,6 @@
   };
   # open ports for caddy so port forwarding works
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+  
 
 }

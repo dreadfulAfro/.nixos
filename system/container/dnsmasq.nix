@@ -2,7 +2,7 @@
 {
   containers.dnsmasq = {
     autoStart = true;
-    privateNetwork = false;
+    privateNetwork = true;
     hostAddress = "192.168.100.100";
     localAddress = "192.168.100.101";
 
@@ -11,7 +11,6 @@
         enable = true;
         settings = {
           # Listen on all interfaces
-          interface = "enp1s0";
           bind-interfaces = true;
           listen-address = [ "192.168.100.101" "127.0.0.1" ];
 
