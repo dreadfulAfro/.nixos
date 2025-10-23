@@ -34,9 +34,9 @@
 
             # Local DNS entries for your containers
             address = [
-              "/paperless.tails/192.168.100.11"
-              "/kavita.tails/192.168.100.21"
-              "/jellyfin.tails/192.168.100.31"
+              "/paperless.tails/192.168.178.57"
+              "/kavita.tails/192.168.178.57"
+              "/jellyfin.tails/192.168.178.57"
             ];
 
             # Upstream resolvers

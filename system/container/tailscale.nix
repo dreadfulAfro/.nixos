@@ -15,7 +15,7 @@
     extraUpFlags = [
       "--accept-dns=false"
       "--advertise-routes=192.168.100.0/24"
-      "--advertise-dns=100.77.114.79"
+      "--advertise-routes=192.168.178.0/24"
       #      "--advertise-routes=192.168.178.0/24, 192.168.100.0/24" # advertise your LAN subnet to Tailscale
       # "--ssh"                               # optional: allow SSH over Tailscale
     ];
