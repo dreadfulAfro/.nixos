@@ -16,9 +16,9 @@
 
           # Local DNS entries for your containers
           address = [
-            "/paperless.local/192.168.100.11"
-            "/kavita.local/192.168.100.21"
-            "/jellyfin.local/192.168.100.31"
+            "/paperless.nixos-server.home/192.168.100.11"
+            "/kavita.nixos-server.home/192.168.100.21"
+            "/jellyfin.nixos-server.home/192.168.100.31"
           ];
 
           # Upstream resolvers
@@ -28,7 +28,7 @@
           ];
 
           # Optionally, make short names work via search
-          domain = "local";
+          domain = ".nixos-server.home";
           expand-hosts = true;
           local-ttl = 60;
         };

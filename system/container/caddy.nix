@@ -29,42 +29,19 @@
           # email = "admin@example.org";
 
           virtualHosts = {
-            "paperless.local" = {
+            "paperless.nixos-server.home" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.11:42001
               '';
             };
-            "kavita.local" = {
+            "kavita.nixos-server.home" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.21:42002
               '';
             };
-            "jellyfin.local" = {
+            "jellyfin.nixos-server.home" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.31:8096
-              '';
-            };
-            "nixos-server.tail194e5d.ts.net" = {
-              extraConfig = ''
-                tls internal
-                handle_path /paperless/* {
-                  reverse_proxy 192.168.100.11:42001 {
-                    header_up X-Forwarded-Proto {scheme}
-                    header_up Host {host}
-                  }
-                }
-                handle_path /kavita/* {
-                  reverse_proxy 192.168.100.21:42002 {
-                    header_up X-Forwarded-Proto {scheme}
-                    header_up Host {host}
-                  }
-                }
-                handle_path /jellyfin/* {
-                  reverse_proxy 192.168.100.31:8096 {
-                    header_up X-Forwarded-Proto {scheme}
-                    header_up Host {host}
-                  }
-                }
               '';
             };
           };
