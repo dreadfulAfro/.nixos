@@ -13,6 +13,7 @@
           # Listen on all interfaces
           interface = "enp1s0";
           bind-interfaces = true;
+          listen-address = [ "192.168.100.101" "127.0.0.1" ];
 
           # Local DNS entries for your containers
           address = [

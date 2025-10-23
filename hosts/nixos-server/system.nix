@@ -66,7 +66,7 @@
       address = "192.168.178.1";
       interface = "enp1s0";
     };
-    nameservers = [ "9.9.9.9" "1.1.1.1"];
+    nameservers = [ "192.168.100.101" "9.9.9.9" "1.1.1.1"];
     #search = [ "tail194e5d.ts.net" ];
   };
 
