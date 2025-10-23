@@ -29,17 +29,17 @@
           # email = "admin@example.org";
 
           virtualHosts = {
-            "paperless.nixos-server.home" = {
+            "paperless.tails" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.11:42001
               '';
             };
-            "kavita.nixos-server.home" = {
+            "kavita.tails" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.21:42002
               '';
             };
-            "jellyfin.nixos-server.home" = {
+            "jellyfin.tails" = {
               extraConfig = ''
                 reverse_proxy 192.168.100.31:8096
               '';

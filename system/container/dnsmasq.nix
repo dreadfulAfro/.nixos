@@ -22,9 +22,9 @@
 
             # Local DNS entries for your containers
             address = [
-              "/paperless.nixos-server.home/192.168.100.11"
-              "/kavita.nixos-server.home/192.168.100.21"
-              "/jellyfin.nixos-server.home/192.168.100.31"
+              "/paperless.tails/192.168.100.11"
+              "/kavita.tails/192.168.100.21"
+              "/jellyfin.tails/192.168.100.31"
             ];
 
             # Upstream resolvers
@@ -34,16 +34,10 @@
             ];
 
             # Optionally, make short names work via search
-            domain = "nixos-server.home";
+            domain = "tails";
             expand-hosts = true;
             local-ttl = 60;
           };
-        };
-
-        # Port forwarding from host to container
-        networking.nat = {
-          "53/udp" = "192.168.100.101:53";  # forward host UDP 53 to container
-        #  "53/tcp" = "192.168.100.101:53";  # forward TCP 53 as well (optional)
         };
 
         # Open port 53 for DNS

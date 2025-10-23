@@ -36,9 +36,9 @@
             #PAPERLESS_URL = "https://nixos-server.tail194e5d.ts.net"; # to prevent csrf-verification issues
             #PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
             #PAPERLESS_STATIC_URL = "/paperless/static/";
-            PAPERLESS_URL = "https://paperless.nixos-server.home";
-            PAPERLESS_ALLOWED_HOSTS = "paperless.nixos-server.home";
-            PAPERLESS_CSRF_TRUSTED_ORIGINS = "paperless.nixos-server.home";
+            PAPERLESS_URL = "https://paperless.tails";
+            PAPERLESS_ALLOWED_HOSTS = "paperless.tails";
+            PAPERLESS_CSRF_TRUSTED_ORIGINS = "paperless.tails";
             PAPERLESS_USE_X_FORWARDED = "true"; # trust Caddy headers
             PAPERLESS_USE_X_FORWARD_HOST = "true";
             PAPERLESS_USE_X_FORWARD_PORT = "true";

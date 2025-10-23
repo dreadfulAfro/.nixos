@@ -7,5 +7,17 @@
     externalInterface = "enp1s0";
     # Lazy IPv6 connectivity for the container
     enableIPv6 = true;
+    forwardPorts = [
+      {
+        destination = "192.168.100.101";
+        sourcePort = 53;
+        proto = "udp";
+      }
+      {
+        destination = "192.168.100.101";
+        sourcePort = 53;
+        proto = "tcp";
+      }
+    ];
   };
 }
