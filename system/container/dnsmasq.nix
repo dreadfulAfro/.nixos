@@ -5,6 +5,18 @@
     privateNetwork = true;
     hostAddress = "192.168.100.100";
     localAddress = "192.168.100.101";
+    forwardPorts = [
+      {
+        protocol = "udp";
+        hostPort = 53;
+        containerPort = 53;
+      }
+      {
+        protocol = "tcp";
+        hostPort = 53;
+        containerPort = 53;
+      }
+    ];
 
     config =
       { pkgs, ... }:
@@ -15,7 +27,7 @@
             # Listen on all interfaces
             bind-interfaces = true;
             listen-address = [
-#              "100.77.114.79"
+              #              "100.77.114.79"
               "192.168.100.101"
               "127.0.0.1"
             ];
