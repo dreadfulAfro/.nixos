@@ -17,7 +17,7 @@
       "--advertise-exit-node"
       "--advertise-routes=192.168.100.0/24"
       "--advertise-dns=192.168.100.101"
-#      "--advertise-routes=192.168.178.0/24, 192.168.100.0/24" # advertise your LAN subnet to Tailscale
+      #      "--advertise-routes=192.168.178.0/24, 192.168.100.0/24" # advertise your LAN subnet to Tailscale
       # "--ssh"                               # optional: allow SSH over Tailscale
     ];
     permitCertUid = "caddy"; # allows Tailscale TLS certs
