@@ -10,13 +10,11 @@
       enableIPv6 = true;
       forwardPorts = [
         {
-          sourceInterface = "tailscale0";
           destination = "192.168.100.101";
           sourcePort = 53;
           proto = "udp";
         }
         {
-          sourceInterface = "tailscale0";
           destination = "192.168.100.101";
           sourcePort = 53;
           proto = "tcp";
