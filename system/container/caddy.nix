@@ -31,16 +31,19 @@
           virtualHosts = {
             "paperless.tails" = {
               extraConfig = ''
+                tls internal
                 reverse_proxy 192.168.100.11:42001
               '';
             };
             "kavita.tails" = {
               extraConfig = ''
+                tls internal
                 reverse_proxy 192.168.100.21:42002
               '';
             };
             "jellyfin.tails" = {
               extraConfig = ''
+                tls internal
                 reverse_proxy 192.168.100.31:8096
               '';
             };
