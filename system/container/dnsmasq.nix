@@ -15,7 +15,7 @@
             # Listen on all interfaces
             bind-interfaces = true;
             listen-address = [
-              "100.77.114.79"
+#              "100.77.114.79"
               "192.168.100.101"
               "127.0.0.1"
             ];
