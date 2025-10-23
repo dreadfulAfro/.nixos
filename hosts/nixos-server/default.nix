@@ -12,6 +12,7 @@
     ../../system/container/paperless-ngx.nix
     ../../system/container/kavita.nix
     ../../system/container/jellyfin.nix
+    ../../system/docker/librum.nix
   ];
 
   system.stateVersion = "25.05";
