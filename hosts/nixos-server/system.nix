@@ -67,14 +67,16 @@
       interface = "enp1s0";
     };
     nameservers = [ "192.168.100.101" "9.9.9.9" "1.1.1.1"];
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
-    networking.firewall.allowedUDPPorts = [ 53 ];
-    networking.firewall.trustedInterfaces = [ "tailscale0" "enp1s0" ];
-    networking.firewall.extraCommands = ''
-      iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-      iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-      iptables -A INPUT -p udp --dport 53 -j DROP
-    '';
+    firewall = { 
+      allowedTCPPorts = [ 80 443 ];
+      allowedUDPPorts = [ 53 ];
+      trustedInterfaces = [ "tailscale0" "enp1s0" ];
+      extraCommands = ''
+        iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+        iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+        iptables -A INPUT -p udp --dport 53 -j DROP
+      '';
+    };
     #search = [ "tail194e5d.ts.net" ];
   };
 
