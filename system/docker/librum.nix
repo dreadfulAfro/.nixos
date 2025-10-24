@@ -24,7 +24,7 @@
       "SMTPUsername" = "mailuser123";
     };
     volumes = [
-      "librum:/var/lib/librum-server/librum_storage:rw"
+      "librum:/var/lib/librum-server/librum_storage:rw"   # Librum Storage
     ];
     ports = [
       "5000:5000/tcp"

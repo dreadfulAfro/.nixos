@@ -69,6 +69,8 @@ services.printing = {
     cups-filters
     cups-browsed
     brlaser
+    cups-kyocera
+    cups-kyodialog
   ];
 };
 
