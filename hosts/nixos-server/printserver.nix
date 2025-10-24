@@ -7,7 +7,7 @@
 
     # This makes the server advertise printers via mDNS/IPP
     # so other devices can see them automatically.
-    browsed = true;
+    browsed.enable = true;
     listenAddresses = [ "0.0.0.0:631" ];
     allowFrom = [ "all" ];
     defaultShared = true;
