@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./system.nix
+    ./printserver.nix
     ../../system/core.nix
     ../../system/container/network.nix
     ../../system/container/tailscale.nix
