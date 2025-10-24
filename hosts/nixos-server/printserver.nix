@@ -16,7 +16,7 @@
     # (for macOS/Linux autodiscovery)
   };
   services.avahi = {
-    daemon.enable = true;
-    nssmdns.enable = true;
+    enable = true;
+    nssmdns4.enable = true;
   };
 }
