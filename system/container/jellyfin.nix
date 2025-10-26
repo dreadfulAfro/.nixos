@@ -11,7 +11,7 @@
     bindMounts = {
       "jellyfin" = {
         hostPath = "/srv/data1tb/jellyfin";
-        mountPoint = "/jellyfin";
+        mountPoint = "/media/jellyfin";
         isReadOnly = false;
       };
     };
@@ -22,8 +22,8 @@
         services.jellyfin = {
           enable = true;
           openFirewall = true;
-          dataDir = "/jellyfin/data";
-          logDir = "/jellyfin/logs";
+          dataDir = "/media/jellyfin/data";
+          logDir = "/media/jellyfin/logs";
         };
 
         system.stateVersion = "25.05";
