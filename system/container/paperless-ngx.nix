@@ -37,8 +37,8 @@
             #PAPERLESS_FORCE_SCRIPT_NAME = "/paperless";
             #PAPERLESS_STATIC_URL = "/paperless/static/";
             PAPERLESS_URL = "https://paperless.tails";
-            PAPERLESS_ALLOWED_HOSTS = "paperless.tails";
-            PAPERLESS_CSRF_TRUSTED_ORIGINS = "paperless.tails";
+            PAPERLESS_ALLOWED_HOSTS = "https://paperless.tails";
+            PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://paperless.tails";
             PAPERLESS_USE_X_FORWARDED = "true"; # trust Caddy headers
             PAPERLESS_USE_X_FORWARD_HOST = "true";
             PAPERLESS_USE_X_FORWARD_PORT = "true";
