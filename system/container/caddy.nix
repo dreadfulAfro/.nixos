@@ -47,6 +47,30 @@
                 reverse_proxy 192.168.100.31:8096
               '';
             };
+            "radarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.:
+              ''
+            };
+            "sonarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.:
+              ''
+            };
+            "bazarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.:
+              ''
+            };
+            "sabnzbd.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.:
+              ''
+            };
           };
         };
         networking.firewall.allowedTCPPorts = [

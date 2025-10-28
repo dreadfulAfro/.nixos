@@ -9,9 +9,14 @@
     localAddress6 = "fc00::31";
 
     bindMounts = {
-      "jellyfin" = {
-        hostPath = "/srv/data1tb/jellyfin";
-        mountPoint = "/media/jellyfin";
+      "jellyfin_media" = {
+        hostPath = "/srv/data1tb/data/media";
+        mountPoint = "/data/media";
+        isReadOnly = false;
+      };
+      "jellyfin_config" = {
+        hostPath = "/srv/data1tb/jellyfin/config";
+        mountPoint = "/jellyfin/config";
         isReadOnly = false;
       };
     };
@@ -22,8 +27,10 @@
         services.jellyfin = {
           enable = true;
           openFirewall = true;
-          dataDir = "/media/jellyfin/data";
-          logDir = "/media/jellyfin/logs";
+          user = "jellyfin";
+          group = "media";
+          dataDir = "/media";
+          logDir = "/jellyfin/config/logs";
         };
 
         system.stateVersion = "25.05";

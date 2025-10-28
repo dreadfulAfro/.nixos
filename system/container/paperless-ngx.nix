@@ -26,6 +26,7 @@
       {
         services.paperless = {
           enable = true;
+          user = "paperless";
           address = "192.168.100.11";
           port = 42001;
           dataDir = "/paperless/data";

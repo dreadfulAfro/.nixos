@@ -6,14 +6,22 @@
     ./system.nix
     ./printserver.nix
     ../../system/core.nix
+
     ../../system/container/network.nix
     ../../system/container/tailscale.nix
     ../../system/container/dnsmasq.nix
     ../../system/container/caddy.nix
-    ../../system/container/paperless-ngx.nix
+
+    ./permissions.nix
     ../../system/container/kavita.nix
+    ../../system/docker/radarr.nix
+    ../../system/docker/sonarr.nix
+    ../../system/docker/bazarr.nix
+    ../../system/docker/sabnzbd.nix
     ../../system/container/jellyfin.nix
-    ../../system/docker/librum.nix
+    ../../system/container/paperless-ngx.nix
+
+
   ];
 
   system.stateVersion = "25.05";
