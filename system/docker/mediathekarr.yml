@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     container_name: mediathekarr
     environment:
-      - PUID=1006
+      - PUID=1007
       - PGID=1000
       - TZ=Europe/Berlin
       # You can use the web interface at http://localhost:5007 to configure the following settings
@@ -20,4 +20,4 @@ services:
       - /srv/data1tb/data/usenet/:/data/mediathek/complete
       - /srv/data1tb/mediathekarr:/data/mediathek/incomplete
     ports:
-      - "192.168.178.57:5007:5007" # Port on the left side can be changed to any value you like
+      - "127.0.0.1:5007:5007" # Port on the left side can be changed to any value you like
