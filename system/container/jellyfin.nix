@@ -24,6 +24,14 @@
     config =
       { pkgs, ... }:
       {
+        users = {
+          groups.media = { gid = 1000; };
+          users.jellyfin = {
+            isSystemUser = true;
+            uid = 1005;
+            group = "media";
+          };
+        };
         services.jellyfin = {
           enable = true;
           openFirewall = true;
