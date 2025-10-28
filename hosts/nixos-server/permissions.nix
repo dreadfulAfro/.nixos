@@ -39,6 +39,11 @@
       uid = 1006;
       group = "paperless";
     };
+    mediathekarr = {
+      isNormalUser = true;
+      uid = 1007;
+      group = "media";
+    };
   };
   # Ensure media directory ownership & permissions
 #  environment.etc."media-permissions.sh".text = ''
