@@ -15,7 +15,7 @@
     environment = {
       "MEDIATHEKARR_API_BASE_URL" = "https://mediathekarr.pcjones.de/api/v1";
       "PGID" = "1000";
-      "PUID" = "1006";
+      "PUID" = "1007";
       "TZ" = "Europe/Berlin";
     };
     volumes = [
