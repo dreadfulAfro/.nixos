@@ -37,6 +37,7 @@
               "/paperless.tails/192.168.178.57"
               "/kavita.tails/192.168.178.57"
               "/jellyfin.tails/192.168.178.57"
+              "/radarr.tails/192.168.178.57"
             ];
 
             # Upstream resolvers

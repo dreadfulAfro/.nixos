@@ -50,7 +50,7 @@
             "radarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.:
+                reverse_proxy 192.168.178.57:7878
               '';
             };
             "sonarr.tails" = {
