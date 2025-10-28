@@ -20,6 +20,7 @@
     ../../system/docker/sabnzbd.nix
     ../../system/container/jellyfin.nix
     ../../system/container/paperless-ngx.nix
+    ../../system/docker/mediathekarr.nix
 
 
   ];
