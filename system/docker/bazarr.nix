@@ -15,7 +15,7 @@
     environment = {
       "PGID" = "1000";
       "PUID" = "1003";
-      "TZ" = "Etc/UTC";
+      "TZ" = "Europe/Berlin";
     };
     volumes = [
       "/srv/data1tb/bazarr/config:/config:rw"

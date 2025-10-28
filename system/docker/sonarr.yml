@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=1002
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=Europe/Berlin
     volumes:
       - /srv/data1tb/sonarr/config:/config
       - /srv/data1tb/data:/data

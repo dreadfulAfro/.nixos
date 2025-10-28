@@ -44,6 +44,11 @@
       uid = 1007;
       group = "media";
     };
+    jellyseerr = {
+      isNormalUser = true;
+      uid = 1008;
+      group = "media";
+    };
   };
   # Ensure media directory ownership & permissions
 #  environment.etc."media-permissions.sh".text = ''
