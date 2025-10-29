@@ -18,6 +18,7 @@
     volumes = [
       "/srv/data1tb/data/media:/media:rw"
       "/srv/data1tb/jellyfin/config:/config:rw"
+      "/srv/data1tb/jellyfin/logs:/logs:rw"
     ];
     ports = [
       "8096:8096/tcp"

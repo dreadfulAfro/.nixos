@@ -8,6 +8,7 @@ services:
       - 7359:7359/udp
     volumes:
       - /srv/data1tb/jellyfin/config:/config
+      - /srv/data1tb/jellyfin/logs:/logs
       - type: bind
         source: /srv/data1tb/data/media
         target: /media

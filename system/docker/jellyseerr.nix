@@ -20,7 +20,7 @@
       "TZ" = "Europe/Berlin";
     };
     volumes = [
-      "/srv/data1tb/jellyseer/config:/app/config:rw"
+      "/srv/data1tb/jellyseerr/config:/app/config:rw"
     ];
     ports = [
       "5055:5055/tcp"
