@@ -56,19 +56,31 @@
             "sonarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.:
+                reverse_proxy 192.168.178.57:8989
               '';
             };
             "bazarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.:
+                reverse_proxy 192.168.178.57:6767
+              '';
+            };
+            "mediathekarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.178.57:5007
               '';
             };
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.:
+                reverse_proxy 192.168.178.57:8080
+              '';
+            };
+            "jellyseerr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.178.57:5055
               '';
             };
           };

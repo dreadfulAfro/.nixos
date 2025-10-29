@@ -38,6 +38,10 @@
               "/kavita.tails/192.168.178.57"
               "/jellyfin.tails/192.168.178.57"
               "/radarr.tails/192.168.178.57"
+              "/sonarr.tails/192.168.178.57"
+              "/bazarr.tails/192.168.178.57"
+              "/mediathekarr.tails/192.168.178.57"
+              "/jellyseerr.tails/192.168.178.57"
             ];
 
             # Upstream resolvers
