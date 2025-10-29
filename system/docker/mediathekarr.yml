@@ -17,7 +17,7 @@ services:
       - MEDIATHEKARR_API_BASE_URL=https://mediathekarr.pcjones.de/api/v1
     volumes:
       - /srv/data1tb/mediathekarr/config:/app/config
-      - /srv/data1tb/data/usenet/:/data/mediathek/complete
+      - /srv/data1tb/data/usenet/:/data/usenet
       - /srv/data1tb/mediathekarr:/data/mediathek/incomplete
     ports:
       - "127.0.0.1:5007:5007" # Port on the left side can be changed to any value you like

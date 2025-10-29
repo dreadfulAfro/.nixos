@@ -19,7 +19,7 @@
       "TZ" = "Europe/Berlin";
     };
     volumes = [
-      "/srv/data1tb/data/usenet/:/data/mediathek/complete:rw"
+      "/srv/data1tb/data/usenet/:/data/usenet:rw"
       "/srv/data1tb/mediathekarr:/data/mediathek/incomplete:rw"
       "/srv/data1tb/mediathekarr/config:/app/config:rw"
     ];
