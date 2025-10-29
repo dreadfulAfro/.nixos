@@ -14,6 +14,9 @@
   networking.hostName = "nixos-laptop";
   system.stateVersion = "25.05";
 
+  hardware.enableAllFirmware = true;
+  #hardware.firmware = [ pkgs.linux-firmware ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
