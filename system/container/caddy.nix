@@ -44,7 +44,7 @@
             "jellyfin.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.31:8096
+                reverse_proxy 192.168.178.57:8096
               '';
             };
             "radarr.tails" = {

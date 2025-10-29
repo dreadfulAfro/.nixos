@@ -18,7 +18,7 @@
     ../../system/docker/sonarr.nix
     ../../system/docker/bazarr.nix
     ../../system/docker/sabnzbd.nix
-    ../../system/container/jellyfin.nix
+    ../../system/docker/jellyfin.nix
     ../../system/container/paperless-ngx.nix
     ../../system/docker/mediathekarr.nix
     ../../system/docker/jellyseerr.nix
