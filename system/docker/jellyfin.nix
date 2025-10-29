@@ -40,9 +40,11 @@
     };
     after = [
       "docker-network-jellyfin_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-jellyfin_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-jellyfin-root.target"

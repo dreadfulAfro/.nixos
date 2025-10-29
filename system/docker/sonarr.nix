@@ -39,9 +39,11 @@
     };
     after = [
       "docker-network-sonarr_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-sonarr_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-sonarr-root.target"

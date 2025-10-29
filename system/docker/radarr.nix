@@ -15,7 +15,7 @@
     environment = {
       "PGID" = "1000";
       "PUID" = "1001";
-      "TZ" = "Etc/UTC";
+      "TZ" = "Europe/Berlin";
     };
     volumes = [
       "/srv/data1tb/data:/data:rw"
@@ -39,9 +39,11 @@
     };
     after = [
       "docker-network-radarr_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-radarr_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-radarr-root.target"

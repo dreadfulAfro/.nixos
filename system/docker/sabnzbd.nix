@@ -39,9 +39,11 @@
     };
     after = [
       "docker-network-sabnzbd_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-sabnzbd_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-sabnzbd-root.target"

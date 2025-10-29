@@ -41,9 +41,11 @@
     };
     after = [
       "docker-network-mediathekarr_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-mediathekarr_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-mediathekarr-root.target"

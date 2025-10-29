@@ -45,9 +45,11 @@
     };
     after = [
       "docker-network-jellyseerr_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-jellyseerr_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-jellyseerr-root.target"

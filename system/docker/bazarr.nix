@@ -39,9 +39,11 @@
     };
     after = [
       "docker-network-bazarr_default.service"
+      "docker.service"
     ];
     requires = [
       "docker-network-bazarr_default.service"
+      "docker.service"
     ];
     partOf = [
       "docker-compose-bazarr-root.target"
