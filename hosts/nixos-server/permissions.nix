@@ -9,44 +9,19 @@
 
   # Create per-service users with shared group
   users.users = {
-    radarr = {
+    nixarr = {
       isNormalUser = true;
       uid = 1001;
       group = "media";
     };
-    sonarr = {
-      isNormalUser = true;
-      uid = 1002;
-      group = "media";
-    };
-    lidarr = {
-      isNormalUser = true;
-      uid = 1003;
-      group = "media";
-    };
-    sabnzbd = {
-      isNormalUser = true;
-      uid = 1004;
-      group = "media";
-    };
-    jellyfin = {
-      isNormalUser = true;
-      uid = 1005;
-      group = "media";
-    };
     paperless = {
       isNormalUser = true;
-      uid = 1006;
+      uid = 1002;
       group = "paperless";
     };
     mediathekarr = {
       isNormalUser = true;
-      uid = 1007;
-      group = "media";
-    };
-    jellyseerr = {
-      isNormalUser = true;
-      uid = 1008;
+      uid = 1003;
       group = "media";
     };
   };
