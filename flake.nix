@@ -15,7 +15,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # additional modules
-    nixarr.url = "github:rasmus-kirk/nixarr";
+#    nixarr.url = "github:rasmus-kirk/nixarr";
 
     # HomeManager
     # The `follows` keyword in inputs is used for inheritance.
@@ -30,7 +30,7 @@
     inputs@{
       self,
       nixpkgs,
-      nixarr,
+#      nixarr,
       home-manager,
       ...
     }:
@@ -42,11 +42,10 @@
           system ? "x86_64-linux",
         }:
         let
-          specialArgs = { inherit username hostname inputs; };
+          specialArgs = { inherit username hostname; };
         in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          config.allowUnfree = true;
           modules = [
             ./hosts/${hostname}/default.nix
             ./users/${username}/nixos.nix
