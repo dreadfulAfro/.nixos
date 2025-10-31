@@ -43,7 +43,7 @@
           system ? "x86_64-linux",
         }:
         let
-          specialArgs = { inherit username hostname; };
+          specialArgs = { inherit username hostname inputs; };
         in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
