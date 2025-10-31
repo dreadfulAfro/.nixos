@@ -26,14 +26,14 @@
       {
         imports = [ inputs.nixarr.nixosModules.default ];
 
-        users = {
-          groups.media = { gid = 1000; };
-          users.nixaarr = {
-            isSystemUser = true;
-            uid = 1001;
-            group = "media";
-          };
-        };
+#        users = {
+#          groups.media = { gid = 1000; };
+#          users.nixaarr = {
+#            isSystemUser = true;
+#            uid = 1001;
+#            group = "media";
+#          };
+#        };
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever
