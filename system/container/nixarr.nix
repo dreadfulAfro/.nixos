@@ -22,7 +22,7 @@
     };
 
     config =
-      { config, pkgs, ... }:
+      {pkgs, ... }:
       {
         imports = [ inputs.nixarr.nixosModules.default ];
 
