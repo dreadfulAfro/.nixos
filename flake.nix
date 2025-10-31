@@ -15,7 +15,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # additional modules
-#    nixarr.url = "github:rasmus-kirk/nixarr";
+    nixarr.url = "github:rasmus-kirk/nixarr";
 
     # HomeManager
     # The `follows` keyword in inputs is used for inheritance.
