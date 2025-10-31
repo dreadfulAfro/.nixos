@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, inputs,  ...}:
 {
   containers.nixarr = {
     autoStart = true;
@@ -22,7 +22,7 @@
     };
 
     config =
-      { config, pkgs, inputs, ... }:
+      { config, pkgs, ... }:
       {
         imports = [ inputs.nixarr.nixosModules.default ];
 
