@@ -14,7 +14,6 @@
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.config.allowUnfree = true;
     # additional modules
     nixarr.url = "github:rasmus-kirk/nixarr";
 
@@ -47,6 +46,7 @@
         in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
+          nixpkgs.config.allowUnfree = true;
           modules = [
             ./hosts/${hostname}/default.nix
             ./users/${username}/nixos.nix
