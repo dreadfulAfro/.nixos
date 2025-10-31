@@ -22,13 +22,15 @@
     };
 
     config =
-      { pkgs, ... }:
+      { config, pkgs, ... }:
       {
+        imports = [ inputs.nixarr.nixosModules.default ];
+
         users = {
           groups.media = { gid = 1000; };
           users.nixaarr = {
             isSystemUser = true;
-            uid = 1010;
+            uid = 1001;
             group = "media";
           };
         };

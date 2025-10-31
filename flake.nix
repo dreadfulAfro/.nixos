@@ -50,7 +50,6 @@
           modules = [
             ./hosts/${hostname}/default.nix
             ./users/${username}/nixos.nix
-            nixarr.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
