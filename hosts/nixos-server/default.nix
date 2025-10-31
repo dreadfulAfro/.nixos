@@ -14,15 +14,9 @@
 
     ./permissions.nix
     ../../system/container/kavita.nix
-    ../../system/docker/radarr.nix
-    ../../system/docker/sonarr.nix
-    ../../system/docker/bazarr.nix
-    ../../system/docker/sabnzbd.nix
-    ../../system/docker/jellyfin.nix
     ../../system/container/paperless-ngx.nix
     ../../system/docker/mediathekarr.nix
-    ../../system/docker/jellyseerr.nix
-
+    ../../system/container/nixarr.nix
 
   ];
 
