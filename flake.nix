@@ -15,6 +15,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # additional modules
+    nixarr.url = "github:rasmus-kirk/nixarr";
+
     # HomeManager
     # The `follows` keyword in inputs is used for inheritance.
     # Here, `inputs.nixpkgs` of home-manager is kept consistent with
@@ -28,6 +31,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixarr,
       home-manager,
       ...
     }:
@@ -46,6 +50,7 @@
           modules = [
             ./hosts/${hostname}/default.nix
             ./users/${username}/nixos.nix
+            nixarr.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
