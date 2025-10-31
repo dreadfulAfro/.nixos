@@ -46,6 +46,7 @@
         in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
+          config.allowUnfree = true;
           modules = [
             ./hosts/${hostname}/default.nix
             ./users/${username}/nixos.nix
