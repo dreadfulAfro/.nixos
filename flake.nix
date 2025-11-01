@@ -30,7 +30,7 @@
     inputs@{
       self,
       nixpkgs,
-#      nixarr,
+      nixarr,
       home-manager,
       ...
     }:
