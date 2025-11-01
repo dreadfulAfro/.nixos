@@ -21,7 +21,7 @@
 
   system.stateVersion = "25.05";
   networking.hostName = "nixos-server";
-#  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   services = {
     openssh = {
