@@ -9,11 +9,11 @@
 
   # Create per-service users with shared group
   users.users = {
-    nixarr = {
-      isNormalUser = true;
-      uid = 1001;
-      group = "media";
-    };
+#    nixarr = {
+#      isNormalUser = true;
+#      uid = 1001;
+#      group = "media";
+#    };
     paperless = {
       isNormalUser = true;
       uid = 1002;

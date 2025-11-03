@@ -39,4 +39,9 @@
     scrcpy
   ];
 
+  # additional services
+  services = {
+    safeeyes.enable = true;
+  };
+
 }
