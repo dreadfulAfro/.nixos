@@ -34,4 +34,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Install additional software
+  environment.systemPackages = with pkgs; [
+    scrcpy
+  ];
+
 }
