@@ -1,4 +1,4 @@
-{pkgs, inputs,  ...}:
+{pkgs,  ...}:
 {
   containers.nixarr = {
     autoStart = true;
