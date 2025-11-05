@@ -16,6 +16,7 @@
     ../../system/container/kavita.nix
     ../../system/container/paperless-ngx.nix
     ../../system/docker/mediathekarr.nix
+    ../../system/container/nixarr.nix
 
   ];
 

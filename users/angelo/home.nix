@@ -35,5 +35,17 @@
   services = {
     # For Virtualization and rdp
     remmina.enable = true;
+    # enable safe eyes
+    safeeyes ={
+      enable = true;
+    };
+    snixembed = {
+      enable = true;
+
+      beforeUnits = [
+        # https://github.com/slgobinath/SafeEyes/wiki/How-to-install-backend-for-Safe-Eyes-tray-icon
+        "safeeyes.service"
+      ];
+    };
   };
 }

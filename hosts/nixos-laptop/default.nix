@@ -37,11 +37,12 @@
   # Install additional software
   environment.systemPackages = with pkgs; [
     scrcpy
+    gnomeExtensions.appindicator
   ];
 
   # additional services
-  services = {
-    safeeyes.enable = true;
-  };
+  #services = {
+  #  safeeyes.enable = true;
+  #};
 
 }
