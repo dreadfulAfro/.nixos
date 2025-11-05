@@ -22,7 +22,7 @@
     };
 
     config =
-      {pkgs, ... }:
+      {pkgs, nixarr, ... }:
       {
 
 #        users = {
