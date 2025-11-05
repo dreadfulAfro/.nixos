@@ -57,6 +57,8 @@
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
+
+            nixarr.nixosModules.default
           ];
         };
     in

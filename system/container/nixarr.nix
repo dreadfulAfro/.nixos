@@ -24,7 +24,6 @@
     config =
       {pkgs, ... }:
       {
-        imports = [ inputs.nixarr.nixosModules.default ];
 
 #        users = {
 #          groups.media = { gid = 1000; };
