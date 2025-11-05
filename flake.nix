@@ -42,15 +42,14 @@
           system ? "x86_64-linux",
         }:
         let
-          specialArgs = { inherit username hostname nixarr; };
+          specialArgs = { inherit username hostname; };
         in
         nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
           modules = [
             ./hosts/${hostname}/default.nix
             ./users/${username}/nixos.nix
-            nixarr.nixosModules.default
-            
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -58,7 +57,6 @@
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = import ./users/${username}/home.nix;
             }
-
           ];
         };
     in

@@ -21,9 +21,10 @@
       };
     };
 
-    config =
-      {pkgs, nixarr, ... }:
-      {
+    specialArgs = { nixarrInput = inputs.nixarr; };
+
+    config = { pkgs, nixarrInput, ... }: {
+      imports = [ nixarrInput.nixosModules.default ];
 
 #        users = {
 #          groups.media = { gid = 1000; };
