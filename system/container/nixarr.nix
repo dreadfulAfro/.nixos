@@ -1,4 +1,4 @@
-{pkgs,  ...}:
+{pkgs, inputs,  ...}:
 {
   containers.nixarr = {
     autoStart = true;
@@ -10,7 +10,7 @@
 
     bindMounts = {
       "media" = {
-        hostPath = "/srv/data1tb/data";
+        hostPath            = "/srv/data1tb/data";
         mountPoint = "/data";
         isReadOnly = false;
       };
@@ -26,7 +26,7 @@
     config = { pkgs, nixarrInput, ... }: {
       imports = [ nixarrInput.nixosModules.default ];
 
-#        users = {
+#        use145329rs = {
 #          groups.media = { gid = 1000; };
 #          users.nixaarr = {
 #            isSystemUser = true;
