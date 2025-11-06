@@ -25,6 +25,7 @@
 
     config = { pkgs, nixarrInput, ... }: {
       imports = [ nixarrInput.nixosModules.default ];
+      nixpkgs.config.allowUnfree = true;
 
 #        use145329rs = {
 #          groups.media = { gid = 1000; };
