@@ -10,7 +10,7 @@
 
     bindMounts = {
       "media" = {
-        hostPath            = "/srv/data1tb/data";
+        hostPath = "/srv/data1tb/data";
         mountPoint = "/data";
         isReadOnly = false;
       };
@@ -85,11 +85,11 @@
             port = 8989;
             stateDir = "/config/.state/sonarr";
           };
-          bazarr = {
-            enable = true;
-            port = 6767;
-            stateDir = "/config/.state/bazarr";
-          };
+#          bazarr = {
+#            enable = true;
+#            port = 6767;
+#            stateDir = "/config/.state/bazarr";
+#          };
           lidarr = {
             enable = true;
             port = 8686;
