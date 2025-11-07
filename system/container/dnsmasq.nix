@@ -40,6 +40,11 @@
               "/radarr.tails/192.168.178.57"
               "/sonarr.tails/192.168.178.57"
               "/bazarr.tails/192.168.178.57"
+              "/lidarr.tails/192.168.178.57"
+              "/prowlarr.tails/192.168.178.57"
+              "/readarr.tails/192.168.178.57"
+              "/sabnzbd.tails/192.168.178.57"
+              "/transmission.tails/192.168.178.57"
               "/mediathekarr.tails/192.168.178.57"
               "/jellyseerr.tails/192.168.178.57"
             ];
