@@ -43,12 +43,12 @@
           mediaDir = "/data/media";
           stateDir = "/config/.state/nixarr";
 
-          vpn = {
-            enable = true;
-            # WARNING: This file must _not_ be in the config git directory
-            # You can usually get this wireguard file from your VPN provider
-            wgConf = "/config/.secret/wg-proton-server.conf";
-          };
+#          vpn = {
+#            enable = true;
+#            # WARNING: This file must _not_ be in the config git directory
+#            # You can usually get this wireguard file from your VPN provider
+#            wgConf = "/config/.secret/wg-proton-server.conf";
+#          };
 
           jellyfin = {
             enable = true;
