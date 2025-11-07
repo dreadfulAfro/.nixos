@@ -71,6 +71,7 @@
             guiPort = 6336;
             stateDir = "/config/.state/sabnzbd";
 #            vpn.enable = false;
+            whitelistHostnames = [ "sabnzbd.tails" ];
           };
           
           # It is possible for this module to run the *Arrs through a VPN, but it
