@@ -70,7 +70,7 @@
             enable = true;
             guiPort = 6336;
             stateDir = "/config/.state/sabnzbd";
-#            vpn.enable = true;
+#            vpn.enable = false;
           };
           
           # It is possible for this module to run the *Arrs through a VPN, but it
