@@ -12,7 +12,7 @@
     ../../system/container/dnsmasq.nix
     ../../system/container/caddy.nix
 
-    ./permissions.nix
+#    ./permissions.nix
     ../../system/container/kavita.nix
     ../../system/container/paperless-ngx.nix
     ../../system/docker/mediathekarr.nix
