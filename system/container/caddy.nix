@@ -44,25 +44,43 @@
             "jellyfin.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:8096
+                reverse_proxy 192.168.100.91:8096
               '';
             };
             "radarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:7878
+                reverse_proxy 192.168.100.91:7878
               '';
             };
             "sonarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:8989
+                reverse_proxy 192.168.100.91:8989
               '';
             };
             "bazarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:6767
+                reverse_proxy 192.168.100.91:6767
+              '';
+            };
+            "lidarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.91:8686
+              '';
+            };
+            "prowlarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.91:9696
+              '';
+            };
+            "readarr.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.91:8787
               '';
             };
             "mediathekarr.tails" = {
@@ -74,13 +92,19 @@
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:8080
+                reverse_proxy 192.168.100.91:8080
+              '';
+            };
+            "transmission.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.100.91:51820
               '';
             };
             "jellyseerr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:5055
+                reverse_proxy 192.168.100.91:5055
               '';
             };
           };
