@@ -25,7 +25,7 @@
       { pkgs, ... }:
       {
         users = {
-          groups.media = { gid = 1000; };
+          groups.media = { gid = 169; };
           users.jellyfin = {
             isSystemUser = true;
             uid = 1005;

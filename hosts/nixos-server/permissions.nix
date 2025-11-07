@@ -2,7 +2,7 @@
 {
   users.groups = {
     media = {
-      gid = 1000;
+      gid = 169;
     };
     paperless = {};
   };
