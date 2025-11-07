@@ -10,7 +10,7 @@
 
     bindMounts = {
       "paperless" = {
-        hostPath = "/srv/data1tb/paperless-ngx";
+        hostPath = "/srv/data1tb/paperless";
         mountPoint = "/paperless";
         isReadOnly = false;
       };

@@ -14,11 +14,11 @@
 #      uid = 1001;
 #      group = "media";
 #    };
-    paperless = {
-      isNormalUser = true;
-      uid = 1002;
-      group = "paperless";
-    };
+#    paperless = {
+#      isNormalUser = true;
+#      uid = 1002;
+#      group = "paperless";
+#    };
     mediathekarr = {
       isNormalUser = true;
       uid = 1003;
