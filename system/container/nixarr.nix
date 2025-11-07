@@ -63,7 +63,7 @@
 
           transmission = {
             enable = true;
-            vpn.enable = true;
+#            vpn.enable = true;
             peerPort = 51820; # Set this to the port forwarded by your VPN
           };
           sabnzbd = {
