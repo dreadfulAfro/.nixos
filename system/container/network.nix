@@ -42,6 +42,13 @@
         # Allow forwarded DNS from tailscale0 to container
         iptables -A FORWARD -i tailscale0 -o ve-dnsmasq -p udp --dport 53 -j ACCEPT
         iptables -A FORWARD -i tailscale0 -o ve-dnsmasq -p tcp --dport 53 -j ACCEPT
+      
+        # Allow container-to-container communication
+        iptables -A FORWARD -i ve-caddy -o ve-nixarr -j ACCEPT
+        iptables -A FORWARD -i ve-nixarr -o ve-caddy -j ACCEPT
+        
+        # Allow caddy to reach nixarr's network
+        iptables -t nat -A POSTROUTING -s 192.168.100.2 -d 192.168.100.91 -j MASQUERADE
       '';
     };
   };
