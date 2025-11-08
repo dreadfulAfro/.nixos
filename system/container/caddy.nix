@@ -8,8 +8,8 @@
     hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
     forwardPorts = [
-      { hostPort = 80; containerPort = 80; }   # Add containerPort
-      { hostPort = 443; containerPort = 443; } # Add containerPort
+      { hostPort = 80; }   # Add containerPort
+      { hostPort = 443; } # Add containerPort
     ];
 
     bindMounts = {

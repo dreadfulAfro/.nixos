@@ -112,7 +112,18 @@
             stateDir = "/config/.state/jellyseerr";
           };
         };       
-
+        networking.firewall.allowedTCPPorts = [
+          8096
+          7878
+          8989
+          6767
+          8686
+          9696
+          8787
+          5007
+          6336
+        ];
+        networking.firewall.allowedUDPPorts = [];
         system.stateVersion = "25.05";
       };
   };
