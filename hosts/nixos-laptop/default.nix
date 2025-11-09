@@ -48,8 +48,9 @@
   };
 
   # additional services
-  #services = {
+  services = {
+    joycond.enable = true;
   #  safeeyes.enable = true;
-  #};
+  };
 
 }
