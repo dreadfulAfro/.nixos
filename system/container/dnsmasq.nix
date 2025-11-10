@@ -37,16 +37,16 @@
               "/paperless.tails/192.168.178.57"
               "/kavita.tails/192.168.178.57"
               "/jellyfin.tails/192.168.178.57"
-              "/radarr.tails/192.168.178.57"
-              "/sonarr.tails/192.168.178.57"
+              "/radarr.tails/192.168.100.2"
+              "/sonarr.tails/192.168.100.2"
               "/bazarr.tails/192.168.178.57"
               "/lidarr.tails/192.168.178.57"
               "/prowlarr.tails/192.168.178.57"
               "/readarr.tails/192.168.178.57"
               "/sabnzbd.tails/192.168.178.57"
               "/transmission.tails/192.168.178.57"
-              "/mediathekarr.tails/192.168.178.57"
-              "/jellyseerr.tails/192.168.178.57"
+              "/mediathekarr.tails/192.168.100.2"
+              "/jellyseerr.tails/192.168.100.2"
             ];
 
             # Upstream resolvers
