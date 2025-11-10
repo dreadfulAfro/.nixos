@@ -34,7 +34,10 @@
                 tls internal
                 reverse_proxy 192.168.100.11:42001 {
                   header_up Host {upstream_hostport}
-                } 
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                } 
               '';
             };
             "kavita.tails" = {
@@ -49,7 +52,10 @@
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.91:8096 {
-                  header_up Host {upstream_hostport}
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}
                 }
               '';
             };
@@ -58,7 +64,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:7878 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "sonarr.tails" = {
@@ -66,7 +75,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:8989 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "bazarr.tails" = {
@@ -74,7 +86,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:6767 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "lidarr.tails" = {
@@ -82,7 +97,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:8686 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "prowlarr.tails" = {
@@ -90,7 +108,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:9696 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "readarr.tails" = {
@@ -98,7 +119,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:8787 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "mediathekarr.tails" = {
@@ -106,7 +130,10 @@
                 tls internal
                 reverse_proxy 192.168.178.57:5007 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "sabnzbd.tails" = {
@@ -114,7 +141,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:6336 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "transmission.tails" = {
@@ -122,7 +152,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:51820 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
             "jellyseerr.tails" = {
@@ -130,7 +163,10 @@
                 tls internal
                 reverse_proxy 192.168.100.91:5055 {
                   header_up Host {upstream_hostport}
-                }
+                  header_up X-Real-IP {remote_host}
+                  header_up X-Forwarded-For {remote_host}
+                  header_up X-Forwarded-Proto {scheme}
+                  header_up X-Forwarded-Host {host}                }
               '';
             };
           };
