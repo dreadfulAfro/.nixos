@@ -1,4 +1,4 @@
-{pkgs, inputs,  ...}:
+{ pkgs, inputs, ... }:
 {
   containers.nixarr = {
     autoStart = true;
@@ -21,20 +21,24 @@
       };
     };
 
-    specialArgs = { nixarrInput = inputs.nixarr; };
+    specialArgs = {
+      nixarrInput = inputs.nixarr;
+    };
 
-    config = { pkgs, nixarrInput, ... }: {
-      imports = [ nixarrInput.nixosModules.default ];
-      nixpkgs.config.allowUnfree = true;
+    config =
+      { pkgs, nixarrInput, ... }:
+      {
+        imports = [ nixarrInput.nixosModules.default ];
+        nixpkgs.config.allowUnfree = true;
 
-#        use145329rs = {
-#          groups.media = { gid = 1000; };
-#          users.nixaarr = {
-#            isSystemUser = true;
-#            uid = 1001;
-#            group = "media";
-#          };
-#        };
+        #        use145329rs = {
+        #          groups.media = { gid = 1000; };
+        #          users.nixaarr = {
+        #            isSystemUser = true;
+        #            uid = 1001;
+        #            group = "media";
+        #          };
+        #        };
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever
@@ -43,12 +47,12 @@
           mediaDir = "/data";
           stateDir = "/config/.state/nixarr";
 
-#          vpn = {
-#            enable = true;
-#            # WARNING: This file must _not_ be in the config git directory
-#            # You can usually get this wireguard file from your VPN provider
-#            wgConf = "/config/.secret/wg-proton-server.conf";
-#          };
+          #          vpn = {
+          #            enable = true;
+          #            # WARNING: This file must _not_ be in the config git directory
+          #            # You can usually get this wireguard file from your VPN provider
+          #            wgConf = "/config/.secret/wg-proton-server.conf";
+          #          };
 
           jellyfin = {
             enable = true;
@@ -63,17 +67,17 @@
 
           transmission = {
             enable = true;
-#            vpn.enable = true;
+            #            vpn.enable = true;
             peerPort = 51820; # Set this to the port forwarded by your VPN
           };
           sabnzbd = {
             enable = true;
             guiPort = 6336;
             stateDir = "/config/.state/sabnzbd";
-#            vpn.enable = false;
+            #            vpn.enable = false;
             whitelistHostnames = [ "sabnzbd.tails" ];
           };
-          
+
           # It is possible for this module to run the *Arrs through a VPN, but it
           # is generally not recommended, as it can cause rate-limiting issues.
           radarr = {
@@ -111,32 +115,33 @@
             port = 5055;
             stateDir = "/config/.state/jellyseerr";
           };
-        };       
+        };
         networking.firewall = {
           enable = true;
           allowedTCPPorts = [
-          8096
-          7878
-          8989
-          6767
-          8686
-          9696
-          8787
-          5007
-          6336
+            8096
+            7878
+            8989
+            6767
+            8686
+            9696
+            8787
+            5007
+            6336
           ];
-        allowedUDPPorts = [
-         8096
-          7878
-          8989
-          6767
-          8686
-          9696
-          8787
-          5007
-          6336 
-        ];
-        system.stateVersion = "25.05";
+          allowedUDPPorts = [
+            8096
+            7878
+            8989
+            6767
+            8686
+            9696
+            8787
+            5007
+            6336
+          ];
+          system.stateVersion = "25.05";
+        };
       };
   };
 }
