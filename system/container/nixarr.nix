@@ -131,7 +131,19 @@
             9091
             5055
           ];
-          allowedUDPPorts = [];
+          allowedUDPPorts = [
+            8096
+            7878
+            8989
+            6767
+            8686
+            9696
+            8787
+            5007
+            6336
+            9091
+            5055
+          ];
         };
         system.stateVersion = "25.05";
       };
