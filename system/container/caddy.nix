@@ -128,12 +128,7 @@
             "mediathekarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:5007 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}                }
+                reverse_proxy 192.168.178.57:5007
               '';
             };
             "sabnzbd.tails" = {
@@ -150,7 +145,7 @@
             "transmission.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:51820 {
+                reverse_proxy 192.168.100.91:9091 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
