@@ -35,6 +35,7 @@
       }
     ]; # for gsconnect
     allowedUDPPortRanges = allowedTCPPortRanges; # for gsconnect
+    accept-routes = true;
   };
 
   #networking.extraHosts = "192.168.178.57 paperless.local jellyfin.local kavita.local";
