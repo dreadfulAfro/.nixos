@@ -33,9 +33,14 @@
       ];
     };
     firewall = {
+      allowedTCPPorts = [
+        80
+        443
+      ];
       trustedInterfaces = [
         "tailscale0"
         "enp1s0"
+        "ve-+"
       ];
       extraCommands = ''
         # Allow DNS from Tailnet
@@ -53,13 +58,22 @@
         # Allow forwarded DNS from tailscale0 to container
         iptables -A FORWARD -i tailscale0 -o ve-dnsmasq -p udp --dport 53 -j ACCEPT
         iptables -A FORWARD -i tailscale0 -o ve-dnsmasq -p tcp --dport 53 -j ACCEPT
-      
+
         # Allow container-to-container communication
         iptables -A FORWARD -i ve-caddy -o ve-nixarr -j ACCEPT
         iptables -A FORWARD -i ve-nixarr -o ve-caddy -j ACCEPT
-        
+
         # Allow caddy to reach nixarr's network
         iptables -t nat -A POSTROUTING -s 192.168.100.2 -d 192.168.100.91 -j MASQUERADE
+
+        # CRITICAL: Add DNAT rules that work from ALL interfaces, not just enp1s0
+        # This allows LAN and Tailscale traffic to reach Caddy
+        iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+
+        # Allow forwarding to Caddy container
+        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
+        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
       '';
     };
   };
