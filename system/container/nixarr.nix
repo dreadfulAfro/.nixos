@@ -140,8 +140,8 @@
             5007
             6336
           ];
-          system.stateVersion = "25.05";
         };
+        system.stateVersion = "25.05";
       };
   };
 }
