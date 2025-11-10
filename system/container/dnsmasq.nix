@@ -34,17 +34,17 @@
 
             # Local DNS entries for your containers
             address = [
-              "/paperless.tails/192.168.178.57"
-              "/kavita.tails/192.168.178.57"
-              "/jellyfin.tails/192.168.178.57"
+              "/paperless.tails/192.168.100.2"
+              "/kavita.tails/192.168.100.2"
+              "/jellyfin.tails/192.168.100.2"
               "/radarr.tails/192.168.100.2"
               "/sonarr.tails/192.168.100.2"
-              "/bazarr.tails/192.168.178.57"
-              "/lidarr.tails/192.168.178.57"
-              "/prowlarr.tails/192.168.178.57"
-              "/readarr.tails/192.168.178.57"
-              "/sabnzbd.tails/192.168.178.57"
-              "/transmission.tails/192.168.178.57"
+              "/bazarr.tails/192.168.100.2"
+              "/lidarr.tails/192.168.100.2"
+              "/prowlarr.tails/192.168.100.2"
+              "/readarr.tails/192.168.100.2"
+              "/sabnzbd.tails/192.168.100.2"
+              "/transmission.tails/192.168.100.2"
               "/mediathekarr.tails/192.168.100.2"
               "/jellyseerr.tails/192.168.100.2"
             ];
