@@ -39,7 +39,7 @@
 
   #networking.extraHosts = "192.168.178.57 paperless.local jellyfin.local kavita.local";
   networking.nameservers = [
-    "192.168.100.101"
+    "192.168.178.57"
     "9.9.9.9"
     "149.112.112.112"
     "1.1.1.1"
