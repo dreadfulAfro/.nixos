@@ -67,6 +67,10 @@
         iptables -A FORWARD -i ve-caddy -o ve-nixarr -j ACCEPT
         iptables -A FORWARD -i ve-nixarr -o ve-caddy -j ACCEPT
 
+        # Allow Docker containers to reach NixOS containers
+        iptables -A FORWARD -s 172.16.0.0/12 -d 192.168.100.0/24 -j ACCEPT
+        iptables -A FORWARD -s 192.168.100.0/24 -d 172.16.0.0/12 -j ACCEPT
+
         # Allow caddy to reach nixarr's network
         iptables -t nat -A POSTROUTING -s 192.168.100.2 -d 192.168.100.91 -j MASQUERADE
 
