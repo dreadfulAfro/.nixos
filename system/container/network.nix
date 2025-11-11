@@ -21,12 +21,12 @@
         }
         # HTTP/HTTPS to Caddy container
         {
-          destination = "192.168.100.2:80";
+          destination = "192.168.100.2";
           sourcePort = 80;
           proto = "tcp";
         }
         {
-          destination = "192.168.100.2:443";
+          destination = "192.168.100.2";
           sourcePort = 443;
           proto = "tcp";
         }
