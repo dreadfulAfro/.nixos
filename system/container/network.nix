@@ -38,6 +38,9 @@
         443
         53
       ];
+      allowedUDPPorts = [
+        53
+      ];
       trustedInterfaces = [
         "tailscale0"
         "enp1s0"
