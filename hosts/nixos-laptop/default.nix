@@ -38,6 +38,7 @@
   environment.systemPackages = with pkgs; [
     scrcpy
     gnomeExtensions.appindicator
+    protonvpn -gui
   ];
 
   # Example for /etc/nixos/configuration.nix
