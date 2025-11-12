@@ -47,6 +47,9 @@
           };
         };
 
+        # Configure DNS to use dnsmasq on the host
+        networking.nameservers = [ "192.168.178.57" ];
+        networking.search = [ "tails" ];
         networking.firewall = {
           enable = true;
           allowedTCPPorts = [ 42001 ];

@@ -30,10 +30,8 @@
     extraOptions = [
       "--network-alias=mediathekarr"
       "--network=mediathekarr_default"
-      # Add host.docker.internal to reach host services
-      "--add-host=host.docker.internal:host-gateway"
       # Add DNS server to resolve .tails domains
-      "--dns=192.168.178.57"
+      "--network=host"
     ];
   };
   systemd.services."docker-mediathekarr" = {

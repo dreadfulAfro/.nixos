@@ -31,14 +31,9 @@
         imports = [ nixarrInput.nixosModules.default ];
         nixpkgs.config.allowUnfree = true;
 
-        #        use145329rs = {
-        #          groups.media = { gid = 1000; };
-        #          users.nixaarr = {
-        #            isSystemUser = true;
-        #            uid = 1001;
-        #            group = "media";
-        #          };
-        #        };
+        networking.nameservers = [ "192.168.178.57" ];
+        networking.search = [ "tails" ];
+        
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever
