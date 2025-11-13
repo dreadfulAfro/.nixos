@@ -17,6 +17,10 @@
     config =
       { pkgs, ... }:
       {
+        networking.defaultGateway = {
+          address = "192.168.100.1";
+          interface = "eth0";
+        };
         services.caddy = {
           enable = true;
 

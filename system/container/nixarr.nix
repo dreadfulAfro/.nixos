@@ -29,9 +29,14 @@
         imports = [ nixarrInput.nixosModules.default ];
         nixpkgs.config.allowUnfree = true;
 
-        networking.nameservers = [ "192.168.100.3" ];
-        networking.search = [ "tails" ];
-
+        networking = {
+          defaultGateway = {
+            address = "192.168.100.1";
+            interface = "eth0";
+          };
+          nameservers = [ "192.168.100.3" ];
+          search = [ "tails" ];
+        };
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever
