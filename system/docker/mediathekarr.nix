@@ -44,11 +44,11 @@
       RestartSteps = lib.mkOverride 90 9;
     };
     after = [
-      "docker-network-mediathekarr_default.service"
+      #"docker-network-mediathekarr_default.service"
       "docker.service"
     ];
     requires = [
-      "docker-network-mediathekarr_default.service"
+      #"docker-network-mediathekarr_default.service"
       "docker.service"
     ];
     partOf = [
@@ -60,19 +60,19 @@
   };
 
   # Networks
-  systemd.services."docker-network-mediathekarr_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f mediathekarr_default";
-    };
-    script = ''
-      docker network inspect mediathekarr_default || docker network create mediathekarr_default
-    '';
-    partOf = [ "docker-compose-mediathekarr-root.target" ];
-    wantedBy = [ "docker-compose-mediathekarr-root.target" ];
-  };
+  #systemd.services."docker-network-mediathekarr_default" = {
+  #  path = [ pkgs.docker ];
+  #  serviceConfig = {
+  #    Type = "oneshot";
+  #    RemainAfterExit = true;
+  #    ExecStop = "docker network rm -f mediathekarr_default";
+  #  };
+  #  script = ''
+  #    docker network inspect mediathekarr_default || docker network create mediathekarr_default
+  #  '';
+  #  partOf = [ "docker-compose-mediathekarr-root.target" ];
+  #  wantedBy = [ "docker-compose-mediathekarr-root.target" ];
+  #};
 
   # Root service
   # When started, this will automatically create all resources and start
