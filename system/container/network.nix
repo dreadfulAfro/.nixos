@@ -2,6 +2,8 @@
 {
   # NAT mapping for containers
   networking = {
+    nameservers = [ "192.168.100.3" "1.1.1.1" ];
+    search = [ "tails" ];
     bridges.br-shared = {
       interfaces = [ ]; # Start empty, containers will attach to it
     };
@@ -58,43 +60,20 @@
         "tailscale0"
         "enp1s0"
       ];
-         extraCommands = ''
-      # Allow DNS from Tailscale
-      iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-      iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+      extraCommands = ''
+      # 1. Enable IP Forwarding (required for NAT to work)
+      echo 1 > /proc/sys/net/ipv4/ip_forward
       
-      # Allow DNS from LAN
-      iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-      iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+      # 2. Accept FORWARD traffic on the bridge (NixOS does some of this declaratively, but this is a good safety net)
+      iptables -A FORWARD -i br-shared -j ACCEPT
+      iptables -A FORWARD -o br-shared -j ACCEPT
       
-      # Allow HTTP/HTTPS from LAN and Tailscale
-      iptables -A INPUT -p tcp --dport 80 -s 192.168.178.0/24 -j ACCEPT
-      iptables -A INPUT -p tcp --dport 443 -s 192.168.178.0/24 -j ACCEPT
-      iptables -A INPUT -p tcp --dport 80 -s 100.64.0.0/10 -j ACCEPT
-      iptables -A INPUT -p tcp --dport 443 -s 100.64.0.0/10 -j ACCEPT
+      # 3. Accept traffic related to the bridge (for established connections)
+      iptables -A FORWARD -i br-shared -o enp1s0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+      iptables -A FORWARD -i enp1s0 -o br-shared -m state --state RELATED,ESTABLISHED -j ACCEPT
       
-      # Forward traffic from LAN/Tailscale to the shared bridge
-      iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
-      iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
-      iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
-      iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
-      
-      # DNAT for services - redirect from host IP to container IPs
-      # For traffic coming TO the host (not being forwarded), use OUTPUT chain
-      iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
-      iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
-      iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-      iptables -t nat -A OUTPUT -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-      
-      # For traffic being forwarded through the host, use PREROUTING
-      iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
-      iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
-      iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-      iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-      
-      # MASQUERADE for return traffic
-      iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
-      iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o tailscale0 -j MASQUERADE
+      # NOTE: The DNAT rules for ports 80, 443, and 53 must be removed/commented out from here.
+      # You should only rely on networking.nat.forwardPorts and the host's nameservers setting.
     '';
     };
   };
