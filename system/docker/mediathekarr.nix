@@ -58,8 +58,40 @@
       "docker-compose-mediathekarr-root.target"
     ];
   };
-  
+
   # Networks
+  systemd.services."docker-network-shared" = {
+    description = "Create Docker network on shared bridge";
+    after = [
+      "docker.service"
+      "sys-devices-virtual-net-br\\x2dshared.device"
+    ];
+    requires = [ "docker.service" ];
+    wants = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+
+    script = ''
+      # Remove any existing network with this name
+      ${pkgs.docker}/bin/docker network rm shared-bridge 2>/dev/null || true
+
+      # Create the network using our bridge
+      ${pkgs.docker}/bin/docker network create \
+        --driver=bridge \
+        --subnet=10.10.10.0/24 \
+        --gateway=10.10.10.1 \
+        --opt com.docker.network.bridge.name=br-shared \
+        shared-bridge
+    '';
+
+    preStop = ''
+      ${pkgs.docker}/bin/docker network rm shared-bridge 2>/dev/null || true
+    '';
+  };
   #systemd.services."docker-network-mediathekarr_default" = {
   #  path = [ pkgs.docker ];br-shared serviceConfig = {
   #    Type = "oneshot";
