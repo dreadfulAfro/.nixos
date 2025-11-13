@@ -4,7 +4,7 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br-shared";
-    localAddress = "192.168.100.3/24";
+    localAddress = "192.168.100.3";
 
     config =
       { pkgs, ... }:
