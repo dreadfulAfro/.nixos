@@ -20,29 +20,29 @@
 
       # Lazy IPv6 connectivity for the container
       enableIPv6 = true;
-            forwardPorts = [
-              {
-                destination = "192.168.100.3:53";
-                sourcePort = 53;
-                proto = "udp";
-              }
-              {
-                destination = "192.168.100.3:53";
-                sourcePort = 53;
-                proto = "tcp";
-              }
-              # HTTP/HTTPS to Caddy container
-              {
-                destination = "192.168.100.2:80";
-                sourcePort = 80;
-                proto = "tcp";
-              }
-              {
-                destination = "192.168.100.2:443";
-                sourcePort = 443;
-                proto = "tcp";
-              }
-            ];
+      forwardPorts = [
+        {
+          destination = "192.168.100.3:53";
+          sourcePort = 53;
+          proto = "udp";
+        }
+        {
+          destination = "192.168.100.3:53";
+          sourcePort = 53;
+          proto = "tcp";
+        }
+        # HTTP/HTTPS to Caddy container
+        {
+          destination = "192.168.100.2:80";
+          sourcePort = 80;
+          proto = "tcp";
+        }
+        {
+          destination = "192.168.100.2:443";
+          sourcePort = 443;
+          proto = "tcp";
+        }
+      ];
     };
     firewall = {
       allowedTCPPorts = [
@@ -58,48 +58,44 @@
         "tailscale0"
         "enp1s0"
       ];
-      extraCommands = ''
-        # Allow DNS from Tailscale
-        iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-
-        # Allow DNS from LAN
-        iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-
-        # Allow HTTP/HTTPS from LAN and Tailscale
-        iptables -A INPUT -p tcp --dport 80 -s 192.168.178.0/24 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 443 -s 192.168.178.0/24 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 80 -s 100.64.0.0/10 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 443 -s 100.64.0.0/10 -j ACCEPT
-
-        # Forward traffic from LAN/Tailscale to the shared bridge
-        iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
-        iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
-        iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
-        iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
-        
-        # Redirect host-originating DNS traffic to dnsmasq container
-        iptables -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        iptables -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-
-        # DNAT for external access to services
-        # Route traffic from LAN/Tailscale to the appropriate container
-        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
-        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
-        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
-        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
-
-        # DNS forwarding
-        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        iptables -t nat -A PREROUTING -i enp1s0 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        iptables -t nat -A PREROUTING -i tailscale0 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-
-        # MASQUERADE for return traffic
-        iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
-      '';
-
+         extraCommands = ''
+      # Allow DNS from Tailscale
+      iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+      iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+      
+      # Allow DNS from LAN
+      iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+      iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+      
+      # Allow HTTP/HTTPS from LAN and Tailscale
+      iptables -A INPUT -p tcp --dport 80 -s 192.168.178.0/24 -j ACCEPT
+      iptables -A INPUT -p tcp --dport 443 -s 192.168.178.0/24 -j ACCEPT
+      iptables -A INPUT -p tcp --dport 80 -s 100.64.0.0/10 -j ACCEPT
+      iptables -A INPUT -p tcp --dport 443 -s 100.64.0.0/10 -j ACCEPT
+      
+      # Forward traffic from LAN/Tailscale to the shared bridge
+      iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
+      iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
+      iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
+      iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
+      
+      # DNAT for services - redirect from host IP to container IPs
+      # For traffic coming TO the host (not being forwarded), use OUTPUT chain
+      iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+      iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+      iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+      iptables -t nat -A OUTPUT -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+      
+      # For traffic being forwarded through the host, use PREROUTING
+      iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+      iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+      iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+      iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+      
+      # MASQUERADE for return traffic
+      iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
+      iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o tailscale0 -j MASQUERADE
+    '';
     };
   };
 }
