@@ -84,8 +84,8 @@
         iptables -A FORWARD -d 192.168.100.3 -p udp --dport 53 -j ACCEPT
 
         # Redirect DNS queries to the dnsmasq container
-        iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
 
         # CRITICAL: Add DNAT rules that work from ALL interfaces, not just enp1s0
         # This allows LAN and Tailscale traffic to reach Caddy
