@@ -58,7 +58,7 @@
       "docker-compose-mediathekarr-root.target"
     ];
   };
-
+  
   # Networks
   #systemd.services."docker-network-mediathekarr_default" = {
   #  path = [ pkgs.docker ];br-shared serviceConfig = {
