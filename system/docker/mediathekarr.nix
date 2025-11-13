@@ -28,11 +28,12 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=mediathekarr"
-#      "--network=mediathekarr_default"
+      #"--network-alias=mediathekarr"
+      #"--network=mediathekarr_default"
       "--add-host=host.docker.internal:host-gateway"
       # Add DNS server to resolve .tails domains
       "--dns=192.168.178.57"
+      "--dns-search=tails"
     ];
   };
   systemd.services."docker-mediathekarr" = {
