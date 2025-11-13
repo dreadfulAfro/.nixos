@@ -43,59 +43,59 @@
       #          proto = "tcp";
       #        }
       #      ];
-      #    };
-      firewall = {
-        allowedTCPPorts = [
-          80
-          443
-          53
-        ];
-        allowedUDPPorts = [
-          53
-        ];
-        trustedInterfaces = [
-          "br-shared"
-          "tailscale0"
-          "enp1s0"
-        ];
-        extraCommands = ''
-          # Allow DNS from Tailscale
-          iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-          iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+    };
+    firewall = {
+      allowedTCPPorts = [
+        80
+        443
+        53
+      ];
+      allowedUDPPorts = [
+        53
+      ];
+      trustedInterfaces = [
+        "br-shared"
+        "tailscale0"
+        "enp1s0"
+      ];
+      extraCommands = ''
+        # Allow DNS from Tailscale
+        iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
 
-          # Allow DNS from LAN
-          iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-          iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+        # Allow DNS from LAN
+        iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
 
-          # Allow HTTP/HTTPS from LAN and Tailscale
-          iptables -A INPUT -p tcp --dport 80 -s 192.168.178.0/24 -j ACCEPT
-          iptables -A INPUT -p tcp --dport 443 -s 192.168.178.0/24 -j ACCEPT
-          iptables -A INPUT -p tcp --dport 80 -s 100.64.0.0/10 -j ACCEPT
-          iptables -A INPUT -p tcp --dport 443 -s 100.64.0.0/10 -j ACCEPT
+        # Allow HTTP/HTTPS from LAN and Tailscale
+        iptables -A INPUT -p tcp --dport 80 -s 192.168.178.0/24 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 443 -s 192.168.178.0/24 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 80 -s 100.64.0.0/10 -j ACCEPT
+        iptables -A INPUT -p tcp --dport 443 -s 100.64.0.0/10 -j ACCEPT
 
-          # Forward traffic from LAN/Tailscale to the shared bridge
-          iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
-          iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
-          iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
-          iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
+        # Forward traffic from LAN/Tailscale to the shared bridge
+        iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
+        iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
+        iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
+        iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
 
-          # DNAT for external access to services
-          # Route traffic from LAN/Tailscale to the appropriate container
-          iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
-          iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
-          iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
-          iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
+        # DNAT for external access to services
+        # Route traffic from LAN/Tailscale to the appropriate container
+        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
+        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
+        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
+        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
 
-          # DNS forwarding
-          iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-          iptables -t nat -A PREROUTING -i enp1s0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-          iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-          iptables -t nat -A PREROUTING -i tailscale0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
+        # DNS forwarding
+        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
+        iptables -t nat -A PREROUTING -i enp1s0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
+        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
+        iptables -t nat -A PREROUTING -i tailscale0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
 
-          # MASQUERADE for return traffic
-          iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o enp1s0 -j MASQUERADE
-        '';
-      };
+        # MASQUERADE for return traffic
+        iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o enp1s0 -j MASQUERADE
+      '';
+
     };
   };
   systemd.services.docker-network-shared = {
