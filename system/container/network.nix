@@ -61,43 +61,36 @@
         "enp1s0"
       ];
       extraCommands = ''
-        # Allow DNS from Tailscale
+        # Allow DNS from Tailnet
         iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
         iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-        
+
         # Allow DNS from LAN
         iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
         iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
 
-        # Allow DNS from Containers
-        iptables -A INPUT -p udp --dport 53 -s 192.168.100.0/24 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -s 192.168.100.0/24 -j ACCEPT
-        
-        # Allow HTTP/HTTPS from LAN and Tailscale
-        #iptables -A INPUT -p tcp --dport 80 -s 192.168.178.0/24 -j ACCEPT
-        #iptables -A INPUT -p tcp --dport 443 -s 192.168.178.0/24 -j ACCEPT
-        #iptables -A INPUT -p tcp --dport 80 -s 100.64.0.0/10 -j ACCEPT
-        #iptables -A INPUT -p tcp --dport 443 -s 100.64.0.0/10 -j ACCEPT
-        
+        # Drop all other DNS requests
+        iptables -A INPUT -p udp --dport 53 -j DROP
+        iptables -A INPUT -p tcp --dport 53 -j DROP
+
         # Forward traffic from LAN/Tailscale to the shared bridge
         iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
         iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
         iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
         iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
-        
-        # DNAT for external access to services
-        # Route traffic from LAN/Tailscale to the appropriate container
-        #iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
-        #iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
-        #iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
-        #iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
-        
-        # DNS forwarding
-        #iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-        #iptables -t nat -A PREROUTING -i enp1s0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-        #iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-        #iptables -t nat -A PREROUTING -i tailscale0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
 
+        # CRITICAL: Add DNAT rules that work from ALL interfaces, not just enp1s0
+        # This allows LAN and Tailscale traffic to reach Caddy
+        iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+
+        # Allow forwarding to Caddy container
+        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
+        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
+
+         # Allow forwarding to Dnsmasq container
+        iptables -A FORWARD -d 192.168.100.3 -p tcp --dport 53 -j ACCEPT
+        iptables -A FORWARD -d 192.168.100.3 -p udp --dport 53 -j ACCEPT
       '';
 
     };
