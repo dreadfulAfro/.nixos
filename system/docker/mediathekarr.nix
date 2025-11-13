@@ -24,7 +24,7 @@
       "/srv/data1tb/mediathekarr/config:/app/config:rw"
     ];
     ports = [
-      "0.0.0.0:5007:5007/tcp"
+      "127.0.0.1:5007:5007/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
