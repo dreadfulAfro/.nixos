@@ -27,7 +27,7 @@
       "0.0.0.0:5007:5007/tcp"
     ];
     log-driver = "journald";
-    dependsOn = [ "docker-network-shared" ];
+    #dependsOn = [ "docker-network-shared" ];
     extraOptions = [
       "--network=shared-bridge" # Connect to the shared bridge network
       "--ip=10.10.10.50" # Give it a static IP on the shared network
