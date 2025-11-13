@@ -98,7 +98,7 @@
 
     };
   };
-  systemd.services.docker-network-shared = {
+  systemd.services."docker-network-shared" = {
     description = "Create Docker network on shared bridge";
     after = [
       "docker.service"
