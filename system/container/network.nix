@@ -20,29 +20,29 @@
 
       # Lazy IPv6 connectivity for the container
       enableIPv6 = true;
-      #      forwardPorts = [
-      #        {
-      #          destination = "192.168.100.101:53";
-      #          sourcePort = 53;
-      #          proto = "udp";
-      #        }
-      #        {
-      #          destination = "192.168.100.101:53";
-      #          sourcePort = 53;
-      #          proto = "tcp";
-      #        }
-      #        # HTTP/HTTPS to Caddy container
-      #        {
-      #          destination = "192.168.100.2:80";
-      #          sourcePort = 80;
-      #          proto = "tcp";
-      #        }
-      #        {
-      #          destination = "192.168.100.2:443";
-      #          sourcePort = 443;
-      #          proto = "tcp";
-      #        }
-      #      ];
+            forwardPorts = [
+              {
+                destination = "192.168.100.3:53";
+                sourcePort = 53;
+                proto = "udp";
+              }
+              {
+                destination = "192.168.100.3:53";
+                sourcePort = 53;
+                proto = "tcp";
+              }
+              # HTTP/HTTPS to Caddy container
+              {
+                destination = "192.168.100.2:80";
+                sourcePort = 80;
+                proto = "tcp";
+              }
+              {
+                destination = "192.168.100.2:443";
+                sourcePort = 443;
+                proto = "tcp";
+              }
+            ];
     };
     firewall = {
       allowedTCPPorts = [

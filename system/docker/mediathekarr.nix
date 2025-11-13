@@ -30,8 +30,8 @@
     #dependsOn = [ "docker-network-shared" ];
     extraOptions = [
       "--network=shared-bridge" # Connect to the shared bridge network
-      "--ip=10.10.10.50" # Give it a static IP on the shared network
-      "--dns=10.10.10.3" # Use dnsmasq on the shared bridge
+      "--ip=192.168.100.50" # Give it a static IP on the shared network
+      "--dns=192.168.100.3" # Use dnsmasq on the shared bridge
       "--dns-search=tails"
     ];
 
@@ -82,8 +82,8 @@
       # Create the network using our bridge
       ${pkgs.docker}/bin/docker network create \
         --driver=bridge \
-        --subnet=10.10.10.0/24 \
-        --gateway=10.10.10.1 \
+        --subnet=192.168.100.0/24 \
+        --gateway=192.168.100.1 \
         --opt com.docker.network.bridge.name=br-shared \
         shared-bridge
     '';
