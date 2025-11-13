@@ -28,8 +28,10 @@
     ];
     log-driver = "journald";
     extraOptions = [
+      "--network-alias=mediathekarr"
+      "--network=mediathekarr_default"
       # Add DNS server to resolve .tails domains
-      "--network=host"
+      "--dns=192.168.178.57"
     ];
   };
   systemd.services."docker-mediathekarr" = {
@@ -40,9 +42,11 @@
       RestartSteps = lib.mkOverride 90 9;
     };
     after = [
+      "docker-network-mediathekarr_default.service"
       "docker.service"
     ];
     requires = [
+      "docker-network-mediathekarr_default.service"
       "docker.service"
     ];
     partOf = [
@@ -51,6 +55,21 @@
     wantedBy = [
       "docker-compose-mediathekarr-root.target"
     ];
+  };
+
+  # Networks
+  systemd.services."docker-network-mediathekarr_default" = {
+    path = [ pkgs.docker ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "docker network rm -f mediathekarr_default";
+    };
+    script = ''
+      docker network inspect mediathekarr_default || docker network create mediathekarr_default
+    '';
+    partOf = [ "docker-compose-mediathekarr-root.target" ];
+    wantedBy = [ "docker-compose-mediathekarr-root.target" ];
   };
 
   # Root service
