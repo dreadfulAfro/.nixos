@@ -3,10 +3,8 @@
   containers.nixarr = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.100.90";
-    localAddress = "192.168.100.91";
-    hostAddress6 = "fc00::30";
-    localAddress6 = "fc00::31";
+    hostBridge = "br-shared";
+    localAddress = "10.10.10.91/24";
 
     bindMounts = {
       "media" = {
@@ -31,9 +29,9 @@
         imports = [ nixarrInput.nixosModules.default ];
         nixpkgs.config.allowUnfree = true;
 
-        networking.nameservers = [ "192.168.178.57" ];
+        networking.nameservers = [ "10.10.10.3" ];
         networking.search = [ "tails" ];
-        
+
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever
@@ -137,7 +135,7 @@
             5007
             6336
             9091
-            5055 # 
+            5055
           ];
         };
         system.stateVersion = "25.05";

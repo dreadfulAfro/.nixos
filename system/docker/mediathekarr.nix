@@ -24,17 +24,17 @@
       "/srv/data1tb/mediathekarr/config:/app/config:rw"
     ];
     ports = [
-      "127.0.0.1:5007:5007/tcp"
+      "0.0.0.0:5007:5007/tcp"
     ];
     log-driver = "journald";
+    dependsOn = [ "docker-network-shared" ];
     extraOptions = [
-      #"--network-alias=mediathekarr"
-      #"--network=mediathekarr_default"
-      "--add-host=host.docker.internal:host-gateway"
-      # Add DNS server to resolve .tails domains
-      "--dns=192.168.178.57"
+      "--network=shared-bridge" # Connect to the shared bridge network
+      "--ip=10.10.10.50" # Give it a static IP on the shared network
+      "--dns=10.10.10.3" # Use dnsmasq on the shared bridge
       "--dns-search=tails"
     ];
+
   };
   systemd.services."docker-mediathekarr" = {
     serviceConfig = {
