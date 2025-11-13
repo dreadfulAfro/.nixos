@@ -96,6 +96,10 @@
         iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
         iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
 
+        # MASQUERADE so responses can get back
+        iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
+        iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o tailscale0 -j MASQUERADE
+
       '';
 
     };
