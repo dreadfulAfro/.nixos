@@ -4,7 +4,7 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br-shared";
-    localAddress = "10.10.10.91/24";
+    localAddress = "192.168.100.91/24";
 
     bindMounts = {
       "media" = {
@@ -29,7 +29,7 @@
         imports = [ nixarrInput.nixosModules.default ];
         nixpkgs.config.allowUnfree = true;
 
-        networking.nameservers = [ "10.10.10.3" ];
+        networking.nameservers = [ "192.168.100.3" ];
         networking.search = [ "tails" ];
 
         nixarr = {

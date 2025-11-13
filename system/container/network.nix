@@ -8,7 +8,7 @@
     interfaces.br-shared = {
       ipv4.addresses = [
         {
-          address = "10.10.10.1"; # Using 10.10.10.x to avoid conflicts with your existing networks
+          address = "192.168.100.1"; # Using 192.168.100.x to avoid conflicts with your existing networks
           prefixLength = 24;
         }
       ];
@@ -81,19 +81,19 @@
 
         # DNAT for external access to services
         # Route traffic from LAN/Tailscale to the appropriate container
-        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
-        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
-        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 80 -j DNAT --to-destination 10.10.10.2:80
-        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 443 -j DNAT --to-destination 10.10.10.2:443
+        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
 
         # DNS forwarding
-        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-        iptables -t nat -A PREROUTING -i enp1s0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 53 -j DNAT --to-destination 10.10.10.3:53
-        iptables -t nat -A PREROUTING -i tailscale0 -p udp --dport 53 -j DNAT --to-destination 10.10.10.3:53
+        iptables -t nat -A PREROUTING -i enp1s0 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -i enp1s0 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -i tailscale0 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -i tailscale0 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
 
         # MASQUERADE for return traffic
-        iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o enp1s0 -j MASQUERADE
+        iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
       '';
 
     };

@@ -4,7 +4,7 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br-shared"; # Connect to the shared bridge
-    localAddress = "10.10.10.2/24"; # Caddy's IP on the shared network
+    localAddress = "192.168.100.2/24"; # Caddy's IP on the shared network
 
     bindMounts = {
       "caddy-data" = {
@@ -24,7 +24,7 @@
             "paperless.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.11:42001 {
+                reverse_proxy 192.168.100.11:42001 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -36,7 +36,7 @@
             "kavita.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.21:42002 {
+                reverse_proxy 192.168.100.21:42002 {
                   header_up Host {upstream_hostport}
                 }
               '';
@@ -44,7 +44,7 @@
             "jellyfin.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:8096 {
+                reverse_proxy 192.168.100.91:8096 {
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
                   header_up X-Forwarded-Proto {scheme}
@@ -55,7 +55,7 @@
             "radarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:7878 {
+                reverse_proxy 192.168.100.91:7878 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -67,7 +67,7 @@
             "sonarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:8989 {
+                reverse_proxy 192.168.100.91:8989 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -79,7 +79,7 @@
             "bazarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:6767 {
+                reverse_proxy 192.168.100.91:6767 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -91,7 +91,7 @@
             "lidarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:8686 {
+                reverse_proxy 192.168.100.91:8686 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -103,7 +103,7 @@
             "prowlarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:9696 {
+                reverse_proxy 192.168.100.91:9696 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -115,7 +115,7 @@
             "readarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:8787 {
+                reverse_proxy 192.168.100.91:8787 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -127,13 +127,13 @@
             "mediathekarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.50:5007
+                reverse_proxy 192.168.100.50:5007
               '';
             };
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:6336 {
+                reverse_proxy 192.168.100.91:6336 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -145,7 +145,7 @@
             "transmission.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:9091 {
+                reverse_proxy 192.168.100.91:9091 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}
@@ -157,7 +157,7 @@
             "jellyseerr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 10.10.10.91:5055 {
+                reverse_proxy 192.168.100.91:5055 {
                   header_up Host {upstream_hostport}
                   header_up X-Real-IP {remote_host}
                   header_up X-Forwarded-For {remote_host}

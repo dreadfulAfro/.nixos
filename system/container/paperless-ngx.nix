@@ -48,7 +48,7 @@
         };
 
         # Configure DNS to use dnsmasq on the host
-        networking.nameservers = [ "192.168.178.57" ];
+        networking.nameservers = [ "192.168.100.3" ];
         networking.search = [ "tails" ];
         networking.firewall = {
           enable = true;
