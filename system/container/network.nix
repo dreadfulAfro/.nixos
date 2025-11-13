@@ -78,6 +78,10 @@
         iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
         iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
         iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
+        
+        # Redirect host-originating DNS traffic to dnsmasq container
+        iptables -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
 
         # DNAT for external access to services
         # Route traffic from LAN/Tailscale to the appropriate container
