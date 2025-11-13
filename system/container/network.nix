@@ -70,14 +70,22 @@
         iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
 
         # Drop all other DNS requests
-        iptables -A INPUT -p udp --dport 53 -j DROP
-        iptables -A INPUT -p tcp --dport 53 -j DROP
+        #iptables -A INPUT -p udp --dport 53 -j DROP
+        #iptables -A INPUT -p tcp --dport 53 -j DROP
 
         # Forward traffic from LAN/Tailscale to the shared bridge
         iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
         iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
         iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
         iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
+        
+        # Allow forwarding to Dnsmasq container
+        iptables -A FORWARD -d 192.168.100.3 -p tcp --dport 53 -j ACCEPT
+        iptables -A FORWARD -d 192.168.100.3 -p udp --dport 53 -j ACCEPT
+
+        # Redirect DNS queries to the dnsmasq container
+        iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
 
         # CRITICAL: Add DNAT rules that work from ALL interfaces, not just enp1s0
         # This allows LAN and Tailscale traffic to reach Caddy
@@ -88,9 +96,6 @@
         iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
         iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
 
-         # Allow forwarding to Dnsmasq container
-        iptables -A FORWARD -d 192.168.100.3 -p tcp --dport 53 -j ACCEPT
-        iptables -A FORWARD -d 192.168.100.3 -p udp --dport 53 -j ACCEPT
       '';
 
     };
