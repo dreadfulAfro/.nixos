@@ -28,154 +28,79 @@
             "paperless.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.11:42001 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                } 
+                reverse_proxy 192.168.100.11:42001 
               '';
             };
             "kavita.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.21:42002 {
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.21:42002 
               '';
             };
             "jellyfin.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8096 {
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:8096 
               '';
             };
             "radarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:7878 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:7878 
               '';
             };
             "sonarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8989 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:8989 
               '';
             };
             "bazarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:6767 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:6767 
               '';
             };
             "lidarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8686 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:8686 
               '';
             };
             "prowlarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:9696 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:9696 
               '';
             };
             "readarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8787 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:8787 
               '';
             };
             "mediathekarr.tails" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.50:5007
-                header_up Host {upstream_hostport}
-                header_up X-Real-IP {remote_host}
-                header_up X-Forwarded-For {remote_host}
-                header_up X-Forwarded-Proto {scheme}
-                header_up X-Forwarded-Host {host}
               '';
             };
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:6336 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:6336 
               '';
             };
             "transmission.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:9091 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
+                reverse_proxy 192.168.100.91:9091 
               '';
             };
             "jellyseerr.tails" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.100.91:5055 {
-                  header_up Host {upstream_hostport}
-                  header_up X-Real-IP {remote_host}
-                  header_up X-Forwarded-For {remote_host}
-                  header_up X-Forwarded-Proto {scheme}
-                  header_up X-Forwarded-Host {host}
-                }
               '';
             };
           };
