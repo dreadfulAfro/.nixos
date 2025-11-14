@@ -27,7 +27,6 @@
       "0.0.0.0:5007:5007/tcp"
     ];
     log-driver = "journald";
-    dependsOn = [ "docker-network-shared" ];
     extraOptions = [
       "--network=shared-bridge" # Connect to the shared bridge network
       "--ip=192.168.100.50" # Give it a static IP on the shared network
@@ -44,11 +43,11 @@
       RestartSteps = lib.mkOverride 90 9;
     };
     after = [
-      #"docker-network-mediathekarr_default.service"
+      "docker-network-shared.service" 
       "docker.service"
     ];
     requires = [
-      #"docker-network-mediathekarr_default.service"
+      "docker-network-shared.service" 
       "docker.service"
     ];
     partOf = [

@@ -24,7 +24,7 @@
 
             # All .tails domains point to Caddy on the shared bridge
             address = [
-              "/paperless.tails/192.168.178.57"    # Changed from 192.168.100.2
+              "/paperless.tails/192.168.178.57" # Changed from 192.168.100.2
               "/kavita.tails/192.168.178.57"
               "/jellyfin.tails/192.168.178.57"
               "/radarr.tails/192.168.178.57"
@@ -50,8 +50,10 @@
             local-ttl = 60;
           };
         };
-        networking.nameservers = [  "9.9.9.9"
-              "1.1.1.1" ];
+        networking.nameservers = [
+          "9.9.9.9"
+          "1.1.1.1"
+        ];
         networking.firewall.allowedTCPPorts = [ 53 ];
         networking.firewall.allowedUDPPorts = [ 53 ];
         system.stateVersion = "25.05";
