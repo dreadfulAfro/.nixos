@@ -3,7 +3,9 @@
   containers.caddy = {
     autoStart = true;
     privateNetwork = true;
+    hostAddress = "192.168.100.1";
     localAddress = "192.168.100.2";
+    hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
 
     bindMounts = {
