@@ -11,20 +11,9 @@
   networking = {
     nameservers = [ "192.168.100.3" "1.1.1.1" ];
     search = [ "tails" ];
-    bridges.br-shared = {
-      interfaces = [ ]; # Start empty, containers will attach to it
-    };
-    interfaces.br-shared = {
-      ipv4.addresses = [
-        {
-          address = "192.168.100.1"; # Using 192.168.100.x to avoid conflicts with your existing networks
-          prefixLength = 24;
-        }
-      ];
-    };
     nat = {
       enable = true;
-      internalInterfaces = [ "br-shared" ]; # NAT all internal interfaces starting with ve- which containers do with private network activated
+      internalInterfaces = [ "ve-+" ]; # NAT all internal interfaces starting with ve- which containers do with private network activated
       externalInterface = "enp1s0";
 
       # Lazy IPv6 connectivity for the container
@@ -61,7 +50,6 @@
         53
       ];
       trustedInterfaces = [
-        "br-shared"
         "tailscale0"
         "enp1s0"
         "lo"
@@ -78,16 +66,10 @@
         # Drop all other DNS requests
         #iptables -A INPUT -p udp --dport 53 -j DROP
         #iptables -A INPUT -p tcp --dport 53 -j DROP
-
-        # Forward traffic from LAN/Tailscale to the shared bridge
-        iptables -A FORWARD -i enp1s0 -o br-shared -j ACCEPT
-        iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
-        iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
-        iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
         
         # Redirect DNS queries to the dnsmasq container
-        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        #iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        #iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
 
         # Redirect HTTP/HTTPS queries to the Caddy container
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80

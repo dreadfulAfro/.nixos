@@ -3,8 +3,10 @@
   containers.kavita = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br-shared";
-    localAddress = "192.168.100.21/24";
+    hostAddress = "192.168.100.20";
+    localAddress = "192.168.100.21";
+    hostAddress6 = "fc00::20";
+    localAddress6 = "fc00::21";
 
     bindMounts = {
       "kavita" = {
@@ -33,12 +35,6 @@
 
         # Configure DNS to use dnsmasq on the host
         networking = {
-          defaultGateway = {
-            address = "192.168.100.1";
-            interface = "eth0";
-          };
-          nameservers = [ "192.168.100.3" ];
-          search = [ "tails" ];
           firewall = {
             enable = true;
             allowedTCPPorts = [ 42002 ];

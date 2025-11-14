@@ -3,8 +3,8 @@
   containers.caddy = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br-shared"; # Connect to the shared bridge
-    localAddress = "192.168.100.2/24"; # Caddy's IP on the shared network
+    localAddress = "192.168.100.2";
+    localAddress6 = "fc00::2";
 
     bindMounts = {
       "caddy-data" = {
@@ -17,10 +17,6 @@
     config =
       { pkgs, ... }:
       {
-        networking.defaultGateway = {
-          address = "192.168.100.1";
-          interface = "eth0";
-        };
         services.caddy = {
           enable = true;
 

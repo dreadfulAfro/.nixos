@@ -3,8 +3,10 @@
   containers.nixarr = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br-shared";
-    localAddress = "192.168.100.91/24";
+    hostAddress = "192.168.100.90";
+    localAddress = "192.168.100.91";
+    hostAddress6 = "fc00::30";
+    localAddress6 = "fc00::31";
 
     bindMounts = {
       "media" = {
@@ -29,14 +31,6 @@
         imports = [ nixarrInput.nixosModules.default ];
         nixpkgs.config.allowUnfree = true;
 
-        networking = {
-          defaultGateway = {
-            address = "192.168.100.1";
-            interface = "eth0";
-          };
-          nameservers = [ "192.168.100.3" ];
-          search = [ "tails" ];
-        };
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever

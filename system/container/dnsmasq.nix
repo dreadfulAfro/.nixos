@@ -3,16 +3,12 @@
   containers.dnsmasq = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br-shared";
-    localAddress = "192.168.100.3/24";
+    #hostAddress = "192.168.100.3";
+    localAddress = "192.168.100.3";
 
     config =
       { pkgs, ... }:
       {
-        networking.defaultGateway = {
-          address = "192.168.100.1";
-          interface = "eth0";
-        };
         services.dnsmasq = {
           enable = true;
           settings = {
@@ -44,16 +40,11 @@
               "1.1.1.1"
             ];
 
-            local = "/tails/";
             domain = "tails";
             expand-hosts = true;
             local-ttl = 60;
           };
         };
-        networking.nameservers = [
-          "9.9.9.9"
-          "1.1.1.1"
-        ];
         networking.firewall.allowedTCPPorts = [ 53 ];
         networking.firewall.allowedUDPPorts = [ 53 ];
         system.stateVersion = "25.05";
