@@ -27,11 +27,12 @@
       "0.0.0.0:5007:5007/tcp"
     ];
     log-driver = "journald";
+    # Host networking: container shares host network namespace. No port mappings required.
     extraOptions = [
-      "--network=shared-bridge" # Connect to the shared bridge network
-      "--ip=192.168.100.50" # Give it a static IP on the shared network
-      "--dns=192.168.100.3" # Use dnsmasq on the shared bridge
-      "--dns-search=tails"
+      "--network=host"
+      "--restart=unless-stopped"
+      # Keep a DNS fallback that points to host resolver — adjust if necessary
+      "--dns=127.0.0.1"
     ];
 
   };
@@ -43,11 +44,9 @@
       RestartSteps = lib.mkOverride 90 9;
     };
     after = [
-      "docker-network-shared.service" 
       "docker.service"
     ];
     requires = [
-      "docker-network-shared.service" 
       "docker.service"
     ];
     partOf = [
@@ -57,52 +56,6 @@
       "docker-compose-mediathekarr-root.target"
     ];
   };
-
-  # Networks
-  systemd.services."docker-network-shared" = {
-    description = "Create Docker network on shared bridge";
-    after = [
-      "docker.service"
-      "sys-devices-virtual-net-br\\x2dshared.device"
-    ];
-    requires = [ "docker.service" ];
-    wants = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-
-    script = ''
-      # Remove any existing network with this name
-      ${pkgs.docker}/bin/docker network rm shared-bridge 2>/dev/null || true
-
-      # Create the network using our bridge
-      ${pkgs.docker}/bin/docker network create \
-        --driver=bridge \
-        --subnet=192.168.100.0/24 \
-        --gateway=192.168.100.1 \
-        --opt com.docker.network.bridge.name=br-shared \
-        shared-bridge
-    '';
-
-    preStop = ''
-      ${pkgs.docker}/bin/docker network rm shared-bridge 2>/dev/null || true
-    '';
-  };
-  #systemd.services."docker-network-mediathekarr_default" = {
-  #  path = [ pkgs.docker ];br-shared serviceConfig = {
-  #    Type = "oneshot";
-  #    RemainAfterExit = true;
-  #    ExecStop = "docker network rm -f mediathekarr_default";
-  #  };
-  #  script = ''
-  #    docker network inspect mediathekarr_default || docker network create mediathekarr_default
-  #  '';
-  #  partOf = [ "docker-compose-mediathekarr-root.target" ];
-  #  wantedBy = [ "docker-compose-mediathekarr-root.target" ];
-  #};
 
   # Root service
   # When started, this will automatically create all resources and start

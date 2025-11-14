@@ -1,5 +1,12 @@
 { hostname, pkgs, ... }:
 {
+  # Make sure Docker is running and can manage iptables/ip-masq
+  virtualisation.docker = {
+  enable = true;
+  # Ensure docker manages iptables / masquerade for its default bridge if you still use it
+  extraOptions = "--iptables=true --ip-masq=true";
+  };
+
   # NAT mapping for containers
   networking = {
     nameservers = [ "192.168.100.3" "1.1.1.1" ];
@@ -48,9 +55,7 @@
     };
     firewall = {
       allowedTCPPorts = [
-        80
-        443
-        53
+        53 80 443 5007 8989 7878 8096 6767 8686 9696 8787 6336 9091 5055
       ];
       allowedUDPPorts = [
         53
@@ -59,6 +64,7 @@
         "br-shared"
         "tailscale0"
         "enp1s0"
+        "lo"
       ];
       extraCommands = ''
         # Allow DNS from Tailnet
@@ -78,14 +84,6 @@
         iptables -A FORWARD -i br-shared -o enp1s0 -j ACCEPT
         iptables -A FORWARD -i tailscale0 -o br-shared -j ACCEPT
         iptables -A FORWARD -i br-shared -o tailscale0 -j ACCEPT
-        
-        # Allow forwarding to Dnsmasq container
-        iptables -A FORWARD -d 192.168.100.3 -p tcp --dport 53 -j ACCEPT
-        iptables -A FORWARD -d 192.168.100.3 -p udp --dport 53 -j ACCEPT
-
-        # Allow forwarding to Caddy container
-        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
-        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
         
         # Redirect DNS queries to the dnsmasq container
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
