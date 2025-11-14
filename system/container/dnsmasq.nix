@@ -50,7 +50,8 @@
             local-ttl = 60;
           };
         };
-
+        networking.nameservers = [  "9.9.9.9"
+              "1.1.1.1" ];
         networking.firewall.allowedTCPPorts = [ 53 ];
         networking.firewall.allowedUDPPorts = [ 53 ];
         system.stateVersion = "25.05";
