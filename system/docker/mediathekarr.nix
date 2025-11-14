@@ -28,7 +28,7 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--network=br-shared" # Connect to the shared bridge network
+      "--network=shared-bridge" # Connect to the shared bridge network
       "--ip=192.168.100.50" # Give it a static IP on the shared network
       "--dns=192.168.100.3" # Use dnsmasq on the shared bridge
       "--dns-search=tails"
