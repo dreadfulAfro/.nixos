@@ -23,18 +23,17 @@
       "/srv/data1tb/mediathekarr:/data/mediathek/incomplete:rw"
       "/srv/data1tb/mediathekarr/config:/app/config:rw"
     ];
-    ports = [
-      "0.0.0.0:5007:5007/tcp"
-    ];
+    #ports = [
+    #  "0.0.0.0:5007:5007/tcp"
+    #];
     log-driver = "journald";
     # Host networking: container shares host network namespace. No port mappings required.
     extraOptions = [
       "--network=host"
-      "--restart=unless-stopped"
       # Keep a DNS fallback that points to host resolver — adjust if necessary
-      "--dns=127.0.0.1"
+    #  "--dns=127.0.0.1"
     ];
-
+    autoStart = true;
   };
   #systemd.services."docker-mediathekarr" = {
   #  serviceConfig = {
