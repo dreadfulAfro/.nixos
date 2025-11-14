@@ -30,11 +30,7 @@
       {
         imports = [ nixarrInput.nixosModules.default ];
         nixpkgs.config.allowUnfree = true;
-        # Explicitly set the correct default gateway
-        networking.defaultGateway = {
-          address = "192.168.100.1";
-          interface = "eth0";
-        };
+        
         nixarr = {
           enable = true;
           # These two values are also the default, but you can set them to whatever
