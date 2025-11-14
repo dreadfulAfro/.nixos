@@ -83,6 +83,10 @@
         iptables -A FORWARD -d 192.168.100.3 -p tcp --dport 53 -j ACCEPT
         iptables -A FORWARD -d 192.168.100.3 -p udp --dport 53 -j ACCEPT
 
+        # Allow forwarding to Caddy container
+        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
+        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
+        
         # Redirect DNS queries to the dnsmasq container
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
@@ -98,9 +102,6 @@
         iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
         iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
 
-        # Allow forwarding to Caddy container
-        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 80 -j ACCEPT
-        iptables -A FORWARD -d 192.168.100.2 -p tcp --dport 443 -j ACCEPT
 
         # MASQUERADE so responses can get back
         iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
