@@ -87,6 +87,12 @@
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
 
+        # Redirect HTTP/HTTPS queries to the Caddy container
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+
         # CRITICAL: Add DNAT rules that work from ALL interfaces, not just enp1s0
         # This allows LAN and Tailscale traffic to reach Caddy
         iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
