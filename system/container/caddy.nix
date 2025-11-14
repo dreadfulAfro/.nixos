@@ -82,7 +82,7 @@
             "mediathekarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.78.57:5007
+                reverse_proxy 192.168.178.57:5007
               '';
             };
             "sabnzbd.tails" = {
