@@ -30,16 +30,16 @@
           proto = "tcp";
         }
         # HTTP/HTTPS to Caddy container
-        {
-          destination = "192.168.100.2:80";
-          sourcePort = 80;
-          proto = "tcp";
-        }
-        {
-          destination = "192.168.100.2:443";
-          sourcePort = 443;
-          proto = "tcp";
-        }
+        #{
+        #  destination = "192.168.100.2:80";
+        #  sourcePort = 80;
+        #  proto = "tcp";
+        #}
+        #{
+        #  destination = "192.168.100.2:443";
+        #  sourcePort = 443;
+        #  proto = "tcp";
+        #}
       ];
     };
     firewall = {
