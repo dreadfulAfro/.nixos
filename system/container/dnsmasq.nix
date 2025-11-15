@@ -3,7 +3,7 @@
   containers.dnsmasq = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.100.1";
+    hostAddress = "192.168.100.4";
     localAddress = "192.168.100.3";
 
     config =
