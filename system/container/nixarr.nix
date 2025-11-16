@@ -56,12 +56,6 @@
             #  acmeMail = "your@email.com"; # Required for ACME-bot
             #};
           };
-
-          transmission = {
-            enable = true;
-            #            vpn.enable = true;
-            peerPort = 51820; # Set this to the port forwarded by your VPN
-          };
           sabnzbd = {
             enable = true;
             guiPort = 6336;
