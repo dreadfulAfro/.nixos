@@ -66,13 +66,12 @@
         # Redirect DNS queries to the dnsmasq container
         #iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
         #iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A PREROUTING -d 100.77.114.79 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -d 100.77.114.79 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
   
         # Redirect HTTP/HTTPS to Caddy for Tailscale traffic (destined to Tailscale IP)
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
-  
         
         # Redirect HTTP/HTTPS to Caddy - ONLY for traffic destined to the host IP
         iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
