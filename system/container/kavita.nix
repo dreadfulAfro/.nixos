@@ -14,6 +14,10 @@
         mountPoint = "/var/lib/kavita";
         isReadOnly = false;
       };
+      "data" = {
+        hostPath = "/srv/data1tb/data";
+        mountPoint = "/data";
+      };
       "key" = {
         hostPath = "/etc/secrets/kavita";
         mountPoint = "/etc/secrets";
