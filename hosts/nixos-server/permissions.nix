@@ -4,7 +4,6 @@
     media = {
       gid = 169;
     };
-    paperless = {};
   };
 
   # Create per-service users with shared group
@@ -17,7 +16,7 @@
 #    paperless = {
 #      isNormalUser = true;
 #      uid = 1002;
-#      group = "paperless";
+#      group = "media";
 #    };
     mediathekarr = {
       isNormalUser = true;
