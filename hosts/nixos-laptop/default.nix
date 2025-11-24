@@ -13,7 +13,17 @@
 
   networking.hostName = "nixos-laptop";
   system.stateVersion = "25.05";
-
+  
+  # automatically update the system
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--print-build-logs"
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
   #hardware.enableAllFirmware = true;
   #hardware.firmware = [ pkgs.linux-firmware ];
 
