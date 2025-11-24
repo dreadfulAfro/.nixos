@@ -64,8 +64,8 @@
         iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
 
         # Redirect DNS queries to the dnsmasq container
-        #iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
+        iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
   
