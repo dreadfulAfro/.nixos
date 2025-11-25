@@ -32,7 +32,7 @@
     serviceConfig = {
       Type = "oneshot"; # unit is executed once
       RemainAfterExit = true; # is marked as still active after execution, so execStop is still called later
-      ExecStart = "${pkgs.bash}/bin/bash -c '[ -e /dev/mapper/data1tb ] || ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-id/ata-ST1000LM024_HN-M101MBB_S2RXJ9ADB27331-part1 data1tb --key-file /etc/secrets/cryptsetup/ata-ST1000LM024_HN-M101MBB_S2RXJ9ADB27331-part1.key";
+      ExecStart = "${pkgs.bash}/bin/bash -c '[ -e /dev/mapper/data1tb ] || ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-id/ata-ST1000LM024_HN-M101MBB_S2RXJ9ADB27331-part1 data1tb --key-file /etc/secrets/cryptsetup/ata-ST1000LM024_HN-M101MBB_S2RXJ9ADB27331-part1.key'";
       ExecStop = "${pkgs.cryptsetup}/bin/cryptsetup close data1tb";
     };
   };
