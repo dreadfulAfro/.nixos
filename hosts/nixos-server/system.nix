@@ -67,9 +67,8 @@
       interface = "enp1s0";
     };
     nameservers = [
-      "192.168.100.101"
-      "9.9.9.9"
-      "1.1.1.1"
+      "192.168.100.3"
+      "192.168.178.1"
     ];
     firewall = {
       allowedTCPPorts = [
