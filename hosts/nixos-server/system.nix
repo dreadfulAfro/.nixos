@@ -83,15 +83,17 @@
 
   # setup pre decryption ssh server
   boot.kernelParams = [
-    "ip=192.168.178.57::192.168.178.1:255.255.255.0::enp1s0:off"
-    "rd.debug" # Enable debug logging
+    "ip=192.168.178.57::192.168.178.1:255.255.255.0:nixos-server:enp1s0:off"
     "console=tty0" # Show console output
   ];
   boot.initrd = {
+    systemd.enable = true;
     availableKernelModules = [ "r8169" ];
+
     network = {
       enable = true;
       flushBeforeStage2 = true;
+
       ssh = {
         enable = true;
         port = 4622;
