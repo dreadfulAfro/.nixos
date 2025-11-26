@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-{  
+{
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -82,7 +82,11 @@
   };
 
   # setup pre decryption ssh server
-  boot.kernelParams = [ "ip=192.168.178.57::192.168.178.1:255.255.255.0::enp1s0:off" ];
+  boot.kernelParams = [
+    "ip=192.168.178.57::192.168.178.1:255.255.255.0::enp1s0:off"
+    "rd.debug" # Enable debug logging
+    "console=tty0" # Show console output
+  ];
   boot.initrd = {
     availableKernelModules = [ "r8169" ];
     network = {
