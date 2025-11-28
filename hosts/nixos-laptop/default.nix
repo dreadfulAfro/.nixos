@@ -49,6 +49,7 @@
     scrcpy
     gnomeExtensions.appindicator
     protonvpn -gui
+    signal-desktop
   ];
 
   # Example for /etc/nixos/configuration.nix
