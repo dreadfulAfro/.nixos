@@ -48,7 +48,7 @@
   environment.systemPackages = with pkgs; [
     scrcpy
     gnomeExtensions.appindicator
-    protonvpn -gui
+    protonvpn-gui
     signal-desktop
   ];
 
