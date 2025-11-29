@@ -15,7 +15,7 @@
     ./permissions.nix
     ../../system/container/kavita.nix
     ../../system/container/paperless-ngx.nix
-    ../../system/docker/mediathekarr.nix
+    ../../system/container/mediathekarr.nix
     ../../system/container/nixarr.nix
     ../../system/container/lazylibrarian.nix
 
