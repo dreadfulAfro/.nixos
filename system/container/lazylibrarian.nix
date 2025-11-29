@@ -29,8 +29,7 @@
     ];
     log-driver = "journald";
     extraOptions = [
-      "--network-alias=lazylibrarian"
-      "--network=lazylibrarian_default"
+      "--network=host"
     ];
   };
   systemd.services."docker-lazylibrarian" = {

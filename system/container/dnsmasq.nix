@@ -33,6 +33,7 @@
               "/transmission.tails/192.168.178.57"
               "/mediathekarr.tails/192.168.178.57"
               "/jellyseerr.tails/192.168.178.57"
+              "/lazylibrarian.tails/192.168.178.57"
             ];
 
             server = [

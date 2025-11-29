@@ -83,6 +83,12 @@
                 reverse_proxy 192.168.178.57:5007
               '';
             };
+            "lazylibrarian.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.178.57:5299
+              '';
+            };
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
