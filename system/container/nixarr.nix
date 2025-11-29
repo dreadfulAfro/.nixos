@@ -76,11 +76,11 @@
             port = 8989;
             stateDir = "/config/.state/sonarr";
           };
-          bazarr = {
-            enable = true;
-            port = 6767;
-            stateDir = "/config/.state/bazarr";
-          };
+#          bazarr = {
+#            enable = true;
+#            port = 6767;
+#            stateDir = "/config/.state/bazarr";
+#          };
           lidarr = {
             enable = true;
             port = 8686;
@@ -91,11 +91,11 @@
             port = 9696;
             stateDir = "/config/.state/prowlarr";
           };
-          readarr = {
-            enable = true;
-            port = 8787;
-            stateDir = "/config/.state/readarr";
-          };
+#          readarr = {
+#            enable = true;
+#            port = 8787;
+#            stateDir = "/config/.state/readarr";
+#          };
           jellyseerr = {
             enable = true;
             port = 5055;
