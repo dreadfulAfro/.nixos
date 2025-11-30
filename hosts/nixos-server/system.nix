@@ -67,7 +67,7 @@
       interface = "enp1s0";
     };
     nameservers = [
-      #"192.168.100.3"
+      "192.168.100.3"
       "192.168.178.1"
     ];
     firewall = {
@@ -84,7 +84,6 @@
   # setup pre decryption ssh server
   boot.kernelParams = [
     "ip=192.168.178.57::192.168.178.1:255.255.255.0:nixos-server:enp1s0:off"
-    "console=tty0" # Show console output
   ];
   boot.initrd = {
     systemd.enable = true;
