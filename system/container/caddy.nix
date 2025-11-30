@@ -74,7 +74,7 @@
             "readarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8787 
+                reverse_proxy 192.168.178.57:8787 
               '';
             };
             "mediathekarr.tails" = {
@@ -106,6 +106,12 @@
                 tls internal
                 reverse_proxy 192.168.100.91:5055
               '';
+            };
+            "bookshelf.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.178.57:7777
+              ''
             };
           };
         };

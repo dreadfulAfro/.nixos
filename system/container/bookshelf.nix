@@ -15,7 +15,7 @@
     image = "ghcr.io/pennydreadful/bookshelf:hardcover";
     environment = {
       "PUID" = "1008";
-      "PGID" = "1000";
+      "PGID" = "169";
       "TZ" = "Europe/Berlin";
     };
     volumes = [

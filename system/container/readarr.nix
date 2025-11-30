@@ -15,7 +15,7 @@
     image = "readarr-custom:latest";
     environment = {
       "PUID" = "1009";
-      "PGID" = "1000";
+      "PGID" = "169";
       "TZ" = "Europe/Berlin";
     };
     volumes = [
