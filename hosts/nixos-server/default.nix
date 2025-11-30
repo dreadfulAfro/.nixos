@@ -18,6 +18,8 @@
     ../../system/container/mediathekarr.nix
     ../../system/container/nixarr.nix
     ../../system/container/lazylibrarian.nix
+    ../../system/container/readarr.nix
+    ../../system/container/bookshelf.nix
 
   ];
 
