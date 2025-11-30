@@ -1,0 +1,14 @@
+services:
+  bookshelf:
+    image: ghcr.io/pennydreadful/bookshelf:hardcover
+    restart: unless-stopped
+    container_name: mediathekarr
+    environment:
+      - PUID=1008
+      - PGID=1000
+      - TZ=Europe/Berlin
+    ports:
+      - "7777:7777"
+    volumes:
+      - "/srv/data1tb/.config/bookshelf:/config"
+      - "/srv/data1tb/data:/data"

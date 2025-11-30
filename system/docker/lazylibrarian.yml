@@ -2,6 +2,7 @@
 services:
   lazylibrarian:
     image: lscr.io/linuxserver/lazylibrarian:latest
+    restart: unless-stopped
     container_name: lazylibrarian
     environment:
       - PUID=1005
@@ -14,4 +15,3 @@ services:
       - /srv/data1tb/data/library/books/:/books #optional
     ports:
       - 5299:5299
-    restart: unless-stopped
