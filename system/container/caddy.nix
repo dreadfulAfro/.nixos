@@ -111,7 +111,7 @@
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.178.57:7777
-              ''
+              '';
             };
           };
         };
