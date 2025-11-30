@@ -23,7 +23,7 @@
       "/srv/data1tb/data:/data:rw"
     ];
     ports = [
-      "7777:7777/tcp"
+      "8787:8787/tcp"
     ];
     log-driver = "journald";
     extraOptions = [

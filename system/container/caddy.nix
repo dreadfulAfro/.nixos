@@ -110,7 +110,7 @@
             "bookshelf.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:7777
+                reverse_proxy 192.168.178.57:8787
               '';
             };
           };
