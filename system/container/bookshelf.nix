@@ -11,7 +11,7 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."mediathekarr" = {
+  virtualisation.oci-containers.containers."bookshelf" = {
     image = "ghcr.io/pennydreadful/bookshelf:hardcover";
     environment = {
       "PUID" = "1008";
