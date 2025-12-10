@@ -86,7 +86,11 @@
     "ip=192.168.178.57::192.168.178.1:255.255.255.0:nixos-server:enp1s0:off"
   ];
   boot.initrd = {
-    systemd.enable = true;
+    systemd = {
+      # Set the shell to greet us with password prompt
+      users.root.shell = "/bin/cryptsetup-askpass";
+      enable = true;
+    };
     availableKernelModules = [ "r8169" ];
 
     network = {
@@ -106,7 +110,10 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvvzzmAtcKOcvRsdB28CAL9PVgeFwf44qiecDEUKY1C nixos-server"
         ];
         # Set the shell to greet us with password prompt
-        shell = "/bin/cryptsetup-askpass";
+        #shell = "/bin/cryptsetup-askpass";
+        extraConfig = ''
+          LogLevel DEBUG3
+        '';
       };
     };
   };
