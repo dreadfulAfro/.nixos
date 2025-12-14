@@ -110,10 +110,10 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvvzzmAtcKOcvRsdB28CAL9PVgeFwf44qiecDEUKY1C angelo@nixos-laptop"
         ];
         # Set the shell to greet us with password prompt
-        shell = "/bin/cryptsetup-askpass";
-        extraConfig = ''
-          LogLevel DEBUG3
-        '';
+        #shell = "/bin/cryptsetup-askpass";
+        #extraConfig = ''
+        #  LogLevel DEBUG3
+        #'';
       };
     };
   };
