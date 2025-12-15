@@ -90,6 +90,7 @@
       enable = true;
       # Set the shell to greet us with password prompt
       #users.root.shell = "/bin/cryptsetup-askpass";
+      users.root.shell = "/lib/systemd/systemd-tty-ask-password-agent";
     };
     availableKernelModules = [ "r8169" ];
 
