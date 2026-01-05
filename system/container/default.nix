@@ -17,6 +17,8 @@
     ./prowlarr.nix
     ./radarr.nix
     #./readarr.nix
+    ./jellyseer.nix
+    ./bazarr.nix
     ./sabnzbd.nix
     ./sonarr.nix
     ./tailscale.nix
