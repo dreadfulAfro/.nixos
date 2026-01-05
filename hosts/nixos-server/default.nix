@@ -9,7 +9,6 @@
   imports = [
     ./hardware-configuration.nix
     ./system.nix
-    ./printserver.nix
     ../../system/core.nix
     ../../system/container/default.nix
 
