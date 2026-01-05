@@ -5,7 +5,7 @@ services:
     container_name: mediathekarr
     environment:
       - PUID=1008
-      - PGID=1000
+      - PGID=169
       - TZ=Europe/Berlin
     ports:
       - "7777:7777"

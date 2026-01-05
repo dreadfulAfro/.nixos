@@ -11,8 +11,8 @@
   };
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # NixOS official package source, using the nixos-25.11 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # additional modules
     nixarr.url = "github:rasmus-kirk/nixarr";
@@ -22,7 +22,7 @@
     # Here, `inputs.nixpkgs` of home-manager is kept consistent with
     # the `inputs.nixpkgs` of the current flake,
     # to avoid problems caused by different versions of nixpkgs.
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 

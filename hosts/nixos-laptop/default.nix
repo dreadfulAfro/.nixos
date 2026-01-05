@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -9,11 +14,12 @@
     ../../system/programs/gnome.nix
     ../../system/programs/fish.nix
     ../../system/programs/firefox.nix
+    ../../system/container/default.nix
   ];
 
   networking.hostName = "nixos-laptop";
   system.stateVersion = "25.05";
-  
+
   # automatically update the system
   system.autoUpgrade = {
     enable = true;
@@ -23,6 +29,11 @@
     ];
     dates = "02:00";
     randomizedDelaySec = "45min";
+  };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
   };
   #hardware.enableAllFirmware = true;
   #hardware.firmware = [ pkgs.linux-firmware ];
@@ -61,7 +72,7 @@
   # additional services
   services = {
     joycond.enable = true;
-  #  safeeyes.enable = true;
+    #  safeeyes.enable = true;
   };
 
 }

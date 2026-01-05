@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -6,20 +11,7 @@
     ./system.nix
     ./printserver.nix
     ../../system/core.nix
-
-    ../../system/container/network.nix
-    ../../system/container/tailscale.nix
-    ../../system/container/dnsmasq.nix
-    ../../system/container/caddy.nix
-
-    ./permissions.nix
-    ../../system/container/kavita.nix
-    ../../system/container/paperless-ngx.nix
-    ../../system/container/mediathekarr.nix
-    ../../system/container/nixarr.nix
-    ../../system/container/lazylibrarian.nix
-  #  ../../system/container/readarr.nix
-    ../../system/container/bookshelf.nix
+    ../../system/container/default.nix
 
   ];
 
@@ -36,6 +28,11 @@
     dates = "02:00";
     randomizedDelaySec = "45min";
   };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   services = {
     openssh = {
@@ -49,7 +46,7 @@
       };
     };
     # ban hosts that cause multiple authentication errors
-    fail2ban.enable = true;
+    #fail2ban.enable = true;
     # slow down ssh connection attempts by indeffinitley delaying connections
     endlessh = {
       enable = true;

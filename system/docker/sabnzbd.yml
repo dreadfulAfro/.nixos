@@ -1,0 +1,15 @@
+services:
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=38
+      - PGID=169
+      - TZ=Etc/UTC
+    volumes:
+      - /srv/data1tb/.config/sabnzbd:/config
+      - /srv/data1tb/incomplete/downloads:/incomplete-downloads #optional
+      - /path/to/downloads:/downloads #optional
+    ports:
+      - 8080:8080
+    restart: unless-stopped
