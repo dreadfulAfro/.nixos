@@ -16,7 +16,7 @@
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:sonarr-striptracks";
       "PGID" = "169";
-      "PUID" = "274";
+      "PUID" = "1108";
       "TZ" = "Europe/Berlin";
     };
     volumes = [

@@ -15,7 +15,7 @@
     image = "lscr.io/linuxserver/sabnzbd:latest";
     environment = {
       "PGID" = "169";
-      "PUID" = "38";
+      "PUID" = "1112";
       "TZ" = "Etc/UTC";
     };
     volumes = [

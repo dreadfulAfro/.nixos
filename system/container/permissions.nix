@@ -30,57 +30,77 @@
     };
     mediathekarr = {
       isNormalUser = true;
-      uid = 1104;
+      uid = 1105;
       group = "media";
     };
     prowlarr = {
       isNormalUser = true;
-      uid = 1105;
+      uid = 1106;
       group = "media";
     };
     radarr = {
       isNormalUser = true;
-      uid = 1106;
-      group = "media";
-    };
-    sonarr = {
-      isNormalUser = true;
-      uid = 1107;
+      uid = 1108;
       group = "media";
     };
     lidarr = {
       isNormalUser = true;
-      uid = 1108;
+      uid = 1109;
       group = "media";
     };
     bookshelf  = {
       isNormalUser = true;
-      uid = 1109;
+      uid = 1110;
       group = "media";
     };
     audiobookrequest  = {
       isNormalUser = true;
-      uid = 1110;
+      uid = 1111;
       group = "media";
     };
     sabnzbd = {
       isNormalUser = true;
-      uid = 1111;
+      uid = 1112;
       group = "media";
     };
     kavita = {
       isNormalUser = true;
-      uid = 1112;
+      uid = 1113;
       group = "media";
     };
     paperless = {
       isNormalUser = true;
-      uid = 1113;
+      uid = 1114;
       group = "media";
     };
     pinchflat = {
       isNormalUser = true;
-      uid = 1114;
+      uid = 1115;
+      group = "media";
+    };
+    lazylibrarian = {
+      isNormalUser = true;
+      uid = 1116;
+      group = "media";
+    };
+    bazarr = {
+      isNormalUser = true;
+      uid = 1117;
+      group = "media";
+    };
+    jellyseer = {
+      isNormalUser = true;
+      uid = 1118;
+      group = "media";
+    };
+    readarr = {
+      isNormalUser = true;
+      uid = 1119;
+      group = "media";
+    };
+    sonarr = {
+      isNormalUser = true;
+      uid = 1120;
       group = "media";
     };
   };

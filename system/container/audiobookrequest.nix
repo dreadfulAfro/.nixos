@@ -15,7 +15,7 @@
     image = "markbeep/audiobookrequest:1";
     environment = {
       "PGID" = "169";
-      "PUID" = "1010";
+      "PUID" = "1110";
       "TZ" = "Europe/Berlin";
     };
     volumes = [

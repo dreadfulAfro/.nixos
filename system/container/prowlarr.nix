@@ -15,7 +15,7 @@
     image = "lscr.io/linuxserver/prowlarr:latest";
     environment = {
       "PGID" = "169";
-      "PUID" = "293";
+      "PUID" = "1106";
       "TZ" = "Europe/Berlin";
     };
     volumes = [

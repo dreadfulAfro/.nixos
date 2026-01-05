@@ -16,7 +16,7 @@
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg";
       "PGID" = "169";
-      "PUID" = "1005";
+      "PUID" = "1116";
       "TZ" = "Etc/UTC";
     };
     volumes = [

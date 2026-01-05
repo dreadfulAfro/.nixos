@@ -16,7 +16,7 @@
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:radarr-striptracks";
       "PGID" = "169";
-      "PUID" = "275";
+      "PUID" = "1108";
       "TZ" = "Europe/Berlin";
     };
     volumes = [

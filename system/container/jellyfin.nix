@@ -15,7 +15,7 @@
     image = "lscr.io/linuxserver/jellyfin:latest";
     environment = {
       "PGID" = "169";
-      "PUID" = "146";
+      "PUID" = "1104";
       "TZ" = "Etc/UTC";
     };
     volumes = [

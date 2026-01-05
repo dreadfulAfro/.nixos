@@ -16,7 +16,7 @@
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:lidarr-flac2mp3";
       "PGID" = "169";
-      "PUID" = "306";
+      "PUID" = "1109";
       "TZ" = "Europe/Berlin";
     };
     volumes = [
