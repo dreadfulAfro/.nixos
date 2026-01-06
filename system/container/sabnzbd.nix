@@ -23,7 +23,7 @@
       "/srv/data1tb/.config/sabnzbd:/config:rw"
     ];
     ports = [
-      "8080:8080/tcp"
+      "6336:6336/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
