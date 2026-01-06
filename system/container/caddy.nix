@@ -92,7 +92,7 @@
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:6336 
+                reverse_proxy 192.168.178.57:8080 
               '';
             };
             "transmission.tails" = {
