@@ -26,49 +26,49 @@
             "paperless.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.11:42001 
+                reverse_proxy 192.168.178.57:42001 
               '';
             };
             "kavita.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.21:42002 
+                reverse_proxy 192.168.178.57:42002 
               '';
             };
             "jellyfin.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8096 
+                reverse_proxy 192.168.178.57:8096 
               '';
             };
             "radarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:7878 
+                reverse_proxy 192.168.178.57:7878 
               '';
             };
             "sonarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8989 
+                reverse_proxy 192.168.178.57:8989 
               '';
             };
             "bazarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:6767 
+                reverse_proxy 192.168.178.57:6767 
               '';
             };
             "lidarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:8686 
+                reverse_proxy 192.168.178.57:8686 
               '';
             };
             "prowlarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:9696 
+                reverse_proxy 192.168.178.57:9696 
               '';
             };
             "readarr.tails" = {
@@ -92,25 +92,31 @@
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:6336 
+                reverse_proxy 192.168.178.57:6336 
               '';
             };
             "transmission.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:9091 
+                reverse_proxy 192.168.178.57:9091 
               '';
             };
             "jellyseerr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.100.91:5055
+                reverse_proxy 192.168.178.57:5055
               '';
             };
             "bookshelf.tails" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy 192.168.178.57:8787
+              '';
+            };
+            "audiobookrequest.tails" = {
+              extraConfig = ''
+                tls internal
+                reverse_proxy 192.168.178.57:8000
               '';
             };
           };
