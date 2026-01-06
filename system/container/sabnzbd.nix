@@ -19,7 +19,7 @@
       "TZ" = "Etc/UTC";
     };
     volumes = [
-      "/rv/data1tb/data/usenet:/data/usenet:rw"
+      "/srv/data1tb/data/usenet:/data/usenet:rw"
       "/srv/data1tb/.config/sabnzbd:/config:rw"
     ];
     ports = [
