@@ -8,11 +8,11 @@
 
   # Create per-service users with shared group
   users.users = {
-    dnsmasq  = {
-      isNormalUser = true;
-      uid = 1101;
-      group = "media";
-    };
+#    dnsmasq  = {
+#      isNormalUser = true;
+#      uid = 1101;
+#      group = "media";
+#    };
     caddy  = {
       isNormalUser = true;
       uid = 1102;
