@@ -13,7 +13,7 @@
     authKeyFile = "/etc/secrets/tailscale/authKey.key";
     openFirewall = true;
     extraUpFlags = [
-      "--accept-dns=true"
+      "--accept-dns=false"
       "--advertise-routes=192.168.100.0/24"
       "--advertise-routes=192.168.178.0/24"
       #      "--advertise-routes=192.168.178.0/24, 192.168.100.0/24" # advertise your LAN subnet to Tailscale
