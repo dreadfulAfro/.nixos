@@ -14,37 +14,6 @@
       "1.1.1.1"
     ];
     search = [ "tails" ];
-    nat = {
-      enable = true;
-      internalInterfaces = [ "ve-+" ]; # NAT all internal interfaces starting with ve- which containers do with private network activated
-      externalInterface = "enp1s0";
-
-      # Lazy IPv6 connectivity for the container
-      enableIPv6 = true;
-#      forwardPorts = [
-#        {
-#          destination = "192.168.100.3:53";
-#          sourcePort = 53;
-#          proto = "udp";
-#        }
-#        {
-#          destination = "192.168.100.3:53";
-#          sourcePort = 53;
-#          proto = "tcp";
-#        }
-        # HTTP/HTTPS to Caddy container
-        #{
-        #  destination = "192.168.100.2:80";
-        #  sourcePort = 80;
-        #  proto = "tcp";
-        #}
-        #{
-        #  destination = "192.168.100.2:443";
-        #  sourcePort = 443;
-        #  proto = "tcp";
-        #}
-#      ];
-    };
     firewall = {
       allowedTCPPorts = [
         53
@@ -75,27 +44,6 @@
         "lo"
       ];
       extraCommands = ''
-        # Allow DNS from Tailnet
-        iptables -A INPUT -p udp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -s 100.64.0.0/10 -j ACCEPT
-
-        # Allow DNS from LAN
-        iptables -A INPUT -p udp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-        iptables -A INPUT -p tcp --dport 53 -s 192.168.178.0/24 -j ACCEPT
-
-        # Redirect DNS queries to the dnsmasq container
-        #iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A PREROUTING -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A PREROUTING -d 100.77.114.79 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-
-         # Redirect DNS queries to the dnsmasq container (for LOCAL/host-originated traffic)
-        #iptables -t nat -A OUTPUT -d 192.168.178.57 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A OUTPUT -d 192.168.178.57 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A OUTPUT -d 100.77.114.79 -p tcp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-        #iptables -t nat -A OUTPUT -d 100.77.114.79 -p udp --dport 53 -j DNAT --to-destination 192.168.100.3:53
-
-
         # Redirect HTTP/HTTPS to Caddy for Tailscale traffic (destined to Tailscale IP)
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
