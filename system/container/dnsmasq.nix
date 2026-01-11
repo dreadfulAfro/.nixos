@@ -5,8 +5,8 @@
     settings = {
       #bind-interfaces = true;
       listen-address = [
-        "127.0.0.1"
         "192.168.178.57"
+        "127.0.0.1"
       ];
       # All .tails domains point to Caddy on the shared bridge
       address = [
@@ -34,7 +34,7 @@
       ];
 
       domain = "tails";
-      expand-hosts = true;
+      #expand-hosts = true;
       local-ttl = 60;
     };
   };
