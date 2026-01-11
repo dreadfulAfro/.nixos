@@ -38,11 +38,13 @@
       allowedUDPPorts = [
         53
       ];
-      trustedInterfaces = [
-        "tailscale0"
-        "enp1s0"
-        "lo"
-      ];
+
+      # Explicitly allow DNS on the LAN interface
+      interfaces.enp1s0 = {
+        allowedTCPPorts = [ 53 ];
+        allowedUDPPorts = [ 53 ];
+      };
+
       extraCommands = ''
         # Redirect HTTP/HTTPS to Caddy for Tailscale traffic (destined to Tailscale IP)
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
