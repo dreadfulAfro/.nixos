@@ -3,7 +3,7 @@
   services.dnsmasq = {
     enable = true;
     settings = {
-      bind-interfaces = true;
+      #bind-interfaces = true;
       listen-address = [
         "127.0.0.1"
         "192.168.178.57"
