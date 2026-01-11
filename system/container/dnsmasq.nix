@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       #bind-interfaces = false;
-      bind-dynamic = true;
+      #bind-dynamic = true;
 
       listen-address = [
         "192.168.178.57"
