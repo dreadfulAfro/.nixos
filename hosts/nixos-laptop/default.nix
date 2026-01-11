@@ -14,7 +14,6 @@
     ../../system/programs/gnome.nix
     ../../system/programs/fish.nix
     ../../system/programs/firefox.nix
-    ../../system/container/default.nix
   ];
 
   networking.hostName = "nixos-laptop";

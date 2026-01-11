@@ -19,6 +19,9 @@
     ];
   };
 
+  # allow fuse for transcoding purpose
+  programs.fuse.userAllowOther = true;
+
   # Virtualisierungskram für VMs
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
