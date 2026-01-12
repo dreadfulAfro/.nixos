@@ -10,6 +10,11 @@
         "192.168.178.57"
         "127.0.0.1"
       ];
+
+      # ENABLE QUERY LOGGING
+      log-queries = true;
+      log-facility = "/var/log/dnsmasq.log";
+
       # All .tails domains point to Caddy on the shared bridge
       address = [
         "/paperless.tails/192.168.178.57" # Changed from 192.168.100.2
