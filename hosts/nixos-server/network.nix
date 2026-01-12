@@ -22,7 +22,7 @@
       interface = "enp1s0";
     };
     nameservers = [
-      "192.168.178.57"
+      "127.0.0.1"
     ];
     search = [ "tails" ];
     firewall = {
