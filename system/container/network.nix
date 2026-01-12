@@ -9,9 +9,20 @@
 
   # NAT mapping for containers
   networking = {
+    interfaces = {
+      enp1s0.ipv4.addresses = [
+        {
+          address = "192.168.178.57";
+          prefixLength = 24;
+        }
+      ];
+    };
+    defaultGateway = {
+      address = "192.168.178.1";
+      interface = "enp1s0";
+    };
     nameservers = [
       "192.168.178.57"
-      "1.1.1.1"
     ];
     search = [ "tails" ];
     firewall = {
@@ -49,7 +60,7 @@
         # CRITICAL: Allow DNS queries BEFORE any other rules
         iptables -I INPUT 1 -p udp --dport 53 -j ACCEPT
         iptables -I INPUT 1 -p tcp --dport 53 -j ACCEPT
-        
+
         # Redirect HTTP/HTTPS to Caddy for Tailscale traffic (destined to Tailscale IP)
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443

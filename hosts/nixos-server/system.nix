@@ -52,36 +52,6 @@
     "d /srv 0755 root root -"
   ];
 
-  # enable static ip address
-  networking = {
-    interfaces = {
-      enp1s0.ipv4.addresses = [
-        {
-          address = "192.168.178.57";
-          prefixLength = 24;
-        }
-      ];
-    };
-    defaultGateway = {
-      address = "192.168.178.1";
-      interface = "enp1s0";
-    };
-    nameservers = [
-      "192.168.178.57"
-      "127.0.0.1"
-      "192.168.178.1"
-    ];
-    firewall = {
-      allowedTCPPorts = [
-        80
-        443
-        53
-      ];
-      allowedUDPPorts = [ 53 ];
-    };
-    #search = [ "tail194e5d.ts.net" ];
-  };
-
   # setup pre decryption ssh server
   boot.kernelParams = [
     "ip=192.168.178.57::192.168.178.1:255.255.255.0:nixos-server:enp1s0:off"
