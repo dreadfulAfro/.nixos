@@ -25,6 +25,12 @@
       "127.0.0.1"
     ];
     search = [ "tails" ];
+    nat = [
+      {
+        outsideInterface = "enp1s0";
+        sourceAddresses = [ "172.17.0.0/16" ]; # Docker bridge
+      }
+    ];
     firewall = {
       allowedTCPPorts = [
         53
