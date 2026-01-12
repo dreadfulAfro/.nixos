@@ -3,13 +3,18 @@
   services.dnsmasq = {
     enable = true;
     settings = {
-      #bind-interfaces = false;
-      bind-dynamic = true;
-
-      listen-address = [
-        "192.168.178.57"
-        "127.0.0.1"
-      ];
+      # DON'T restrict listen-address - let it listen on all interfaces
+      # Remove or comment out listen-address
+      # listen-address = [ ... ];
+      
+      # Instead, use interface specification
+      interface = "enp1s0";
+      
+      # Enable query logging for debugging
+      log-queries = true;
+      # Your domain configuration
+      domain = "tails";
+      local = "/tails/";
 
       # All .tails domains point to Caddy on the shared bridge
       address = [
@@ -36,7 +41,12 @@
         "1.1.1.1"
       ];
 
-      domain = "tails";
+     # Don't read /etc/resolv.conf
+      no-resolv = true;
+      
+      # Bind to interface, not IP
+      bind-interfaces = false;
+      
       #expand-hosts = true;
       local-ttl = 60;
     };
