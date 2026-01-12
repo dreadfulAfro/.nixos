@@ -44,6 +44,6 @@
     "149.112.112.112"
     "1.1.1.1"
   ]; # Quad9 and Cloudflare
-  networking.search = [ "tails" ];
+  #networking.search = [ "tails" ];
 
 }

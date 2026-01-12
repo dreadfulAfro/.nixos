@@ -2,6 +2,7 @@
 {
   services.dnsmasq = {
     enable = true;
+    resolveLocalQueries = false;  # Don't add 127.0.0.1 to /etc/resolv.conf
     settings = {
       # DON'T restrict listen-address - let it listen on all interfaces
       # Remove or comment out listen-address
@@ -10,8 +11,13 @@
       # Instead, use interface specification
       interface = "enp1s0";
       
+      listen-address = [
+        "192.168.178.57"
+        "127.0.0.1"
+      ];
+
       # Enable query logging for debugging
-      log-queries = true;
+      #log-queries = true;
       # Your domain configuration
       domain = "tails";
       local = "/tails/";
@@ -42,11 +48,11 @@
       ];
 
      # Don't read /etc/resolv.conf
-      no-resolv = true;
+     # no-resolv = true;
       
       # Bind to interface, not IP
-      bind-interfaces = false;
-      
+      #bind-interfaces = false;
+
       #expand-hosts = true;
       local-ttl = 60;
     };
