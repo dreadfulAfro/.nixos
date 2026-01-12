@@ -58,8 +58,8 @@
 
       extraCommands = ''
         # CRITICAL: Allow DNS queries BEFORE any other rules
-        iptables -I INPUT 1 -p udp --dport 53 -j ACCEPT
-        iptables -I INPUT 1 -p tcp --dport 53 -j ACCEPT
+        #iptables -I INPUT 1 -p udp --dport 53 -j ACCEPT
+        #iptables -I INPUT 1 -p tcp --dport 53 -j ACCEPT
 
         # Redirect HTTP/HTTPS to Caddy for Tailscale traffic (destined to Tailscale IP)
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
