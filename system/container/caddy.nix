@@ -26,7 +26,7 @@
             "paperless.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy 192.168.178.57:42001 
+                reverse_proxy 192.168.100.11:42001 
               '';
             };
             "kavita.tails" = {
