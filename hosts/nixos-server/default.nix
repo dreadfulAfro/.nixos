@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./system.nix
+    ./network.nix
     ../../system/core.nix
     ../../system/container/default.nix
 

@@ -9,7 +9,6 @@
 #    ./lazylibrarian.nix
     ./lidarr.nix
     ./mediathekarr.nix
-    ./network.nix
 #    ./nixarr.nix
     ./paperless-ngx.nix
     ./permissions.nix
