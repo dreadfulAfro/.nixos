@@ -24,7 +24,7 @@
 
       # All .tails domains point to Caddy on the shared bridge
       address = [
-        "/paperless.tails/192.168.100.11" # Changed from 192.168.100.2
+        "/paperless.tails/192.168.100.2" # Changed from 192.168.100.2
         "/kavita.tails/192.168.178.57"
         "/jellyfin.tails/192.168.178.57"
         "/radarr.tails/192.168.178.57"
