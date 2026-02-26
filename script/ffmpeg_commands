@@ -1,0 +1,21 @@
+
+# list all english and german subtitles with INDEX,FORCED,LANGUAGE
+ffprobe -v error -select_streams s -show_entries stream=index:disposition=forced:stream_tags=language -of csv=p=0  "Wake Up Dead Man A Knives Out Mystery (2025) [imdbid-tt14364480] - [NF][WEBDL-1080p][EAC3 Atmos 5.1][DV HDR10][h265]-WAREZCX.mkv" | egrep "(ger)|(eng)"
+
+# transcode movie (5 Min only)
+ffmpeg -ss 00:29:30 -i "input.mkv" -t 180 -map 0:v:0 -map 0:a:m:language:eng -map 0:a:m:language:ger -map 0:s:m:language:eng -map 0:s:m:language:ger -map -0:d -vf "zscale=t=linear:npl=80,tonemap=hable,zscale=p=bt709:t=bt709:m=bt709,scale=1280:720:flags=lanczos" -r 24000/1001 -c:v libx264 -preset medium -crf 23 -b:v 1000k -maxrate 1000k -bufsize 2000k -x264-params keyint=240:bframes=6:ref=4:me=umh:subme=9:no-fast-pskip=1:b-adapt=2:aq-mode=2 -pix_fmt yuv420p -profile:v high -level 4.0 -c:a aac -b:a 96k -ac 2 -c:s none  -threads 0 Wake_Up_Dead_Man_720p-test8.mp4
+# transcode with removed subtitles
+ffmpeg -i "input.mkv" -map 0:v:0 -map 0:a:m:language:eng -map 0:a:m:language:ger -map -0:s -map -0:d -vf "zscale=t=linear:npl=80,tonemap=hable,zscale=p=bt709:t=bt709:m=bt709,scale=1280:720:flags=lanczos" -r 24000/1001 -c:v libx264 -preset medium -crf 23 -b:v 1000k -maxrate 1000k -bufsize 2000k -x264-params keyint=240:bframes=6:ref=4:me=umh:subme=9:no-fast-pskip=1:b-adapt=2:aq-mode=2 -pix_fmt yuv420p -profile:v high -level 4.0 -c:a aac -b:a 96k -ac 2 -c:s none  -threads 0 Wake_Up_Dead_Man_720p-test8.mp4
+
+
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p bash ffmpeg
+
+
+1.generate cron job
+2.connect to folder
+3.Iterate over movies
+4.check if already transcoded
+5.Get Subtitles
+6.Transcode Movie
+7.change file name

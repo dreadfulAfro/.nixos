@@ -111,11 +111,11 @@
     "d    /srv/data1tb/data                     0755  root              media             -"
     "d    /srv/data1tb/data/usenet              0755  root              media             -"
     "d    /srv/data1tb/data/library             0755  root              media             -"
-    "d    /srv/data1tb/data/                     0755  root              media             -"
-    "d    /srv/data1tb/data/                     0755  root              media             -"
-    "d    /srv/data1tb/data/                     0755  root              media             -"
-    "d    /srv/data1tb/data/                     0755  root              media             -"
-    "d    /srv/data1tb/data/                     0755  root              media             -"
+    "d    /srv/data1tb/data/usenet/movies       0755  root              media             -"
+    "d    /srv/data1tb/data/usenet/shows        0755  root              media             -"
+    "d    /srv/data1tb/data/usenet/music        0755  root              media             -"
+    "d    /srv/data1tb/data/usenet/books        0755  root              media             -"
+    "d    /srv/data1tb/data/                    0755  root              media             -"
 
     "d    /srv/data1tb/.config/dnsmasq          0770  dnsmasq           dnsmasq           -"
     "d    /srv/data1tb/.config/caddy            0770  caddy             caddy             -"
@@ -131,6 +131,9 @@
     "d    /srv/data1tb/.config/sabnzbd          0770  sabnzbd           sabnzbd           -"
     "d    /srv/data1tb/.config/kavita           0770  kavita            kavita            -"
     "d    /srv/data1tb/.config/paperless        0770  paperless         paperless         -"
+    "d    /srv/data1tb/.config/bazarr           0770  bazarr            bazarr         -"
+    "d    /srv/data1tb/.config/pinchflat        0770  pinchflat         pinchflat         -"
+    "d    /srv/data1tb/.config/pinchflat        0770  pinchflat         pinchflat         -"
     "d    /srv/data1tb/.config/pinchflat        0770  pinchflat         pinchflat         -"
   ];
 }

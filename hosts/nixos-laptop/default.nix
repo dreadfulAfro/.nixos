@@ -11,7 +11,7 @@
     ./network.nix
     ./system.nix
     ../../system/core.nix
-    ../../system/programs/gnome.nix
+    ../../system/programs/cosmic.nix
     ../../system/programs/fish.nix
     ../../system/programs/firefox.nix
   ];
@@ -59,6 +59,8 @@
     scrcpy
     protonvpn-gui
     signal-desktop
+    texlive.combined.scheme-full  # or a smaller scheme
+    logseq
   ];
 
   # Example for /etc/nixos/configuration.nix
@@ -72,6 +74,7 @@
   services = {
     joycond.enable = true;
     #  safeeyes.enable = true;
+    flatpak.enable = true;
   };
 
 }
