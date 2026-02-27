@@ -1,0 +1,80 @@
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+
+{
+  imports = [
+   # ./hardware-configuration.nix
+    ./network.nix
+    ./system.nix
+    ../../system/core.nix
+    ../../system/programs/cosmic.nix
+    ../../system/programs/fish.nix
+    ../../system/programs/firefox.nix
+  ];
+
+  networking.hostName = "nixos-laptop";
+  system.stateVersion = "25.05";
+
+  # automatically update the system
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--print-build-logs"
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  #hardware.enableAllFirmware = true;
+  #hardware.firmware = [ pkgs.linux-firmware ];
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  xdg = {
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+    };
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Install additional software
+  environment.systemPackages = with pkgs; [
+    scrcpy
+    protonvpn-gui
+    signal-desktop
+    texlive.combined.scheme-full  # or a smaller scheme
+    logseq
+  ];
+
+  # Example for /etc/nixos/configuration.nix
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  # additional services
+  services = {
+    joycond.enable = true;
+    #  safeeyes.enable = true;
+    flatpak.enable = true;
+  };
+
+}

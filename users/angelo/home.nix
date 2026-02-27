@@ -9,8 +9,10 @@
 
   programs.git = {
     enable = true;
-    userEmail = "lukasangelo18@gmail.com";
-    userName = "Lukas-Angelo Meier";
+    settings.user = {
+      email = "lukasangelo18@gmail.com";
+      name = "Lukas-Angelo Meier";
+    };
   };
 
   home.packages = with pkgs; [
@@ -37,7 +39,7 @@
     remmina.enable = true;
     # enable safe eyes
     safeeyes ={
-      enable = true;
+      enable = false;
     };
     snixembed = {
       enable = true;
