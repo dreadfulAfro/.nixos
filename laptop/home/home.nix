@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   imports = [
     ./programs/vscode.nix
     ./programs/joplin.nix
-    ./programs/syncthing.nix
   ];
 
    # Home Manager needs a bit of information about you and the

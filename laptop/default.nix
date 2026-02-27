@@ -10,10 +10,11 @@
    # ./hardware-configuration.nix
     ./network.nix
     ./system.nix
-    ../../system/core.nix
-    ../../system/programs/cosmic.nix
-    ../../system/programs/fish.nix
-    ../../system/programs/firefox.nix
+    ./programs/core.nix
+    ./programs/cosmic.nix
+    ./programs/fish.nix
+    ./programs/firefox.nix
+    ./programs/syncthing.nix
   ];
 
   networking.hostName = "nixos-laptop";
@@ -73,8 +74,7 @@
   # additional services
   services = {
     joycond.enable = true;
-    #  safeeyes.enable = true;
+      #  safeeyes.enable = true;
     flatpak.enable = true;
-  };
-
+  };  
 }
