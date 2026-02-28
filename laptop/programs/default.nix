@@ -7,7 +7,6 @@
 
 {
   imports = [
-    ./core.nix
     ./cosmic.nix
     ./fish.nix
     ./firefox.nix

@@ -6,6 +6,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Enable networking
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
+
   programs.ssh = {
     extraConfig = "
       Host nixos-server-decr
@@ -27,14 +31,19 @@
 
   services.tailscale.enable = true;
   #networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
-  networking.firewall = rec {
+  networking.firewall = {
     allowedTCPPortRanges = [
       {
         from = 1714;
         to = 1764;
       }
     ]; # for gsconnect
-    allowedUDPPortRanges = allowedTCPPortRanges; # for gsconnect
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ]; # for gsconnect
   };
 
   #networking.extraHosts = "192.168.178.57 paperless.local jellyfin.local kavita.local";

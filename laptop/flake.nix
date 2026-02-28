@@ -24,7 +24,9 @@
         specialArgs = { inherit inputs; username = "angelo"; };
         modules = [
           ./hardware-configuration.nix
-          ./core.nix
+          ./settings/core.nix
+          ./settings/hardware-configuration.nix
+          ./programs/default.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

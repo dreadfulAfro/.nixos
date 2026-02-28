@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   username,
@@ -11,7 +12,6 @@
     # ./hardware-configuration.nix
     ./network.nix
     ./system.nix
-    ./programs/default.nix
     #    ./programs/core.nix
     #    ./programs/cosmic.nix
     #    ./programs/fish.nix
