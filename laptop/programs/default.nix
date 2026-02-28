@@ -24,14 +24,13 @@
     texlive.combined.scheme-full  # or a smaller scheme
     logseq
     valent
+    remmina
   ];
 
   # additional services
   services = {
     flatpak.enable = true;
     safeeyes.enable = false;
-    # For Virtualization and rdp
-    remmina.enable = true;
   };  
 
 }
