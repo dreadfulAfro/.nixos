@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -31,6 +29,9 @@
   # additional services
   services = {
     flatpak.enable = true;
+    safeeyes.enable = false;
+    # For Virtualization and rdp
+    remmina.enable = true;
   };  
 
 }

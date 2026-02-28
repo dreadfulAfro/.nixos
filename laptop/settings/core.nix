@@ -9,14 +9,8 @@
 
 {
   imports = [
-    # ./hardware-configuration.nix
     ./network.nix
     ./system.nix
-    #    ./programs/core.nix
-    #    ./programs/cosmic.nix
-    #    ./programs/fish.nix
-    #    ./programs/firefox.nix
-    #    ./programs/syncthing.nix
   ];
 
   networking.hostName = "nixos-laptop";

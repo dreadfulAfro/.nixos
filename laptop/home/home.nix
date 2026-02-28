@@ -40,27 +40,11 @@
     #microsoft-edge
     tor-browser
     dconf2nix
-    gnome-network-displays
-    miraclecast
     nixfmt-rfc-style
     teams-for-linux
     obsidian
   ];
 
   services = {
-    # For Virtualization and rdp
-    remmina.enable = true;
-    # enable safe eyes
-    safeeyes ={
-      enable = false;
-    };
-    snixembed = {
-      enable = true;
-
-      beforeUnits = [
-        # https://github.com/slgobinath/SafeEyes/wiki/How-to-install-backend-for-Safe-Eyes-tray-icon
-        "safeeyes.service"
-      ];
-    };
   };
 }
