@@ -40,7 +40,7 @@
     #microsoft-edge
     tor-browser
     dconf2nix
-    nixfmt-rfc-style
+    nixfmt
     teams-for-linux
     obsidian
   ];
