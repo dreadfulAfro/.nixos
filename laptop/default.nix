@@ -62,6 +62,7 @@
     signal-desktop
     texlive.combined.scheme-full  # or a smaller scheme
     logseq
+    valent
   ];
 
   # Example for /etc/nixos/configuration.nix
