@@ -10,6 +10,7 @@
       ms-vscode.cpptools-extension-pack
       ms-python.python
       ms-python.debugpy
+      mkhl.direnv
     ];
   };
 }
