@@ -12,6 +12,8 @@
       ms-python.debugpy
       mkhl.direnv
       arrterian.nix-env-selector
+      rust-lang.rust-analyzer
+      vscjava.vscode-java-pack
     ];
   };
 }
