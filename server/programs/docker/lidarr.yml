@@ -1,0 +1,15 @@
+services:
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=306
+      - PGID=169
+      - TZ=Europe/Berlin
+      - DOCKER_MODS=linuxserver/mods:lidarr-flac2mp3
+    volumes:
+      - /srv/data1tb/.config/lidarr:/config
+      - /srv/data1tb/data:/data
+    ports:
+      - 8686:8686
+    restart: unless-stopped

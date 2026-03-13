@@ -1,0 +1,15 @@
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=275
+      - PGID=169
+      - TZ=Europe/Berlin
+      - DOCKER_MODS=linuxserver/mods:radarr-striptracks
+    volumes:
+      - /srv/data1tb/.config/radarr:/config
+      - /srv/data1tb/data:/data
+    ports:
+      - 7878:7878
+    restart: unless-stopped

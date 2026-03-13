@@ -1,0 +1,17 @@
+services:
+  readarr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: readarr-custom:latest
+    container_name: readarr
+    ports:
+      - "8787:8787"
+    environment:
+      - PUID=1009
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - "/srv/data1tb/.config/readarr:/config"
+      - "/srv/data1tb/data:/data"
+    restart: unless-stopped
