@@ -34,6 +34,8 @@
   services = {
     flatpak.enable = true;
     safeeyes.enable = false;
-  };  
+  };
 
+  # to autoload my programming environments
+  programs.direnv.enable = true;
 }
