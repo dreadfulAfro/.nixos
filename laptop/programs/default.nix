@@ -5,7 +5,8 @@
 
 {
   imports = [
-    ./cosmic.nix
+    ./gnome.nix
+    #./cosmic.nix
     ./fish.nix
     ./firefox.nix
     ./syncthing.nix
@@ -23,8 +24,10 @@
     signal-desktop
     texlive.combined.scheme-full  # or a smaller scheme
     logseq
-    valent
+    #valent
     remmina
+    element-desktop
+    fractal
   ];
 
   # additional services

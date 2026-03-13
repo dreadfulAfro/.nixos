@@ -1,12 +1,23 @@
 { pkgs, ... }:
 {
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services = {
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
+  # Auto-login to the user "angelo" (change this to your username)
+  services.displayManager.autoLogin.enable  = true;
+  services.displayManager.autoLogin.user = "angelo";
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
+    gnomeExtensions.gsconnect
+    gnomeExtensions.just-perfection
   ];
+
+  # enable gnome-settings-daemon for better integration with gnome-shell
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   environment.gnome.excludePackages = with pkgs; [
     atomix # puzzle game
