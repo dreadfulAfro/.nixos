@@ -11,6 +11,7 @@
       ms-python.python
       ms-python.debugpy
       mkhl.direnv
+      arrterian.nix-env-selector
     ];
   };
 }
