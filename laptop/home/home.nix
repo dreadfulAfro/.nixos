@@ -5,7 +5,7 @@
     ./programs/joplin.nix
   ];
 
-   # Home Manager needs a bit of information about you and the
+  # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {
     inherit username;
@@ -30,7 +30,7 @@
     git = {
       enable = true;
       settings.user = {
-        email = "lukasangelo18@gmail.com";
+        email = "github.curse332@passmail.com";
         name = "Lukas-Angelo Meier";
       };
     };
