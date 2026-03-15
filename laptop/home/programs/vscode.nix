@@ -11,15 +11,6 @@ in
   programs.vscode = {
     enable = true;
     #mutableExtensionsDir = true;
-    userSettings = {
-      "window.autoDetectColorScheme" = true;
-      "workbench.colorTheme" = "Default Dark Modern";
-      "workbench.preferedLightColorTheme" = "Default Light Modern";
-      "workbench.preferedDarkColorTheme" = "Default Dark Modern";
-      "editor.formatOnSave" = true;
-      "editor.tabSize" = 4;
-      "editor.insertSpaces" = true;
-    };
 
     profiles = {
 
@@ -68,6 +59,15 @@ in
           common
           ++ (with pkgs.vscode-extensions; [
           ]);
+        userSettings = {
+          "window.autoDetectColorScheme" = true;
+          "workbench.colorTheme" = "Default Dark Modern";
+          "workbench.preferedLightColorTheme" = "Default Light Modern";
+          "workbench.preferedDarkColorTheme" = "Default Dark Modern";
+          "editor.formatOnSave" = true;
+          "editor.tabSize" = 4;
+          "editor.insertSpaces" = true;
+        };
       };
 
     };

@@ -22,7 +22,7 @@
     scrcpy
     protonvpn-gui
     signal-desktop
-    texlive.combined.scheme-full  # or a smaller scheme
+    texlive.combined.scheme-full # or a smaller scheme
     logseq
     #valent
     remmina
@@ -36,6 +36,4 @@
     safeeyes.enable = false;
   };
 
-  # to autoload my programming environments
-  programs.direnv.enable = true;
 }
