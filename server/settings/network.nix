@@ -1,10 +1,37 @@
 { hostname, pkgs, ... }:
 {
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
+
   # Make sure Docker is running and can manage iptables/ip-masq
   virtualisation.docker = {
     enable = true;
     # Ensure docker manages iptables / masquerade for its default bridge if you still use it
     extraOptions = "--iptables=true --ip-masq=true";
+  };
+
+  services = {
+    openssh = {
+      enable = true;
+      ports = [ 4623 ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+        AllowUsers = [ "admin" ];
+      };
+    };
+    # ban hosts that cause multiple authentication errors
+    #fail2ban.enable = true;
+    # slow down ssh connection attempts by indeffinitley delaying connections
+    endlessh = {
+      enable = true;
+      port = 22;
+      openFirewall = true;
+    };
+
   };
 
   # NAT mapping for containers

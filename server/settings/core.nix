@@ -3,25 +3,50 @@
   lib,
   username,
   ...
-}: {
+}:
+{
+  # ===================== Basic Nix Settings ================================
+  system.stateVersion = "25.05";
+  networking.hostName = "nixos-server";
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  # Enable the Flakes feature and the accompanying new nix command-line tool
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  # create symlink from ~/.nixos to /etc/nixos so i can use nixos-rebuild switch without arguments
+  environment.etc."nixos".source = "/home/${username}/.nixos";
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--print-build-logs"
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # ============================= User related =============================
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
+  # Enable autologin for the user
+  services.getty.autologinUser = "admin";
 
-    # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # create symlink from ~/.nixos to /etc/nixos so i can use nixos-rebuild switch without arguments
-  environment.etc."nixos".source = "/home/${username}/.nixos";
-
+  # ======================== Basic System Settings ==========================
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -48,35 +73,16 @@
   # Configure console keymap
   console.keyMap = "de-latin1-nodeadkeys";
 
-  # do garbage collection weekly to keep disk usage low
-  nix.gc = {
-    automatic = lib.mkDefault true;
-    dates = lib.mkDefault "weekly";
-    options = lib.mkDefault "--delete-older-than 7d";
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+      brlaser
+      cups-kyocera
+      cups-kyodialog
+    ];
   };
-
-  # Enable CUPS to print documents.
-  # discover ipp network printer
-  #services.avahi = {
-  #enable = true;
-  #nssmdns4 = true;
-  #openFirewall = true;
-  #};
-
-services.printing = {
-  enable = true;
-  drivers = with pkgs; [
-    cups-filters
-    cups-browsed
-    brlaser
-    cups-kyocera
-    cups-kyodialog
-  ];
-};
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -94,12 +100,4 @@ services.printing = {
     #media-session.enable = true;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    btop
-  ];
 }
