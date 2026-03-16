@@ -8,10 +8,10 @@
 {
   imports = [
     ./system.nix
+    ./hardware-configuration.nix
     ./network.nix
-    ../system/core.nix
+    ./core.nix
     ../programs/container/default.nix
-
   ];
 
   system.stateVersion = "25.05";

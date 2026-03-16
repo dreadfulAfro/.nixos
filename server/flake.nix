@@ -18,16 +18,20 @@
     {
       nixosConfigurations.nixos-server = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; username = "admin"; };
+        specialArgs = {
+          inherit inputs;
+          username = "admin";
+        };
         modules = [
           ./settings/default.nix
-          ./settings/hardware-configuration.nix
-          ./programs/default.nix
+          ./nixos.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { username = "admin"; };
+            home-manager.extraSpecialArgs = {
+              username = "admin";
+            };
             home-manager.users.admin = import ./home/home.nix;
           }
         ];
