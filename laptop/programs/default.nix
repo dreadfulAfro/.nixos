@@ -28,7 +28,7 @@
     remmina
     element-desktop
     fractal
-    stremio-shell
+    #stremio
   ];
 
   # additional services

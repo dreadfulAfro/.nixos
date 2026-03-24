@@ -13,7 +13,13 @@ in
     #mutableExtensionsDir = true;
 
     profiles = {
-
+      latex = {
+        extensions =
+          common
+          ++ (with pkgs.vscode-extensions; [
+            james-yu.latex-workshop
+          ]);
+      };
       cpp = {
         extensions =
           common
