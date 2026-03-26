@@ -20,11 +20,7 @@ in
             james-yu.latex-workshop
           ]);
         userSettings = {
-          "latex-workshop.latexindent.path" = "latexindent";
-          "latex-workshop.latexindent.args" = [
-            "-l"
-            "-m"
-          ];
+          "latex-workshop.formatting.latex" = "latexindent";
         };
       };
 
