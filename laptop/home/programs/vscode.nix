@@ -4,7 +4,7 @@ let
     jnoortheen.nix-ide
     arrterian.nix-env-selector
     mkhl.direnv
-    vscodevim.vim
+    #vscodevim.vim
   ];
 in
 {
@@ -19,7 +19,15 @@ in
           ++ (with pkgs.vscode-extensions; [
             james-yu.latex-workshop
           ]);
+        userSettings = {
+          "latex-workshop.latexindent.path" = "latexindent";
+          "latex-workshop.latexindent.args" = [
+            "-l"
+            "-m"
+          ];
+        };
       };
+
       cpp = {
         extensions =
           common
@@ -33,7 +41,6 @@ in
         extensions =
           common
           ++ (with pkgs.vscode-extensions; [
-            vscjava.vscode-java-pack
             redhat.java
             vscjava.vscode-java-debug
             vscjava.vscode-java-test
@@ -68,8 +75,8 @@ in
         userSettings = {
           "window.autoDetectColorScheme" = true;
           "workbench.colorTheme" = "Default Dark Modern";
-          "workbench.preferedLightColorTheme" = "Default Light Modern";
-          "workbench.preferedDarkColorTheme" = "Default Dark Modern";
+          "workbench.preferredLightColorTheme" = "Default Light Modern";
+          "workbench.preferredDarkColorTheme" = "Default Dark Modern";
           "editor.formatOnSave" = true;
           "editor.tabSize" = 4;
           "editor.insertSpaces" = true;

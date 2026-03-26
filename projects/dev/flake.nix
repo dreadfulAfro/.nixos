@@ -3,59 +3,68 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs }:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-  in {
+  outputs =
+    { self, nixpkgs }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
 
-    devShells.${system} = {
+      devShells.${system} = {
 
-      python = pkgs.mkShell {
-        packages = with pkgs; [
-          python3
-          python3Packages.pip
-          python3Packages.virtualenv
-          python3Packages.black
-          python3Packages.ipython
-        ];
-      };
+        latex = pkgs.mkShell {
+          packages = with pkgs; [
+            texlive.combined.scheme-full # or a smaller scheme
+            perl
+          ];
+        };
 
-      java = pkgs.mkShell {
-        packages = with pkgs; [
-          jdk
-          maven
-          gradle
-        ];
-      };
+        python = pkgs.mkShell {
+          packages = with pkgs; [
+            python3
+            python3Packages.pip
+            python3Packages.virtualenv
+            python3Packages.black
+            python3Packages.ipython
+          ];
+        };
 
-      cpp = pkgs.mkShell {
-        packages = with pkgs; [
-          gcc
-          clang
-          gdb
-          cmake
-          pkg-config
-        ];
-      };
+        java = pkgs.mkShell {
+          packages = with pkgs; [
+            jdk
+            maven
+            gradle
+          ];
+        };
 
-      rust = pkgs.mkShell {
-        packages = with pkgs; [
-          rustc
-          cargo
-          rust-analyzer
-        ];
-      };
+        cpp = pkgs.mkShell {
+          packages = with pkgs; [
+            gcc
+            clang
+            gdb
+            cmake
+            pkg-config
+          ];
+        };
 
-      node = pkgs.mkShell {
-        packages = with pkgs; [
-          nodejs
-          nodePackages.npm
-          nodePackages.pnpm
-        ];
+        rust = pkgs.mkShell {
+          packages = with pkgs; [
+            rustc
+            cargo
+            rust-analyzer
+          ];
+        };
+
+        node = pkgs.mkShell {
+          packages = with pkgs; [
+            nodejs
+            nodePackages.npm
+            nodePackages.pnpm
+          ];
+        };
+
       };
 
     };
-
-  };
 }

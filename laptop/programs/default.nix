@@ -22,7 +22,6 @@
     scrcpy
     protonvpn-gui
     signal-desktop
-    texlive.combined.scheme-full # or a smaller scheme
     logseq
     #valent
     remmina
