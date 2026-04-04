@@ -11,6 +11,7 @@
     ./firefox.nix
     ./syncthing.nix
     ./steam.nix
+    ./netdata.nix
   ];
 
   # Install additional software
