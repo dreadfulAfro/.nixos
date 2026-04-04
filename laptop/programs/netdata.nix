@@ -1,5 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "netdata"
+  ];
+  services.netdata.package = pkgs.netdata.override {
+    withCloudUi = true;
+  };
+
   services.netdata = {
     enable = true;
     config.global = {
