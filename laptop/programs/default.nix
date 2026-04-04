@@ -11,7 +11,7 @@
     ./firefox.nix
     ./syncthing.nix
     ./steam.nix
-    ./netdata.nix
+#    ./netdata.nix
   ];
 
   # Install additional software
@@ -29,6 +29,7 @@
     element-desktop
     fractal
     #stremio
+    speedtest-cli
   ];
 
   # additional services

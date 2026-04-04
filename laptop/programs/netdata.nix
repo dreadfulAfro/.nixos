@@ -1,14 +1,15 @@
 { pkgs, config, ... }:
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "netdata"
-  ];
-  services.netdata.package = pkgs.netdata.override {
-    withCloudUi = true;
-  };
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [ "netdata" ];
 
   services.netdata = {
     enable = true;
+
+    package = pkgs.netdata.override {
+      withCloudUi = true;
+    };
+
     config.global = {
       "memory mode" = "ram";
       "debug log" = "none";
@@ -16,5 +17,4 @@
       "error log" = "syslog";
     };
   };
-  networking.firewall.allowedTCPPorts = [ 19999 ];
 }
