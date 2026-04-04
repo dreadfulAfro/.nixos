@@ -12,6 +12,7 @@
     ./syncthing.nix
     ./steam.nix
 #    ./netdata.nix
+    ./systemd-timers/speedtest.nix
   ];
 
   # Install additional software
