@@ -20,6 +20,6 @@
     ./sabnzbd.nix
     ./sonarr.nix
     ./tailscale.nix
-    ./wud.nix
+   # ./wud.nix
   ];
 }
