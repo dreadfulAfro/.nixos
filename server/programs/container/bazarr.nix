@@ -12,7 +12,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."bazarr" = {
-    image = "linuxserver/bazarr:latest";
+    image = "lscr.io/linuxserver/bazarr:latest";
     pull = "always";
     environment = {
       "PGID" = "169";

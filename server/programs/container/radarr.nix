@@ -12,7 +12,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."radarr" = {
-    image = "linuxserver/radarr:latest";
+    image = "lscr.io/linuxserver/radarr:latest";
     pull = "always";
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:radarr-striptracks";
