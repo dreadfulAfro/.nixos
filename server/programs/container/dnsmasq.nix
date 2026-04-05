@@ -40,6 +40,7 @@
         "/lazylibrarian.tails/192.168.178.57"
         "/bookshelf.tails/192.168.178.57"
         "/audiobookrequest.tails/192.168.178.57"
+        "/whatsupdocker.tails/192.168.178.57"
       ];
 
       server = [

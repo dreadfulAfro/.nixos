@@ -119,6 +119,12 @@
                 reverse_proxy 192.168.178.57:8000
               '';
             };
+            "whatsupdocker.tails" = {
+              extraConfig =''
+                tls internal
+                reverse_proxy 192.168.178.57:3000
+              '';
+            };
           };
         };
 
