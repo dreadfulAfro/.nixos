@@ -12,7 +12,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."sonarr" = {
-    image = "lscr.io/linuxserver/sonarr:latest";
+    image = "linuxserver/sonarr:latest";
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:sonarr-striptracks";
       "PGID" = "169";

@@ -12,7 +12,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."sabnzbd" = {
-    image = "lscr.io/linuxserver/sabnzbd:latest";
+    image = "linuxserver/sabnzbd:latest";
     environment = {
       "PGID" = "169";
       "PUID" = "1112";

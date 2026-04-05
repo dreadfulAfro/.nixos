@@ -12,7 +12,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."prowlarr" = {
-    image = "lscr.io/linuxserver/prowlarr:latest";
+    image = "linuxserver/prowlarr:latest";
     environment = {
       "PGID" = "169";
       "PUID" = "1106";
