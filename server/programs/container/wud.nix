@@ -20,7 +20,7 @@
     ];
 
     environment = {
-      WUD_WATCHER_LOCAL_DOCKER = "true";
+      WUD_WATCHER_LOCAL_WATCHALL = "true";
       WUD_WATCHER_LOCAL_SOCKET = "/var/run/docker.sock";
     };
 
