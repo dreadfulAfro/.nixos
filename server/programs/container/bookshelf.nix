@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."bookshelf" = {
     image = "ghcr.io/pennydreadful/bookshelf:hardcover";
+    pull = "always";
     environment = {
       "PGID" = "169";
       "PUID" = "1110";
