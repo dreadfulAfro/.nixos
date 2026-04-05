@@ -8,7 +8,7 @@
   };
   virtualisation.oci-containers.backend = "docker";
 
-  virtualisation.oci-containers.containers.wud = {
+  virtualisation.oci-containers.containers."wud" = {
     image = "getwud/wud:latest";
 
     ports = [
