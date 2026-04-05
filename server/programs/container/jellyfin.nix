@@ -10,25 +10,6 @@
   };
   virtualisation.oci-containers.backend = "docker";
 
-  virtualisation.oci-containers.containers."wud" = {
-    image = "getwud/wud:latest";
-
-    ports = [
-      "3000:3000"
-    ];
-
-    volumes = [
-      "/var/run/docker.sock:/var/run/docker.sock"
-    ];
-
-    environment = {
-      WUD_WATCHER_LOCAL_DOCKER = "true";
-    };
-
-    extraOptions = [
-      "--name=wud"
-    ];
-  };
   # Containers
   virtualisation.oci-containers.containers."jellyfin" = {
     image = "lscr.io/linuxserver/jellyfin:latest";
