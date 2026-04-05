@@ -12,7 +12,7 @@
       interface = "enp1s0";
       
       listen-address = [
-        "192.168.178.57"
+        "${serverIP}"
         "127.0.0.1"
       ];
 
@@ -25,22 +25,22 @@
       # All .tails domains point to Caddy on the shared bridge
       address = [
         "/paperless.tails/${serverIP}" # Changed from 192.168.100.2
-        "/kavita.tails/192.168.178.57"
-        "/jellyfin.tails/192.168.178.57"
-        "/radarr.tails/192.168.178.57"
-        "/sonarr.tails/192.168.178.57"
-        "/bazarr.tails/192.168.178.57"
-        "/lidarr.tails/192.168.178.57"
-        "/prowlarr.tails/192.168.178.57"
-        "/readarr.tails/192.168.178.57"
-        "/sabnzbd.tails/192.168.178.57"
-        "/transmission.tails/192.168.178.57"
-        "/mediathekarr.tails/192.168.178.57"
-        "/jellyseerr.tails/192.168.178.57"
-        "/lazylibrarian.tails/192.168.178.57"
-        "/bookshelf.tails/192.168.178.57"
-        "/audiobookrequest.tails/192.168.178.57"
-        "/whatsupdocker.tails/192.168.178.57"
+        "/kavita.tails/${serverIP}"
+        "/jellyfin.tails/${serverIP}"
+        "/radarr.tails/${serverIP}"
+        "/sonarr.tails/${serverIP}"
+        "/bazarr.tails/${serverIP}"
+        "/lidarr.tails/${serverIP}"
+        "/prowlarr.tails/${serverIP}"
+        "/readarr.tails/${serverIP}"
+        "/sabnzbd.tails/${serverIP}"
+        "/transmission.tails/${serverIP}"
+        "/mediathekarr.tails/${serverIP}"
+        "/jellyseerr.tails/${serverIP}"
+        "/lazylibrarian.tails/${serverIP}"
+        "/bookshelf.tails/${serverIP}"
+        "/audiobookrequest.tails/${serverIP}"
+        "/whatsupdocker.tails/${serverIP}"
       ];
 
       server = [

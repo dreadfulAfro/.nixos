@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }:
+{ hostname, pkgs, serverIP, ... }:
 {
 
   # Enable networking
@@ -39,7 +39,7 @@
     interfaces = {
       enp1s0.ipv4.addresses = [
         {
-          address = "192.168.178.57";
+          address = "${serverIP}";
           prefixLength = 24;
         }
       ];
@@ -49,7 +49,7 @@
       interface = "enp1s0";
     };
     nameservers = [
-      "192.168.178.57"
+      "${serverIP}"
       "127.0.0.1"
     ];
     search = [ "tails" ];
