@@ -6,6 +6,7 @@
     enable = true;
     autoPrune.enable = true;
   };
+  virtualisation.oci-containers.backend = "docker";
 
   virtualisation.oci-containers.containers.wud = {
     image = "getwud/wud:latest";
