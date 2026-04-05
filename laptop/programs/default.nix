@@ -12,7 +12,7 @@
     ./syncthing.nix
     ./steam.nix
 #    ./netdata.nix
-    ./systemd-timers/speedtest.nix
+#    ./systemd-timers/speedtest.nix
   ];
 
   # Install additional software
@@ -30,7 +30,7 @@
     element-desktop
     fractal
     #stremio
-    speedtest-cli
+    ookla-speedtest
   ];
 
   # additional services

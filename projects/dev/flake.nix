@@ -27,6 +27,8 @@
             python3Packages.virtualenv
             python3Packages.black
             python3Packages.ipython
+            python3Packages.pandas
+            python3Packages.matplotlib
           ];
         };
 

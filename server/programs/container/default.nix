@@ -20,5 +20,6 @@
     ./sabnzbd.nix
     ./sonarr.nix
     ./tailscale.nix
+    ./whatsupdocker.nix
   ];
 }

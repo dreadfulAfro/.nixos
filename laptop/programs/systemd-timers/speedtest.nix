@@ -13,16 +13,17 @@
 
   systemd.services."speedtest" = {
     description = "Periodic Internet Speedtest";
+    
     script = ''
-      LOGFILE="/home/youruser/speedtest.csv"
+      LOGFILE="/home/angelo/speedtest.csv"
 
-      timestamp=$(date --iso-8601=seconds)
+      timestamp=$(date +%R)
 
-      ${pkgs.speedtest}/bin/speedtest --csv  >> "$LOGFILE"
+      echo "$timestamp,$(${pkgs.ookla-speedtest}/bin/speedtest --format=csv 2>/dev/null)" >> "$LOGFILE"
     '';
     serviceConfig = {
       Type = "oneshot";
-      User = "root";
+      User = "angelo";
     };
   };
 }
