@@ -1,0 +1,67 @@
+Fraunhofer IEM
+Fraunhofer-Gesellschaft
+Fraunhofer-Institut fir Entwurfstechnik Mechatronik 1EM
+Zukunftsmeile 1
+33102 Paderborn
+Telefon +49 5251 5465-101 | Fax -102
+www.iem.fraunhofer.de
+
+Zeugnis
+Herr Meier, geboren am 4. Mai 1993, war vom 1. Januar 2019 bis zum 31. Dezember 2024 in der
+Abteilung Sichere loT-Systeme als studentische Hilfskraft an unserem Institut tatig.
+Das Fraunhofer IEM ist Teil der Fraunhofer-Gesellschaft, der weltweit führenden Organisation für angewandte For-
+schung, und entwickelt überzeugende Lösungen fiir das Engineering der Zukunft — von der Geschäftsidee uber die
+Umsetzung bis zum Markterfolg. Im Fokus stehen intelligente Produkte, Produktionssysteme, Dienstleistungen und
+Softwareanwendungen. Rund 250 Wissenschaftlerinnen und Wissenschaftler arbeiten interdisziplinar an neuen
+Methoden, Werkzeugen sowie Prozessen und setzen innovative Technologien ein, um die Wettbewerbsfahigkeit
+von Kunden und Partnern langfristig zu sichern.
+Im Rahmen seiner Tätigkeit als wissenschaftliche Hilfskraft war Herr Meier in unterschiedlichen Projekten aktiv. In
+diesen Projekten war er mit den folgenden Aufgaben betraut:
+Forschungsprototyp fur die Bedrohungsanalyse
+Herr Meier arbeitete an der Entwicklung eines Forschungsprototypen zur automatischen Identifikation von
+Bedrohungen auf Basis von Datenflussdiagrammen. Er entwickelte ein Metamodell zur Beschreibung der
+Systemarchitektur unter der Berücksichtigung bekannter Schwachstellen und Kommunikationsprotokollen
+weiter. Das Projekt wurde in Java umgesetzt und mittels des Eclipse Plug-in Mechanismus in Eclipse inte-
+griert, wobei er Methoden der modellgetriebenen Entwicklung einsetzte. Dazu gehören insbesondere UML,
+EMF, OCL, Sirius, GMF, QVTo und Henshin.
+Statische Codeanalyse von open62541
+Er unterstiitze die statische Codeanalyse der Open Source Implementierung open62541 von OPC UA in
+C/C++. Dabei untersuchte er die Implementierung auf mögliche bekannte Schwachstellen mithilfe der sta-
+tischen Codeanalyse Tools Cppcheck, Frama-C und Phasar. Zusätzlich hat er die Ergebnisse der Tools im
+Anschluss manuell auf ihre Korrektheit evaluiert.
+e Demonstrator fur den sicheren Einsatz von OPC UA
+Herr Meier entwickelte einen Demonstrator für den sicheren Einsatz des Kommunikationsprotokolls OPC
+UA im Maschinen- und Anlagenbau. Er zeigte die Risiken unsicherer Konfigurationen auf und stellte Lo-
+sungsansatze bereit. Zur Veranschaulichung der Möglichkeiten eines Angreifers bei einer unsicheren Kon-
+figuration entwickelte er ein Tool in Python, welches den Netzwerkverkehr analysiert und die gewonnenen
+“ Informationen anschaulich darstellt. Verwendete Bibliotheken und Tools sind insbesondere PyShark, Scapy,
+RawCap und Wireshark.
+o Demonstrator für die Log4 Schwachstelle
+Er entwickelte einen Demonstrator zur Ausnutzung der Log4j Sicherheitslücke mittels des Log4Shell
+Exploits. Hierfür schuf er ein Dashboard als Web-Interface, das den Zustand eines Produktionssystems (be-
+stehend aus Steuerungen, Aktoren und Sensoren) anzeigt, und mittels Anwendung des Exploits dem An-
+greifer die Manipulation der Motorsteuerung ermöglichte. Die Technologien umfassten Java, Maven,
+HTML, JavaScript und CSS.
+Herr Meier verfügt aufgrund seines Studiums über äußerst umfassende und vielseitige Fachkenntnisse, auch in
+Randbereichen, die er im Rahmen seiner Beschäftigung als Werkstudent immer sehr sicher und gekonnt in der Praxis
+einsetzte. Er überzeugte in hohem Maße durch sein ausgeprägtes technisches Verständnis, dass es ihm jederzeit
+ermöglichte, auch für schwierige Konstellationen und neue Projekte gute Lösungen zu finden. Aufgrund seiner
+exzellenten Auffassungsgabe arbeitete er sich immer extrem rasch in neue Aufgabengebiete ein, war vielseitig ein-
+setzbar und überblickte dabei auch schwierigste Zusammenhänge stets vollständig.
+Herr Meier zeigte jederzeit hohe Eigeninitiative und identifizierte sich immer voll mit seinen Aufgaben sowie unse-
+rem Institut. Besonders hervorzuheben ist seine große Einsatzfreude. Herr Meier verfügte stets über eine ausgezei-
+chnete Lernbereitschaft. Auch unter stärkster Belastung behielt er stets die Übersicht, handelte überlegt und bewäl-
+tigte alle Aufgaben in hervorragender Weise.
+Seine Aufgaben führte er mit größter Umsicht und hohem Verantwortungsbewusstsein aus. Er war sehr gewissen-
+haft und arbeitete stets zügig, ohne dass dies zu Lasten der Präzision ging. Vertrauenswürdigkeit und absolute
+Zuverlässigkeit zeichneten durchweg den Arbeitsstil von Herrn Meier uneingeschränkt aus.
+Auch für schwierigste Problemstellungen fand er bereits nach kurzer Einarbeitungszeit sehr gute Lösungen und
+erzielte immer ausgezeichnete Arbeitsergebnisse. Als besonderen Arbeitserfolg möchten wir hervorheben, dass die
+von Herrn Meier entwickelten Demonstratoren einen festen Platz in unserem Secure Engineering Lab eingenommen
+haben und regelmäßig bei Präsentationen unseres Labs vorgestellt werden. Herr Meier hat die ihm übertragenen
+Aufgaben stets zu unserer vollsten Zufriedenheit erfüllt.Wegen: seines ausnahmslos freundlichen: und ausgeglichenen‘ Wesens wurde er allseits sehr geschätzt. Er genoss das volle Vertrauen aller Vorgesetzten, Kolleginnen und Kollegen sowie Kundinnen und Kunden. Sein Verhalten war immer vorbildlich.
+Wir danken Herrn Meier für die stets ausgezeichnete Mitarbeit als studentische Hilfskraft. Leider können wir ihm mangels Vakanz derzeit keinen festen Arbeitsplatz anbieten. Wir bedauern dies sehr, weil wir von seiner besonderen Eignung und seinen hervörragenden Fähigkeiten überzeugt sind. Für die berufliche und private Zukunft wünschen
+wir ihm weiterhin viel Erfolg und alles Gute.
+
+
+
