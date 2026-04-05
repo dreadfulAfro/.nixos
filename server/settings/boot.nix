@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  server,
   ...
 }:
 {
@@ -54,7 +55,7 @@
 
   # setup pre decryption ssh server
   boot.kernelParams = [
-    "ip=192.168.178.57::192.168.178.1:255.255.255.0:nixos-server:enp1s0:off"
+    "ip=${server.ip}::${server.gateway}:255.255.255.0:nixos-server:enp1s0:off"
   ];
   boot.initrd = {
     #systemd = {

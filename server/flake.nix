@@ -21,7 +21,10 @@
         specialArgs = {
           inherit inputs;
           username = "admin";
-          serverIP = "192.168.178.57";
+          server = {
+            ip = "192.168.178.57";
+            gateway ="192.168.178.1";
+          };
         };
         modules = [
           ./settings/default.nix

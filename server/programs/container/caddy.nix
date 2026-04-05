@@ -1,4 +1,4 @@
-{ hostname, serverIP... }:
+{ hostname, server, ... }:
 {
   containers.caddy = {
     autoStart = true;
@@ -32,97 +32,97 @@
             "kavita.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:42002 
+                reverse_proxy ${server.ip}:42002 
               '';
             };
             "jellyfin.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:8096 
+                reverse_proxy ${server.ip}:8096 
               '';
             };
             "radarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:7878 
+                reverse_proxy ${server.ip}:7878 
               '';
             };
             "sonarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:8989 
+                reverse_proxy ${server.ip}:8989 
               '';
             };
             "bazarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:6767 
+                reverse_proxy ${server.ip}:6767 
               '';
             };
             "lidarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:8686 
+                reverse_proxy ${server.ip}:8686 
               '';
             };
             "prowlarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:9696 
+                reverse_proxy ${server.ip}:9696 
               '';
             };
             "readarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:8787 
+                reverse_proxy ${server.ip}:8787 
               '';
             };
             "mediathekarr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:5007
+                reverse_proxy ${server.ip}:5007
               '';
             };
             "lazylibrarian.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:5299
+                reverse_proxy ${server.ip}:5299
               '';
             };
             "sabnzbd.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:6336 
+                reverse_proxy ${server.ip}:6336 
               '';
             };
             "transmission.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:9091 
+                reverse_proxy ${server.ip}:9091 
               '';
             };
             "jellyseerr.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:5055
+                reverse_proxy ${server.ip}:5055
               '';
             };
             "bookshelf.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:8787
+                reverse_proxy ${server.ip}:8787
               '';
             };
             "audiobookrequest.tails" = {
               extraConfig = ''
                 tls internal
-                reverse_proxy ${serverIP}:8000
+                reverse_proxy ${server.ip}:8000
               '';
             };
             "whatsupdocker.tails" = {
               extraConfig =''
                 tls internal
-                reverse_proxy ${serverIP}:3000
+                reverse_proxy ${server.ip}:3000
               '';
             };
           };

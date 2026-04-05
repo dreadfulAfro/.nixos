@@ -1,4 +1,4 @@
-{ hostname, pkgs, serverIP, ... }:
+{ hostname, pkgs, server, ... }:
 {
 
   # Enable networking
@@ -39,17 +39,17 @@
     interfaces = {
       enp1s0.ipv4.addresses = [
         {
-          address = "${serverIP}";
+          address = "${server.ip}";
           prefixLength = 24;
         }
       ];
     };
     defaultGateway = {
-      address = "192.168.178.1";
+      address = "server.gateway";
       interface = "enp1s0";
     };
     nameservers = [
-      "${serverIP}"
+      "${server.ip}"
       "127.0.0.1"
     ];
     search = [ "tails" ];
@@ -85,8 +85,8 @@
         iptables -t nat -A PREROUTING -d 100.77.114.79 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
 
         # Redirect HTTP/HTTPS to Caddy - ONLY for traffic destined to the host IP
-        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
-        iptables -t nat -A PREROUTING -d 192.168.178.57 -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
+        iptables -t nat -A PREROUTING -d ${server.ip} -p tcp --dport 80 -j DNAT --to-destination 192.168.100.2:80
+        iptables -t nat -A PREROUTING -d ${server.ip} -p tcp --dport 443 -j DNAT --to-destination 192.168.100.2:443
 
         # MASQUERADE so responses can get back
         iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o enp1s0 -j MASQUERADE
