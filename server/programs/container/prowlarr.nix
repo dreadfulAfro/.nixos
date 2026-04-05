@@ -3,6 +3,7 @@
 { pkgs, lib, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [9696];
   # Runtime
   virtualisation.docker = {
     enable = true;

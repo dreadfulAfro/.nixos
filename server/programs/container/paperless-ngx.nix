@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  networking.firewall.allowedTCPPorts = [42001];
+
   containers.paperless = {
     autoStart = true;
     privateNetwork = true;

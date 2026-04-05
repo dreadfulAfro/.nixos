@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  networking.firewall.allowedTCPPorts = [42002];
+
   containers.kavita = {
     autoStart = true;
     privateNetwork = true;
