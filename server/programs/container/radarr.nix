@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."radarr" = {
     image = "linuxserver/radarr:latest";
+    pull = "always";
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:radarr-striptracks";
       "PGID" = "169";

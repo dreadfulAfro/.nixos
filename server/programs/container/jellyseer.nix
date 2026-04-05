@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."jellyseerr" = {
     image = "ghcr.io/fallenbagel/jellyseerr:latest";
+    pull = "always";
     environment = {
       "LOG_LEVEL" = "debug";
       "PORT" = "5055";

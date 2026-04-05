@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."readarr" = {
     image = "readarr-custom:latest";
+    pull = "always";
     environment = {
       "PUID" = "1009";
       "PGID" = "169";

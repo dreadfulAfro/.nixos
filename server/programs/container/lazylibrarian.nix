@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."lazylibrarian" = {
     image = "linuxserver/lazylibrarian:latest";
+    pull = "always";
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg";
       "PGID" = "169";

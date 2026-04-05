@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."mediathekarr" = {
     image = "pcjones/mediathekarr:beta";
+    pull = "always";
     environment = {
       "MEDIATHEKARR_API_BASE_URL" = "https://mediathekarr.pcjones.de/api/v1";
       "PGID" = "169";

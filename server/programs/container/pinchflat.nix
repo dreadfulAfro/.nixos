@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."pinchflat-pinchflat" = {
     image = "ghcr.io/kieraneglin/pinchflat:latest";
+    pull = "always";
     environment = {
       "TZ" = "America/New_York";
     };

@@ -10,6 +10,7 @@
 
   virtualisation.oci-containers.containers.wud = {
     image = "getwud/wud:latest";
+    pull = "always";
 
     ports = [
       "3000:3000"

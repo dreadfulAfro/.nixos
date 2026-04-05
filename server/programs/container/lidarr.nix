@@ -13,6 +13,7 @@
   # Containers
   virtualisation.oci-containers.containers."lidarr" = {
     image = "linuxserver/lidarr:latest";
+    pull = "always";
     environment = {
       "DOCKER_MODS" = "linuxserver/mods:lidarr-flac2mp3";
       "PGID" = "169";
