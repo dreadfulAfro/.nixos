@@ -45,7 +45,7 @@
       ];
     };
     defaultGateway = {
-      address = "server.gateway";
+      address = "${server.gateway}";
       interface = "enp1s0";
     };
     nameservers = [
