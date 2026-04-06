@@ -18,7 +18,7 @@
     {
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; username = "angelo"; };
+        specialArgs = { inherit inputs; username = "angelo"; server.ip = "192.168.1.200" };
         modules = [
           ./settings/hardware-configuration.nix
           ./settings/core.nix
