@@ -22,8 +22,8 @@
           inherit inputs;
           username = "admin";
           server = {
-            ip = "192.168.178.57";
-            gateway ="192.168.178.1";
+            ip = "192.168.1.200";
+            gateway ="192.168.1.1";
           };
         };
         modules = [
