@@ -22,10 +22,6 @@
     permitCertUid = "caddy"; # allows Tailscale TLS certs
   };
 
-  networking = {
-    fq_codel = true;
-  };
-
   systemd.services.ethtool-tuning = {
   description = "Optimize NIC for Tailscale / UDP";
   after = [ "network.target" ];
