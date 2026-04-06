@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, server, ... }:
 {
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -13,11 +13,11 @@
   programs.ssh = {
     extraConfig = "
       Host nixos-server-decr
-        Hostname 192.168.178.57
+        Hostname $(server.ip)
         Port 4622
         User root
       Host nixos-server
-        Hostname 192.168.178.57
+        Hostname $(server.ip)
         Port 4623
         User admin
       Host nixos-server-tail
@@ -48,7 +48,7 @@
 
   #networking.extraHosts = "192.168.178.57 paperless.local jellyfin.local kavita.local";
   networking.nameservers = [
-    "192.168.178.57"
+    "$(sver.ip)"
     "9.9.9.9"
     "149.112.112.112"
     "1.1.1.1"
