@@ -14,5 +14,6 @@
     git
     btop
     pciutils
+    ethtool
   ];
 }
