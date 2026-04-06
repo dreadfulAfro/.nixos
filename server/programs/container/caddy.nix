@@ -119,10 +119,10 @@
                 reverse_proxy ${server.ip}:8000
               '';
             };
-            "whatsupdocker.tails" = {
+            "unmanic.tails" = {
               extraConfig =''
                 tls internal
-                reverse_proxy ${server.ip}:3000
+                reverse_proxy ${server.ip}:8888
               '';
             };
           };

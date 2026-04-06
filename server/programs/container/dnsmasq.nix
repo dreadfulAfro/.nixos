@@ -40,7 +40,7 @@
         "/lazylibrarian.tails/${server.ip}"
         "/bookshelf.tails/${server.ip}"
         "/audiobookrequest.tails/${server.ip}"
-        "/whatsupdocker.tails/${server.ip}"
+        "/unmanic.tails/${server.ip}"
       ];
 
       server = [
