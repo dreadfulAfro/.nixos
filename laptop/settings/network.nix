@@ -13,11 +13,11 @@
   programs.ssh = {
     extraConfig = "
       Host nixos-server-decr
-        Hostname $(server.ip)
+        Hostname ${server.ip}
         Port 4622
         User root
       Host nixos-server
-        Hostname $(server.ip)
+        Hostname ${server.ip}
         Port 4623
         User admin
       Host nixos-server-tail
@@ -48,7 +48,7 @@
 
   #networking.extraHosts = "192.168.178.57 paperless.local jellyfin.local kavita.local";
   networking.nameservers = [
-    "$(sver.ip)"
+    "${server.ip}"
     "9.9.9.9"
     "149.112.112.112"
     "1.1.1.1"

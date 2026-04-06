@@ -9,7 +9,7 @@
     # Here, `inputs.nixpkgs` of home-manager is kept consistent with
     # the `inputs.nixpkgs` of the current flake,
     # to avoid problems caused by different versions of nixpkgs.
-    home-manager.url = "github:nix-community/home-manager/master";
+      home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -18,7 +18,7 @@
     {
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; username = "angelo"; server.ip = "192.168.1.200" };
+        specialArgs = { inherit inputs; username = "angelo"; server.ip = "192.168.1.200"; };
         modules = [
           ./settings/hardware-configuration.nix
           ./settings/core.nix
