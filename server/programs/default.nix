@@ -15,5 +15,6 @@
     btop
     pciutils
     ethtool
+    ffmpeg
   ];
 }

@@ -21,5 +21,6 @@
     ./sonarr.nix
     ./tailscale.nix
    # ./wud.nix
+    ./unmanic.nix
   ];
 }
