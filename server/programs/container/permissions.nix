@@ -8,12 +8,12 @@
 
   # Create per-service users with shared group
   users.users = {
-#    dnsmasq  = {
-#      isNormalUser = true;
-#      uid = 1101;
-#      group = "media";
-#    };
-    caddy  = {
+    #    dnsmasq  = {
+    #      isNormalUser = true;
+    #      uid = 1101;
+    #      group = "media";
+    #    };
+    caddy = {
       isNormalUser = true;
       uid = 1102;
       group = "media";
@@ -48,12 +48,12 @@
       uid = 1109;
       group = "media";
     };
-    bookshelf  = {
+    bookshelf = {
       isNormalUser = true;
       uid = 1110;
       group = "media";
     };
-    audiobookrequest  = {
+    audiobookrequest = {
       isNormalUser = true;
       uid = 1111;
       group = "media";
@@ -108,6 +108,11 @@
       uid = 1121;
       group = "media";
     };
+    seerr = {
+      isNormalUser = true;
+      uid = 1122;
+      group = "media";
+    };
   };
 
   ## create directories and set permissions
@@ -122,7 +127,6 @@
     "d    /srv/data1tb/data/usenet/books        0755  root              media             -"
     "d    /srv/data1tb/data/tmp                 0755  root              media             -"
     "d    /srv/data1tb/data/tmp/unmanic         0755  unmanic           media             -"
-
 
     "d    /srv/data1tb/.config/dnsmasq          0770  dnsmasq           dnsmasq           -"
     "d    /srv/data1tb/.config/caddy            0770  caddy             caddy             -"
@@ -140,7 +144,7 @@
     "d    /srv/data1tb/.config/paperless        0770  paperless         paperless         -"
     "d    /srv/data1tb/.config/bazarr           0770  bazarr            bazarr            -"
     "d    /srv/data1tb/.config/unmanic          0770  unmanic           unmanic           -"
-    "d    /srv/data1tb/.config/pinchflat        0770  pinchflat         pinchflat         -"
+    "d    /srv/data1tb/.config/seerr            0770  seerr             seerr             -"
     "d    /srv/data1tb/.config/pinchflat        0770  pinchflat         pinchflat         -"
   ];
 }

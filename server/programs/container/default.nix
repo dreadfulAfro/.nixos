@@ -6,7 +6,7 @@
     ./dnsmasq.nix
     ./jellyfin.nix
     ./kavita.nix
-#    ./lazylibrarian.nix
+    #    ./lazylibrarian.nix
     ./lidarr.nix
     ./mediathekarr.nix
     ./paperless-ngx.nix
@@ -15,12 +15,13 @@
     ./prowlarr.nix
     ./radarr.nix
     #./readarr.nix
-    ./jellyseer.nix
+    #./jellyseer.nix
+    ./seerr.nix
     ./bazarr.nix
     ./sabnzbd.nix
     ./sonarr.nix
     ./tailscale.nix
-   # ./wud.nix
+    # ./wud.nix
     ./unmanic.nix
   ];
 }
