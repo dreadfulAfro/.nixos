@@ -101,7 +101,7 @@
                 reverse_proxy ${server.ip}:9091 
               '';
             };
-            "jellyseerr.tails" = {
+            "seerr.tails" = {
               extraConfig = ''
                 tls internal
                 reverse_proxy ${server.ip}:5055
@@ -120,7 +120,7 @@
               '';
             };
             "unmanic.tails" = {
-              extraConfig =''
+              extraConfig = ''
                 tls internal
                 reverse_proxy ${server.ip}:8888
               '';
