@@ -16,9 +16,11 @@
     image = "ghcr.io/seerr-team/seerr:latest";
     pull = "always";
     environment = {
-      "LOG_LEVEL" = "debug";
       "PORT" = "5055";
-      "TZ" = "Asia/Tashkent";
+      "LOG_LEVEL" = "debug";
+      "PGID" = "169";
+      "PUID" = "1122";
+      "TZ" = "Europe/Berlin";
     };
     volumes = [
       "/srv/data1tb/.config/seerr:/app/config:rw"
