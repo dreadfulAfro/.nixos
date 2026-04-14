@@ -11,7 +11,7 @@
     ./mediathekarr.nix
     ./paperless-ngx.nix
     ./permissions.nix
-    ./pinchflat.nix
+    #./pinchflat.nix
     ./prowlarr.nix
     ./radarr.nix
     #./readarr.nix

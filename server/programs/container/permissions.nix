@@ -144,7 +144,7 @@
     "d    /srv/data1tb/.config/paperless        0770  paperless         paperless         -"
     "d    /srv/data1tb/.config/bazarr           0770  bazarr            bazarr            -"
     "d    /srv/data1tb/.config/unmanic          0770  unmanic           unmanic           -"
-    "d    /srv/data1tb/.config/seerr            0770  seerr             seerr             -"
+    "d    /srv/data1tb/.config/seerr            0770  seerr             root              -"
     "d    /srv/data1tb/.config/pinchflat        0770  pinchflat         pinchflat         -"
   ];
 }
