@@ -11,8 +11,8 @@
     ./firefox.nix
     ./syncthing.nix
     ./steam.nix
-#    ./netdata.nix
-#    ./systemd-timers/speedtest.nix
+    #    ./netdata.nix
+    #    ./systemd-timers/speedtest.nix
   ];
 
   # Install additional software
@@ -31,6 +31,7 @@
     fractal
     #stremio
     ookla-speedtest
+
   ];
 
   # additional services
