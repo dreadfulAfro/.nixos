@@ -6,13 +6,14 @@
 {
   imports = [
     ./gnome.nix
-    #./cosmic.nix
     ./fish.nix
+    ./virt-manager.nix
     ./firefox.nix
     ./syncthing.nix
     ./steam.nix
-    #    ./netdata.nix
-    #    ./systemd-timers/speedtest.nix
+    #./cosmic.nix
+    #./netdata.nix
+    #./systemd-timers/speedtest.nix
   ];
 
   # Install additional software
