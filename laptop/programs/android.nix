@@ -7,13 +7,10 @@
     android-tools
     jdk17
     gradle
-    (androidenv.androidPkgs.androidsdk (
-      sdkPkgs: with sdkPkgs; [
-        platform-tools
-        build-tools-34-0-0
-        platforms-android-34
-      ]
-    ))
+    (androidenv.composeAndroidPackages {
+      platformVersions = [ "34" ];
+      buildToolsVersions = [ "34.0.0" ];
+    }).androidsdk
   ];
   users.users.${username}.extraGroups = [ "kvm" ];
 
