@@ -11,6 +11,7 @@
     ./firefox.nix
     ./syncthing.nix
     ./steam.nix
+    ./android.nix
     #./cosmic.nix
     #./netdata.nix
     #./systemd-timers/speedtest.nix
@@ -32,7 +33,6 @@
     fractal
     #stremio
     ookla-speedtest
-
   ];
 
   # additional services
