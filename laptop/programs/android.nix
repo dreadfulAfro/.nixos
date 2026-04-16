@@ -5,9 +5,15 @@
   environment.systemPackages = with pkgs; [
     android-studio
     android-tools
-    androidenv.androidPkgs.androidsdk
     jdk17
     gradle
+    (androidenv.androidPkgs.androidsdk (
+      sdkPkgs: with sdkPkgs; [
+        platform-tools
+        build-tools-34-0-0
+        platforms-android-34
+      ]
+    ))
   ];
   users.users.${username}.extraGroups = [ "kvm" ];
 
